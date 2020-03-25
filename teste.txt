@@ -1,3 +1,5 @@
 Ver se foi do PC para o Git
 Ver se foi do Git para o PC
 Do PC para o Git
+
+Evelyn: Do PC removi texto.txt para o Git

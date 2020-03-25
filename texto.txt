@@ -1,1 +1,0 @@
-Agora é o teste de commitar, clonar e upar arquivos no git
