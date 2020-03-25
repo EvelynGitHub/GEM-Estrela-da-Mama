@@ -21,10 +21,10 @@ class Rota
 
     public function iniciarRotas()
     {
-        $this->rotas['/Projetos/estrelas-da-mama-3.0/'] = array('classe' => 'Login', 'metodo' => "getTelaPrincipalHTML");
-        $this->rotas['/Projetos/estrelas-da-mama-3.0/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "getTelaPrincipalHTML");
-        $this->rotas['/Projetos/estrelas-da-mama-3.0/lista-atividade'] = array('classe' => 'Atividade', 'metodo' => "getTelaPrincipalHTML");
-        $this->rotas['/Projetos/estrelas-da-mama-3.0/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "getTelaPrincipalHTML");
+        $this->rotas['/'] = array('classe' => 'Login', 'metodo' => "getTelaPrincipalHTML");
+        $this->rotas['/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "getTelaPrincipalHTML");
+        $this->rotas['/lista-atividade'] = array('classe' => 'Atividade', 'metodo' => "getTelaPrincipalHTML");
+        $this->rotas['/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "getTelaPrincipalHTML");
         // $this->rotas['/Projetos/estrelas-da-mama-3.0/home'] = array('classe' => 'Afiliado', 'metodo' => "getTelaPrincipalHTML");
     }
 
