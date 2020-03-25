@@ -1,0 +1,39 @@
+.border-size-b {
+    border-bottom: 2px solid black;
+}
+
+.border-input{ 
+    border-radius: 5px; 
+}
+
+legend.scheduler-border {
+    width: auto !important;
+    border: none;
+    font-size: 10px;
+}
+
+fieldset {
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 10px;
+    height: 90%;
+    /* background-color: lightpink; */
+}
+
+legend {
+    font-size: 20px;
+}
+
+label {
+    display: inline-block; 
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    margin-right: 3.5px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+}
