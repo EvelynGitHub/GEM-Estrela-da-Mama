@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Cadastro de Afiliado</title>
+</head>
+
+<body>
+    <center>
+        <h2>Ficha de Cadastro de Afiliado</h2>
+    </center>
+    <hr>
+    <form class="form-group m-0" action="">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <input type="text" class="form-control mb-3" name="nome" id="nome" placeholder="Nome Completo">
+                    <input type="text" class="form-control mb-3" name="rg" id="rg" placeholder="RG">
+                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" placeholder="CPF">
+                    <input type="text" class="form-control mb-3" name="nacionalidade" id="nacionalidade"
+                        placeholder="Nacionalidade">
+                    <input type="date" class="form-control mb-3" name="data" id="data">
+                </div>
+                <div class="col-4">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <select class="form-control" name="estado" id="estado">
+                                <option class="" value="Estado">
+                                    Estado
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade">
+                        </div>
+                    </div>
+                    <input type="text" class="form-control mb-3" name="bairro" id="bairro" placeholder="Bairro">
+                    <input type="text" class="form-control mb-3" name="cep" id="cep" placeholder="CEP">
+                    <input type="text" class="form-control mb-3" name="telefone" id="telefone"
+                        placeholder="(00)0000-0000">
+                    <input type="text" class="form-control mb-3" name="celular" id="celular"
+                        placeholder="(00)00000-0000">
+                </div>
+                <div class="col-4">
+                    <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email">
+                    <input type="text" class="form-control mb-3" name="escolaridade" id="escolaridade"
+                        placeholder="Escolaridade">
+                    <input type="text" class="form-control mb-3" name="sitProfissional" id="sitProfissional"
+                        placeholder="Situação profissional">
+                    <div class="row mb-4">
+                        <label class="px-3">
+                            Sexo:
+                        </label>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="sexo" id="sexoM">
+                            <label class="custom-control-label" for="sexoM">Masculino</label>
+                        </div>
+                        <div class="custom-control custom-radio ml-2">
+                            <input type="radio" class="custom-control-input" name="sexo" id="sexoF">
+                            <label class="custom-control-label" for="sexoF">Feminino</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="px-3">
+                            Tipo:
+                        </label>
+                        <div class="custom-control custom-radio ml-1">
+                            <input type="radio" class="custom-control-input align-bottom" name="tipo"
+                                id="tipoAssistida">
+                            <label class="custom-control-label" for="tipoAssistida">Assistida</label>
+                        </div>
+                        <div class="custom-control custom-radio ml-3">
+                            <input type="radio" class="custom-control-input align-bottom" name="tipo"
+                                id="tipoVoluntario">
+                            <label class="custom-control-label" for="tipoVoluntario">Voluntário</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="voluntario" hidden>
+            <div class="row">
+                <div class="col-4">
+                    <h4>Voluntário</h4>
+                    <input type="text" class="form-control mb-3" name="interesse" id="interesse"
+                        placeholder="Área de interesse">
+                </div>
+            </div>
+            <h6>Disponibilidade</h6>
+            <div class="row">
+                <div class="custom-control custom-checkbox mx-3">
+                    <input type="checkbox" class="custom-control-input" name="segunda" id="segunda">
+                    <label class="custom-control-label" for="segunda">Segunda</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="terca" id="terca">
+                    <label class="custom-control-label" for="terca">Terça</label>
+                </div>
+                <div class="custom-control custom-checkbox mx-2">
+                    <input type="checkbox" class="custom-control-input" name="quarta" id="quarta">
+                    <label class="custom-control-label" for="quarta">Quarta</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="quinta" id="quinta">
+                    <label class="custom-control-label" for="quinta">Quinta</label>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="assistida" hidden>
+            <h4>Assistida</h4>
+            <div class="row">
+                <div class="col-4">
+                    <h6 class="mt-4">Diagnóstico:</h6>
+                    <textarea class="form-control" name="diagnostico" id="diagnostico" cols="20" rows="4"></textarea>
+                </div>
+                <div class="col-4">
+                    <h6 class="mt-4">Cirurgia da Mama:</h6>
+                    <div class="row">
+                        <div class="col-3 custom-control custom-checkbox ml-3">
+                            <input type="checkbox" class="custom-control-input" name="mamaDireita" id="mamaDireita">
+                            <label class="custom-control-label" for="mamaDireita">Direita</label>
+                        </div>
+                        <div class="col-6 custom-control custom-checkbox">
+                            <input type="text" class="form-control col-5 ml-3" name="anoDireita" id="anoDireita"
+                                placeholder="Ano">
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3 custom-control custom-checkbox ml-3">
+                            <input type="checkbox" class="custom-control-input" name="mamaEsquerda" id="mamaEsquerda">
+                            <label class="custom-control-label" for="mamaEsquerda">Esquerda</label>
+                        </div>
+                        <div class="col-6 custom-control custom-checkbox">
+                            <input type="text" class="form-control col-5 ml-3" name="anoEsquerda" id="anoEsquerda"
+                                placeholder="Ano">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <h6 class="mt-4">Convênio:</h6>
+                    <textarea class="form-control" name="convenio" id="convenio" cols="20" rows="4"></textarea>
+                </div>
+            </div>
+        </div>
+        <center>
+            <button type="submit" class="btn btn-success btn-lg m-4">
+                Cadastrar
+            </button>
+            <button type="submit" class="btn btn-danger btn-lg">
+                Cancelar
+            </button>
+        </center>
+    </form>
+    <script src="./js/cadastrar-afiliado.js"></script>
+</body>
+
+</html>
