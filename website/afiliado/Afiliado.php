@@ -3,6 +3,9 @@
 namespace website\classe;
 
 class Afiliado {
+
+    private static $pasta = "afiliado";
+    private static $html = "lista-geral.html";
     
         
     public function getTelaPrincipalHTML()
