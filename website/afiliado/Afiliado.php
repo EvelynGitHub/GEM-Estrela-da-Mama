@@ -11,14 +11,7 @@ class Afiliado {
     private static $html = "lista-geral.html";
     
         
-    public function getTelaPrincipalHTML()
-    {
-		$this->renderizarHTML("lista-geral.html");
-		
-    }
-    public function renderizarHTML($ver){
-        include "website//afiliado//$ver";
-    }
+  
 
     private $nomeCompleto;
     private $rg;
@@ -325,4 +318,16 @@ class Afiliado {
       
 	}
 	
+	public function getTelaPrincipalHTML()
+    {
+		$this->renderizarHTML("lista-geral.html");
+		
+	}
+	
+    public function renderizarHTML($ver){
+        include "website//afiliado//$ver";
+    }
+	
 }
+
+?>
