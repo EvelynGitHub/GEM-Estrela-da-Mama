@@ -4,49 +4,55 @@ namespace website\classe;
 
 use Conexao;
 use Exception;
+use PDO;
 
-class Afiliado {
+//require_once __DIR__.'/Interface.php';
 
-    private static $pasta = "afiliado";
-    private static $html = "lista-geral.html";
-    
-        
-  
+require_once __DIR__.'/../global/Interface.php';
 
-    private $nomeCompleto;
-    private $rg;
-    private $cpf;
-    private $nacionalidade;
-    private $sexo;
-    private $dataNascimento;
-    private $estado;
-    private $cidade;
-    private $bairro;
-    private $rua;
-    private $numeroResidencial;
-    private $complemento;
-    private $cep;
-    private $telefone;
-    private $celular;
-    private $email;
-    private $escolaridade;
-    private $situacaoProfissional;
-    private $setorVoluntario;
-    private $disponibilidade;
-    private $cirurgiaMama;
-    private $diagnostico;
-    private $convenioMedico;
-    private $itens;
-    private $assistida;
-    private $voluntaria;
-   
+class Afiliado 
+{
+	use IGlobal;
 
-	public function __construct($nomeCompleto, $rg, $cpf, $nacionalidade, $sexo, $dataNascimento, $estado, $cidade, $bairro, $rua, $numeroResidencial, $complemento, $cep, $telefone, $celular, $email, $escolaridade, $situacaoProfissional, $setorVoluntario, $disponibilidade, $cirurgiaMama, $diagnostico, $convenioMedico, $itens, $assistida, $voluntaria){
+	private static $pasta = "afiliado";
+	private static $html = "lista-geral.html";
+
+
+	private $nomeCompleto;
+	private $rg;
+	private $cpf;
+	private $nacionalidade;
+	private $sexo;
+	private $dataNascimento;
+	private $estado;
+	private $cidade;
+	private $bairro;
+	private $rua;
+	private $numeroResidencial;
+	private $complemento;
+	private $cep;
+	private $telefone;
+	private $celular;
+	private $email;
+	private $escolaridade;
+	private $situacaoProfissional;
+	private $setorVoluntario;
+	private $disponibilidade;
+	private $cirurgiaMama;
+	private $diagnostico;
+	private $convenioMedico;
+	private $itens;
+	private $assistida;
+	private $voluntaria;
+
+
+	public function __construct($nomeCompleto = "", $rg = "", $cpf = "", $nacionalidade = "", $sexo = "", $dataNascimento = "", $estado = "", $cidade = "", $bairro = "", $rua = "", $numeroResidencial = "", $complemento = "", $cep = "", $telefone = "", $celular = "", $email = "", $escolaridade = "", $situacaoProfissional = "", $setorVoluntario = "", $disponibilidade = "", $cirurgiaMama = "", $diagnostico = "", $convenioMedico = "", $itens = "", $assistida = "", $voluntaria = "")
+	{
 
 		$this->nomeCompleto = $nomeCompleto;
 		$this->rg = $rg;
 		$this->cpf = $cpf;
-    	$this->nacionalidade = $nacionalidade;
+		$this->nacionalidade = $nacionalidade;
 		$this->sexo = $sexo;
 		$this->dataNascimento = $dataNascimento;
 		$this->estado = $estado;
@@ -69,265 +75,321 @@ class Afiliado {
 		$this->itens = $itens;
 		$this->assistida = $assistida;
 		$this->voluntaria = $voluntaria;
-		
-
 	}
 
-	public function getNomeCompleto(){
+	public function getNomeCompleto()
+	{
 		return $this->nomeCompleto;
 	}
 
-	public function setNomeCompleto($nomeCompleto){
+	public function setNomeCompleto($nomeCompleto)
+	{
 		$this->nomeCompleto = $nomeCompleto;
 	}
 
-	public function getRg(){
+	public function getRg()
+	{
 		return $this->rg;
 	}
 
-	public function setRg($rg){
+	public function setRg($rg)
+	{
 		$this->rg = $rg;
 	}
 
-	public function getCpf(){
+	public function getCpf()
+	{
 		return $this->cpf;
 	}
 
-	public function setCpf($cpf){
+	public function setCpf($cpf)
+	{
 		$this->cpf = $cpf;
 	}
 
-	public function getNacionalidade(){
+	public function getNacionalidade()
+	{
 		return $this->nacionalidade;
 	}
 
-	public function setNacionalidade($nacionalidade){
+	public function setNacionalidade($nacionalidade)
+	{
 		$this->nacionalidade = $nacionalidade;
 	}
 
-	public function getSexo(){
+	public function getSexo()
+	{
 		return $this->sexo;
 	}
 
-	public function setSexo($sexo){
+	public function setSexo($sexo)
+	{
 		$this->sexo = $sexo;
 	}
 
-	public function getDataNascimento(){
+	public function getDataNascimento()
+	{
 		return $this->dataNascimento;
 	}
 
-	public function setDataNascimento($dataNascimento){
+	public function setDataNascimento($dataNascimento)
+	{
 		$this->dataNascimento = $dataNascimento;
 	}
 
-	public function getEstado(){
+	public function getEstado()
+	{
 		return $this->estado;
 	}
 
-	public function setEstado($estado){
+	public function setEstado($estado)
+	{
 		$this->estado = $estado;
 	}
 
-	public function getCidade(){
+	public function getCidade()
+	{
 		return $this->cidade;
 	}
 
-	public function setCidade($cidade){
+	public function setCidade($cidade)
+	{
 		$this->cidade = $cidade;
 	}
 
-	public function getBairro(){
+	public function getBairro()
+	{
 		return $this->bairro;
 	}
 
-	public function setBairro($bairro){
+	public function setBairro($bairro)
+	{
 		$this->bairro = $bairro;
 	}
 
-	public function getRua(){
+	public function getRua()
+	{
 		return $this->rua;
 	}
 
-	public function setRua($rua){
+	public function setRua($rua)
+	{
 		$this->rua = $rua;
 	}
 
-	public function getNumeroResidencial(){
+	public function getNumeroResidencial()
+	{
 		return $this->numeroResidencial;
 	}
 
-	public function setNumeroResidencial($numeroResidencial){
+	public function setNumeroResidencial($numeroResidencial)
+	{
 		$this->numeroResidencial = $numeroResidencial;
 	}
 
-	public function getComplemento(){
+	public function getComplemento()
+	{
 		return $this->complemento;
 	}
 
-	public function setComplemento($complemento){
+	public function setComplemento($complemento)
+	{
 		$this->complemento = $complemento;
 	}
 
-	public function getCep(){
+	public function getCep()
+	{
 		return $this->cep;
 	}
 
-	public function setCep($cep){
+	public function setCep($cep)
+	{
 		$this->cep = $cep;
 	}
 
-	public function getTelefone(){
+	public function getTelefone()
+	{
 		return $this->telefone;
 	}
 
-	public function setTelefone($telefone){
+	public function setTelefone($telefone)
+	{
 		$this->telefone = $telefone;
 	}
 
-	public function getCelular(){
+	public function getCelular()
+	{
 		return $this->celular;
 	}
 
-	public function setCelular($celular){
+	public function setCelular($celular)
+	{
 		$this->celular = $celular;
 	}
 
-	public function getEmail(){
+	public function getEmail()
+	{
 		return $this->email;
 	}
 
-	public function setEmail($email){
+	public function setEmail($email)
+	{
 		$this->email = $email;
 	}
 
-	public function getEscolaridade(){
+	public function getEscolaridade()
+	{
 		return $this->escolaridade;
 	}
 
-	public function setEscolaridade($escolaridade){
+	public function setEscolaridade($escolaridade)
+	{
 		$this->escolaridade = $escolaridade;
 	}
 
-	public function getSituacaoProfissional(){
+	public function getSituacaoProfissional()
+	{
 		return $this->situacaoProfissional;
 	}
 
-	public function setSituacaoProfissional($situacaoProfissional){
+	public function setSituacaoProfissional($situacaoProfissional)
+	{
 		$this->situacaoProfissional = $situacaoProfissional;
 	}
 
-	public function getSetorVoluntario(){
+	public function getSetorVoluntario()
+	{
 		return $this->setorVoluntario;
 	}
 
-	public function setSetorVoluntario($setorVoluntario){
+	public function setSetorVoluntario($setorVoluntario)
+	{
 		$this->setorVoluntario = $setorVoluntario;
 	}
 
-	public function getDisponibilidade(){
+	public function getDisponibilidade()
+	{
 		return $this->disponibilidade;
 	}
 
-	public function setDisponibilidade($disponibilidade){
+	public function setDisponibilidade($disponibilidade)
+	{
 		$this->disponibilidade = $disponibilidade;
 	}
 
-	public function getCirurgiaMama(){
+	public function getCirurgiaMama()
+	{
 		return $this->cirurgiaMama;
 	}
 
-	public function setCirurgiaMama($cirurgiaMama){
+	public function setCirurgiaMama($cirurgiaMama)
+	{
 		$this->cirurgiaMama = $cirurgiaMama;
 	}
 
-	public function getDiagnostico(){
+	public function getDiagnostico()
+	{
 		return $this->diagnostico;
 	}
 
-	public function setDiagnostico($diagnostico){
+	public function setDiagnostico($diagnostico)
+	{
 		$this->diagnostico = $diagnostico;
 	}
 
-	public function getConvenioMedico(){
+	public function getConvenioMedico()
+	{
 		return $this->convenioMedico;
 	}
 
-	public function setConvenioMedico($convenioMedico){
+	public function setConvenioMedico($convenioMedico)
+	{
 		$this->convenioMedico = $convenioMedico;
 	}
 
-	public function getItens(){
+	public function getItens()
+	{
 		return $this->itens;
 	}
 
-	public function setItens($itens){
+	public function setItens($itens)
+	{
 		$this->itens = $itens;
 	}
 
-	public function getAssistida(){
+	public function getAssistida()
+	{
 		return $this->assistida;
 	}
 
-	public function setAssistida($assistida){
+	public function setAssistida($assistida)
+	{
 		$this->assistida = $assistida;
 	}
 
-	public function getVoluntaria(){
+	public function getVoluntaria()
+	{
 		return $this->voluntaria;
 	}
 
-	public function setVoluntaria($voluntaria){
+	public function setVoluntaria($voluntaria)
+	{
 		$this->voluntaria = $voluntaria;
-    }
-    
-
-    public function cadastrarAfiliado($afiliado){
-        
-	}
-	
-	public function editarAfiliado($afiliado){
-      
 	}
 
-	public function excluirAfiliado($afiliado){
-      
+
+	public function cadastrarAfiliado($afiliado)
+	{
 	}
-	public function listarAfiliado(){
-		try{
-			$sql = "SELECT * FROM login";
+
+	public function editarAfiliado($afiliado)
+	{
+	}
+
+	public function excluirAfiliado($afiliado)
+	{
+	}
+
+	public function listarAfiliado()
+	{
+		try {
+			$sql = " SELECT cd_afiliado AS 'cd',
+							nm_afiliado AS 'Nome', 
+							nm_tipo_afiliado AS 'Tipo',
+							nm_area_interesse AS 'Função', 
+							dt_nascimento AS 'Data de Nascimento', 
+							cd_telefone AS 'Telefone',
+							nm_estado AS 'Estado',
+							'' AS 'Opção' FROM afiliado";
+			
 			$query = Conexao::conectar()->query($sql);
-			$resultado = $query->fetchAll();
+			$matriz = $query->fetchAll(PDO::FETCH_ASSOC); 
 
-			echo "<b>$resultado</b>";
-
-		}catch(Exception $e){
+			echo $this->rederizarTabela($matriz);	
+		} catch (Exception $e) {
 			echo "Erro ao listar Afiliados: $e";
 		}
 	}
 
-	private function verificarAfiliadoExiste($afiliado){
-      
+	private function verificarAfiliadoExiste($afiliado)
+	{
 	}
 
-	private function verificarCamposNulos(){
-      
+	private function verificarCamposNulos()
+	{
 	}
 
-	private function retornarAfiliado($afiliado){
-      
+	private function retornarAfiliado($afiliado)
+	{
 	}
-	
+
 	public function getTelaPrincipalHTML()
-    {
+	{
 		$this->renderizarHTML("lista-geral.html");
-		
 	}
-	
-    public function renderizarHTML($ver){
-        include "website//afiliado//$ver";
-    }
-	
-}
 
-?>
+	public function renderizarHTML($ver)
+	{
+		include "website//afiliado//$ver";
+	}
+}
