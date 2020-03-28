@@ -2,6 +2,9 @@
 
 namespace website\classe;
 
+use Conexao;
+use Exception;
+
 class Afiliado {
 
     private static $pasta = "afiliado";
@@ -10,7 +13,8 @@ class Afiliado {
         
     public function getTelaPrincipalHTML()
     {
-        $this->renderizarHTML("lista-geral.html");
+		$this->renderizarHTML("lista-geral.html");
+		
     }
     public function renderizarHTML($ver){
         include "website//afiliado//$ver";
@@ -297,7 +301,16 @@ class Afiliado {
       
 	}
 	public function listarAfiliado(){
-      
+		try{
+			$sql = "SELECT * FROM login";
+			$query = Conexao::conectar()->query($sql);
+			$resultado = $query->fetchAll();
+
+			echo "<b>$resultado</b>";
+
+		}catch(Exception $e){
+			echo "Erro ao listar Afiliados: $e";
+		}
 	}
 
 	private function verificarAfiliadoExiste($afiliado){
