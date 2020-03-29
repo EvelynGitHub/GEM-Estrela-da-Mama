@@ -7,13 +7,16 @@ trait IGlobal
 {
 
 
-    public function rederizarTabela($matriz)
+    public function rederizarTabela($matriz, $matrizExtra = [], $identificador = "")
     {
+
         if (count($matriz)) {
             $htmlTabela = "";
             $thead = "<thead>";
             $tbody = "<tbody>";
 
+            $arrayExtra = [];
+            $codigo = 0;
             //Inicio: Linha de cabeçalho da tabela
             $thead .= "<tr>";
             foreach ($matriz as $numero => $array) {
@@ -28,8 +31,23 @@ trait IGlobal
             //Inicio: linhas do corpo da tabela
             foreach ($matriz as $linha) {
                 $tbody .= "<tr>";
-                foreach ($linha as $coluna) {
-                    $tbody .= "<td>$coluna</td>";
+                foreach ($linha as $coluna => $valor) {
+                    $tbody .= "<td>";
+
+                    if(array_key_exists($coluna, $matrizExtra))
+                    {
+                        $arrayExtra = $matrizExtra[$coluna];
+                        $codigo = $valor;
+                    }
+                    
+                    if(key($arrayExtra) == $coluna)
+                    {
+                        $tbody .= str_replace($identificador, $codigo, $arrayExtra[$coluna]);
+
+                    }else{
+                        $tbody .= $valor;
+                    }
+                    $tbody .= " </td>";
                 }
                 $tbody .= "</tr>";
             }

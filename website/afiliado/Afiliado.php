@@ -365,7 +365,18 @@ class Afiliado
 			$query = Conexao::conectar()->query($sql);
 			$matriz = $query->fetchAll(PDO::FETCH_ASSOC); 
 
-			echo $this->rederizarTabela($matriz);	
+			/*  */
+
+			$array['cd'] = array('Opção' => "<a href='exemplo?id=@codigo@' class=''>
+												Ver <i class='far fa-eye' style='font-size: 1.5rem;'></i>
+											</a>
+											<a href='exemplo?id=@codigo@' class=''>
+												Editar<i class='far fa-edit' style='font-size: 1.5rem;></i>
+											</a>");
+
+		
+			echo $this->rederizarTabela($matriz, $array, "@codigo@");	
+			
 		} catch (Exception $e) {
 			echo "Erro ao listar Afiliados: $e";
 		}
@@ -381,6 +392,7 @@ class Afiliado
 
 	private function retornarAfiliado($afiliado)
 	{
+		echo "retornarAfiliado() >> $afiliado";
 	}
 
 	public function getTelaPrincipalHTML()
