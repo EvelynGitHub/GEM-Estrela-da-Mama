@@ -371,7 +371,7 @@ class Afiliado
 												<i class='far fa-eye' style='font-size: 1.5rem;'></i>
 											</a>
 											<a href='exemplo2?id=@codigo@' class=''>
-												<i class='far fa-edit' style='font-size: 1.5rem;></i>
+												<i class='far fa-edit' style='font-size: 1.5rem;'></i>
 											</a>");
 
 		
