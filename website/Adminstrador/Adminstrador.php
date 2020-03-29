@@ -1,5 +1,9 @@
 <?php
 
+require_once __DIR__.'/../global/CRUD.php';
+
+use Exception;
+use CRUD;
 Class Administrador {
 
     private $login;
