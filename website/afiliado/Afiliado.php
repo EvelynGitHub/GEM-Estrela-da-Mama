@@ -2,12 +2,12 @@
 
 namespace website\classe;
 
-require_once __DIR__.'/../global/Conexao.php';
+// require_once __DIR__.'/../global/Conexao.php';
 require_once __DIR__.'/../global/Interface.php';
+require_once __DIR__.'/../global/CRUD.php';
 
 use Exception;
-use PDO;
-use Conexao;
+use CRUD;
 
 class Afiliado 
 {
@@ -355,12 +355,11 @@ class Afiliado
 							dt_nascimento AS 'Data de Nascimento', 
 							cd_telefone AS 'Telefone',
 							nm_estado AS 'Estado',
-							'' AS 'Opção' FROM afiliado";
-			
-			$query = Conexao::conectar()->query($sql);
-			$matriz = $query->fetchAll(PDO::FETCH_ASSOC); 
+							'' AS 'Opção' FROM afiliado ";
 
-			/*  */
+			$banco = new CRUD();
+			
+			$matriz = $banco->obterRegistros($sql);
 
 			$array['cd'] = array('Opção' => "<a href='exemplo1?id=@codigo@' class=''>
 												<i class='far fa-eye' style='font-size: 1.5rem;'></i>

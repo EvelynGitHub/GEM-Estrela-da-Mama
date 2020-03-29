@@ -5,3 +5,33 @@ Do PC para o Git
 Evelyn: Do PC removi texto.txt para o Git
 Evelyn: Correção das Rotas. Do PC para o Git
 Rodrigo: list-geral com codigo fonte.
+Evelyn: IMPORTANTE LEIA
+A classe CRUD vai conter os os tratamentos para a conexão com o banco.
+Será o equivalente à um DAO generico.
+Para fazer um select:
+ -Simples (sem WHERE)
+        1- Faça:
+            $sql = " SELECT * FROM afiliado ";
+
+			$banco = new CRUD();
+			$matriz = $banco->obterRegistros($sql);
+        2- Se quizer, já chame o renderizaTabela()
+            echo $this->rederizarTabela($matriz)
+-Complexo (com WHERE)
+        1- Faça:
+            $sql = " SELECT * FROM afiliado WHERE cd_afiliado = :cd";
+
+			$preparaSql = array(':cd' => 1);
+
+			$banco = new CRUD();
+			$matriz = $banco->obterRegistros($sql, $preparaSql);
+        
+        2- Para mais de um dado:
+            $sql = " SELECT * FROM afiliado WHERE cd_afiliado = :cd, nm_afiliado = :nome";
+
+			$preparaSql = array(':cd' => 1, ':nome' => 'Nem eu sei');
+
+			$banco = new CRUD();
+			$matriz = $banco->obterRegistros($sql, $preparaSql);
+
+PRONTO! Usem ISSO.
