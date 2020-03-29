@@ -367,10 +367,10 @@ class Afiliado
 
 			/*  */
 
-			$array['cd'] = array('Opção' => "<a href='exemplo?id=@codigo@' class=''>
+			$array['cd'] = array('Opção' => "<a href='exemplo1?id=@codigo@' class=''>
 												<i class='far fa-eye' style='font-size: 1.5rem;'></i>
 											</a>
-											<a href='exemplo?id=@codigo@' class=''>
+											<a href='exemplo2?id=@codigo@' class=''>
 												<i class='far fa-edit' style='font-size: 1.5rem;></i>
 											</a>");
 
