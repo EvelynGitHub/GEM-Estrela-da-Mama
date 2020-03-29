@@ -37,3 +37,11 @@ label {
     display: flex;
     align-items: center;
 }
+
+/* .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #FF1493;
+} */
+
+.custom-radio .custom-control-input:checked~.custom-control-label::before {
+    background-color: #FF1493;
+}
