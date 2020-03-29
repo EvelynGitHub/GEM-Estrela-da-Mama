@@ -2,13 +2,12 @@
 
 namespace website\classe;
 
-use Conexao;
+require_once __DIR__.'/../global/Conexao.php';
+require_once __DIR__.'/../global/Interface.php';
+
 use Exception;
 use PDO;
-
-//require_once __DIR__.'/Interface.php';
-
-require_once __DIR__.'/../global/Interface.php';
+use Conexao;
 
 class Afiliado 
 {
