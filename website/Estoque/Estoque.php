@@ -1,6 +1,10 @@
 <?php
+namespace website\classe;
 
+require_once __DIR__.'/../global/Interface.php';
 Class Estoque {
+
+    use IGlobal;
 
     private $itens;
     private $quantidadeItensRetirados;

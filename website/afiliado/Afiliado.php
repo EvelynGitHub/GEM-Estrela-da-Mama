@@ -14,10 +14,6 @@ class Afiliado
 {
 	use IGlobal;
 
-	private static $pasta = "afiliado";
-	private static $html = "lista-geral.html";
-
-
 	private $nomeCompleto;
 	private $rg;
 	private $cpf;
@@ -395,13 +391,4 @@ class Afiliado
 		echo "retornarAfiliado() >> $afiliado";
 	}
 
-	public function getTelaPrincipalHTML()
-	{
-		$this->renderizarHTML("lista-geral.html");
-	}
-
-	public function renderizarHTML($ver)
-	{
-		include "website//afiliado//$ver";
-	}
 }

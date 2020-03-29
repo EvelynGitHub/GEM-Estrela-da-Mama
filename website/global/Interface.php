@@ -61,7 +61,7 @@ trait IGlobal
         return "Desculpe, não encontramos dados";
     }
 
-    public function rederizarHTML($pasta, $html)
+    public function renderizarHTML($pasta, $html)
     {
         include "website//$pasta//$html";
     }

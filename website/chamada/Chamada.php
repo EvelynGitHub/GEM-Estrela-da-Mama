@@ -2,20 +2,10 @@
 
 namespace website\classe;
 
+require_once __DIR__.'/../global/Interface.php';
 class Chamada {
 
-
-
-
-
-        
-    public function getTelaPrincipalHTML()
-    {
-        $this->renderizarHTML("listar-chamada.html");
-    }
-    public function renderizarHTML($ver){
-        include "website//chamada//$ver";
-    }
+    use IGlobal;
 
     private $atividade;
     private $afiliado;

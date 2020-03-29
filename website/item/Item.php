@@ -1,7 +1,11 @@
 <?php
 
-Class Item {
+namespace  website\classe;
 
+require_once __DIR__.'/../global/Interface.php';
+Class Item {
+    use IGlobal;
+    
     private $nomeItem;
     private $quantidade;
     private $dataEntrada;
