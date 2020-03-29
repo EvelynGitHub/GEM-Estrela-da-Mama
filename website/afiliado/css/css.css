@@ -42,6 +42,6 @@ label {
     background-color: #FF1493;
 } */
 
-.custom-radio .custom-control-input:checked~.custom-control-label::before {
+/* .custom-radio .custom-control-input:checked~.custom-control-label::before {
     background-color: #FF1493;
-}
+} */
