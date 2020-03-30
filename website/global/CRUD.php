@@ -45,6 +45,35 @@ class CRUD extends Conexao
             return "O seguinte erro foi encontrado ao executar esse select: <br> $e->getMessage ";
         }
     }
+
+    public function inserir($tabela, $valores)
+    {
+        //Colocar verificações aqui
+        $sql = "INSERT INTO $tabela VALUES (? "; //O primeiro é sempre o auto_increment
+        for ($x = 1; $x < count($valores); $x++) {
+            $sql .= ",?";
+        }
+        $sql .= ")";
+
+        $instrucao = parent::$conn->prepare($sql);
+
+        foreach ($valores as $key => $value) {
+            $instrucao->bindParam($key, $value);
+        }
+
+        if ($instrucao->execute()) {
+            return "<br>Cadastro realizado com sucesso<br>";
+        } else {
+            return "<br>Não foi possível efetuar o cadastro<br>";  
+        }
+
+    }
+
+    
+
+
+
+
 }
 
 // if ($stmt->execute()) {
