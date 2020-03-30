@@ -11,12 +11,5 @@ class Login {
     
     use IGlobal;
     
-    public function getTelaPrincipalHTML()
-    {
-        $this->renderizarHTML("login.html");
-    }
-    public function renderizarHTML($ver){
-        include "website//login//$ver";
-    }
     
 }
