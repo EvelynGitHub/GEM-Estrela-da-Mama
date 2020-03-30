@@ -39,7 +39,7 @@ class Atividade {
      
         if(!property_exists($this, $atributo)){
             throw new Exception("Atributo {$atributo} não existe nessa classe");
-        }
+		}
 
         $this->{$atributo} = $valor;
     }
