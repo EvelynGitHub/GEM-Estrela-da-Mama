@@ -9,7 +9,7 @@ Class Administrador {
     private $login;
 	private $senha;
 	
-	public function __construct($login, $senha){
+	public function __construct($login = "", $senha= ""){
 
 		$this->login = $login;
 		$this->senha = $senha;	

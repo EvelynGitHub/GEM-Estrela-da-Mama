@@ -14,7 +14,7 @@ Class Item {
     private $quantidade;
     private $dataEntrada;
 
-    public function __construct($nomeItem, $quantidade, $dataEntrada){
+    public function __construct($nomeItem = "", $quantidade = "", $dataEntrada = ""){
 
 		$this->nomeItem = $nomeItem;
         $this->quantidade = $quantidade;

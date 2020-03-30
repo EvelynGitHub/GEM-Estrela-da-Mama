@@ -14,7 +14,7 @@ Class Estoque {
     private $quantidadeItensRetirados;
     private $quantidadeItensEmEstoque;
 
-    public function __construct($itens, $quantidadeItensRetirados, $quantidadeItensEmEstoque){
+    public function __construct($itens = "", $quantidadeItensRetirados = "", $quantidadeItensEmEstoque = ""){
 
 		$this->itens = $itens;
         $this->quantidadeItensRetirados = $quantidadeItensRetirados;

@@ -17,7 +17,7 @@ class Atividade {
     private $afiliado;
 	private $quantidadeAulas;
 	
-	public function __construct($nomeAtividade, $horaAtividade, $date, $afiliado, $quantidadeAulas){
+	public function __construct($nomeAtividade = "", $horaAtividade = "", $date = "", $afiliado = "", $quantidadeAulas = ""){
 
 		$this->nomeAtividade = $nomeAtividade;
 		$this->horaAtivdade = $horaAtividade;

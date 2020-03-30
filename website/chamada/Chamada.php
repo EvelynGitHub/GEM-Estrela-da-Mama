@@ -15,7 +15,7 @@ class Chamada {
     private $afiliado;
     private $presenca;
 
-    public function __construct($atividade, $afiliado, $presenca){
+    public function __construct($atividade = "", $afiliado = "", $presenca = ""){
 
 		$this->atividade = $atividade;
         $this->afiliado = $afiliado;
