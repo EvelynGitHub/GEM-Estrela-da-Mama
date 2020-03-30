@@ -12,14 +12,6 @@ legend.scheduler-border {
     font-size: 10px;
 }
 
-/* fieldset {
-    border: 1px solid black; 
-    padding: 3px;
-    border-radius: 10px;
-    height: 90%;
-    background-color: lightpink;
-} */
-
 legend {
     font-size: 20px;
 }
@@ -56,11 +48,11 @@ th {
     color: #000;
 }
 
-tr{
+tr {
     border: 1px solid white;
 }
 
-td{
+td {
     border: 1px solid white;
 }
 
@@ -73,18 +65,62 @@ td{
     width: 15px;
     background: #cbd1d8;
     appearance: none;
-    position: relative;  
+    position: relative;
     /* top: 3px; */
     outline: none;
     margin-right: 3px;
-  }
-  
-  .option-input:checked {
+}
+
+.option-input:checked {
     background: #FFF;
     border: solid 5px #ff1493;
-    color:red;
-  }
-  
-  .option-input.radio {
+}
+
+.option-input.radio {
     border-radius: 50%;
-  }
+}
+
+@media only screen and (max-width: 500px) {
+    .incolumn {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .center {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .btn-lg-custom {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .center {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .btn-lg-custom {
+        width: 50%;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 991px) {
+    .incolumn {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .center {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .btn-lg-custom {
+        width: 50%;
+    }
+}

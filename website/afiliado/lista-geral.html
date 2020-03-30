@@ -14,7 +14,11 @@
     <!-- Referencia ao CSS do LOCALHOST ** IMPORTANTE COMENTAR ANTES DE SUBIR ** -->
     <!-- <link rel="stylesheet" href="css/css.css"> -->
 
+    <!-- Referencia ao CSS do FONT-AWESOME do SERVIDOR ** IMPORTANTE DESCOMENTAR ANTES DE SUBIR ** -->
     <link rel="stylesheet" href="/website/global/font-awesome/css/all.css">
+
+    <!-- Referencia ao CSS do FONT-AWESOME LOCAL ** IMPORTANTE COMENTAR ANTES DE SUBIR ** -->
+    <!-- <link rel="stylesheet" href="../global/font-awesome/css/all.css"> -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -78,14 +82,13 @@
         <form action="" class="">
             <div class="row border-size-b mb-3">
 
-                <div class="col-4">
+                <div class="col-md-4 col-sm-6">
 
-                    <fieldset class="form-group">
+                    <fieldset>
 
                         <legend class="w-auto">Afiliados:</legend>
 
-                        <div class="input-group center">
-
+                        <div class="input-group center incolumn">
 
                             <label class="" for="todos">
                                 <input type="radio" class="option-input radio" name="afiliado" id="todos">Todos
@@ -100,10 +103,9 @@
                                 <input type="radio" class="option-input radio" name="afiliado" id="assitidas">Assistidas
                             </label>
 
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button"
-                                    style="margin-left: 10px;">Buscar</button>
-                            </div>
+                                <button class="btn btn-outline-secondary btn-lg-custom" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
 
                         </div>
 
@@ -111,33 +113,34 @@
 
                 </div>
 
-                <div class="col-4">
+                <div class="col-md-4 col-sm-6">
 
                     <fieldset>
 
                         <legend class="w-auto">Assistida:</legend>
 
-                        <div class="input-group center">
+                        <div class="input-group center incolumn">
 
 
                             <label for="asstratamento">
-                                <input type="radio" class="option-input radio" name="assitida" id="asstratamento">Tratamento
+                                <input type="radio" class="option-input radio" name="assitida"
+                                    id="asstratamento">Tratamento
                             </label>
 
-                            
+
                             <label for="assobservacao">
-                                <input type="radio" class="option-input radio" name="assitida" id="assobservacao">Observação
+                                <input type="radio" class="option-input radio" name="assitida"
+                                    id="assobservacao">Observação
                             </label>
 
-                            
+
                             <label for="asscurada">
                                 <input type="radio" class="option-input radio" name="assitida" id="asscurada"> Curadas
                             </label>
 
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button"
-                                    style="margin-left: 2.5px;">Buscar</button>
-                            </div>
+                            <button class="btn btn-outline-secondary btn-lg-custom" type="button" style="margin-left: 2.5px;">
+                                <i class="fas fa-search"></i>
+                            </button>
 
                         </div>
 
@@ -145,17 +148,19 @@
 
                 </div>
 
-                <div class="col-4 col-sm-12">
+                <div class="col-md-4 col-sm-12">
 
                     <fieldset>
 
                         <legend class="w-auto">Voluntario:</legend>
 
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3 incolumn">
                             <input type="text" class="form-control" placeholder="Cargo">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">Buscar</button>
-                            </div>
+                        
+                                <button class="btn btn-outline-secondary btn-lg-custom" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+
                         </div>
 
                     </fieldset>
