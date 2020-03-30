@@ -12,13 +12,13 @@ legend.scheduler-border {
     font-size: 10px;
 }
 
-fieldset {
-    border: 1px solid black;
+/* fieldset {
+    border: 1px solid black; 
     padding: 3px;
     border-radius: 10px;
     height: 90%;
-    /* background-color: lightpink; */
-}
+    background-color: lightpink;
+} */
 
 legend {
     font-size: 20px;
@@ -54,10 +54,27 @@ th {
     background-color: rgb(236, 71, 195);
 }
 
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #FF1493;
-}
-
-.custom-radio .custom-control-input:checked~.custom-control-label::before {
-    background-color: #FF1493;
-}
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: #cbd1d8;
+    appearance: none;
+    position: relative;  
+    /* top: 3px; */
+    outline: none;
+    margin-right: 3px;
+  }
+  
+  .option-input:checked {
+    background: #FFF;
+    border: solid 5px #ff1493;
+    color:red;
+  }
+  
+  .option-input.radio {
+    border-radius: 50%;
+  }
