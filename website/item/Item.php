@@ -22,28 +22,21 @@ Class Item {
         
 	}
 
-    public function getNomeItem(){
-        return $this->nomeItem;
+	public function __get($atributo){
+        if(!property_exists($this, $atributo)){
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+		}
+		
+      	return $this->{$atributo};
     }
 
-    public function setNomeItem($nomeItem){
-        $this->nomeItem = $nomeItem;
-    }
+    public function __set($atributo, $valor){
+     
+        if(!property_exists($this, $atributo)){
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+        }
 
-    public function getQuantidade(){
-        return $this->quantidade;
-    }
-
-    public function setQuantidade($quantidade){
-        $this->quantidade = $quantidade;
-    }
-
-    public function getDataEntrada(){
-        return $this->dataEntrada;
-    }
-
-    public function setDataEntrada($dataEntrada){
-        $this->dataEntrada = $dataEntrada;
+        $this->{$atributo} = $valor;
     }
 
     public function cadastrarItem($item){

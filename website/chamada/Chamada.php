@@ -23,24 +23,21 @@ class Chamada {
         
 	}
 
-    public function getAtividade(){
-        return $this->atividade;
+    public function __get($atributo){
+        if(!property_exists($this, $atributo)){
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+		}
+		
+      	return $this->{$atributo};
     }
 
-    public function setAtividade($atividade){
-        $this->atividade = $atividade;
-    }
+    public function __set($atributo, $valor){
+     
+        if(!property_exists($this, $atributo)){
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+        }
 
-    public function getAfiliado(){
-        return $this->afiliado;
-    }
-
-    public function setAfiliado($afiliado){
-        $this->afiliado = $afiliado;
-    }
-
-    public function getPresenca(){
-        return $this->presenca;
+        $this->{$atributo} = $valor;
     }
 
     public function adicionarPresenca(Afiliado $afiliado, Atividade $atividade){

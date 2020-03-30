@@ -22,28 +22,21 @@ Class Estoque {
         
 	}
 
-    public function getItens(){
-        return $this->itens;
+	public function __get($atributo){
+        if(!property_exists($this, $atributo)){
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+		}
+		
+      	return $this->{$atributo};
     }
 
-    public function setItens($itens){
-        $this->itens = $itens;
-    }
+    public function __set($atributo, $valor){
+     
+        if(!property_exists($this, $atributo)){
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+        }
 
-    public function getQuantidadeItensRetirados(){
-        return $this->quantidadeItensRetirados;
-    }
-
-    public function setQuantidadeItensRetirados($quantidadeItensRetirados){
-        $this->quantidadeItensRetirados = $quantidadeItensRetirados;
-    }
-
-    public function getQuantidadeItensEmEstoque(){
-        return $this->quantidadeItensEmEstoque;
-    }
-
-    public function setQuantidadeItensEmEstoque($quantidadeItensEmEstoque){
-        $this->quantidadeItensEmEstoque = $quantidadeItensEmEstoque;
+        $this->{$atributo} = $valor;
     }
 
     public function retirarItemEstoque($item, $quantidadeItensRetirados){

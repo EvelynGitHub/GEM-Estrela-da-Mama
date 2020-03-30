@@ -27,51 +27,26 @@ class Atividade {
 
 	}
 
+	public function __get($atributo){
+        if(!property_exists($this, $atributo)){
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+		}
+		
+      	return $this->{$atributo};
+    }
 
-    public function getNomeAtividade(){
-		return $this->nomeAtividade;
-	}
+    public function __set($atributo, $valor){
+     
+        if(!property_exists($this, $atributo)){
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+        }
 
-	public function setNomeAtividade($nomeAtividade){
-		$this->nomeAtividade = $nomeAtividade;
-	}
-
-	public function getHoraAtividade(){
-		return $this->horaAtividade;
-	}
-
-	public function setHoraAtividade($horaAtividade){
-		$this->horaAtividade = $horaAtividade;
-	}
-
-	public function getDate(){
-		return $this->date;
-	}
-
-	public function setDate($date){
-		$this->date = $date;
-	}
-
-	public function getAfiliado(){
-		return $this->afiliado;
-	}
-
-	public function setAfiliado($afiliado){
-		$this->afiliado = $afiliado;
-	}
-
-	public function getQuantidadeAulas(){
-		return $this->quantidadeAulas;
-	}
-
-	public function setQuantidadeAulas($quantidadeAulas){
-		$this->quantidadeAulas = $quantidadeAulas;
-	}
+        $this->{$atributo} = $valor;
+    }
 
     public function criarAtividade($atividade){
 
     }
-    
     public function editarAtividade($atividade){
 
     }

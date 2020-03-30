@@ -16,20 +16,21 @@ Class Administrador {
 
 	}
 
-    public function getLogin(){
-		return $this->login;
-	}
+	public function __get($atributo){
+        if(!property_exists($this, $atributo)){
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+		}
+		
+      	return $this->{$atributo};
+    }
 
-	public function setLogin($login){
-		$this->login = $login;
-	}
+    public function __set($atributo, $valor){
+     
+        if(!property_exists($this, $atributo)){
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+        }
 
-	public function getSenha(){
-		return $this->senha;
-	}
-
-	public function setSenha($senha){
-		$this->senha = $senha;
+        $this->{$atributo} = $valor;
     }
     
     public function AdicionarAdminstrador($administrador){
