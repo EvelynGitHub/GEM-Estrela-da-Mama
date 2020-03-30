@@ -40,18 +40,28 @@ label {
 
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
-    background-color: #e082c1;
+    background-color: white;
     color: black;
 }
 
 .table-striped>tbody>tr:nth-child(even)>td,
 .table-striped>tbody>tr:nth-child(even)>th {
-    background-color: rgb(236, 71, 195);
+    background-color: rgb(248, 192, 205);
     color: black;
 }
 
 th {
-    background-color: rgb(236, 71, 195);
+    background-color: rgb(255, 95, 152);
+    border: 1px solid white;
+    color: #000;
+}
+
+tr{
+    border: 1px solid white;
+}
+
+td{
+    border: 1px solid white;
 }
 
 .option-input {
