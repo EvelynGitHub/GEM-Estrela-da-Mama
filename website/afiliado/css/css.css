@@ -2,8 +2,8 @@
     border-bottom: 2px solid black;
 }
 
-.border-input{ 
-    border-radius: 5px; 
+.border-input {
+    border-radius: 5px;
 }
 
 legend.scheduler-border {
@@ -25,7 +25,7 @@ legend {
 }
 
 label {
-    display: inline-block; 
+    display: inline-block;
     vertical-align: middle;
     margin: 0;
     padding: 0;
@@ -38,10 +38,26 @@ label {
     align-items: center;
 }
 
-/* .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #FF1493;
-} */
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #e082c1;
+    color: black;
+}
 
-/* .custom-radio .custom-control-input:checked~.custom-control-label::before {
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+    background-color: rgb(236, 71, 195);
+    color: black;
+}
+
+th {
+    background-color: rgb(236, 71, 195);
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #FF1493;
-} */
+}
+
+.custom-radio .custom-control-input:checked~.custom-control-label::before {
+    background-color: #FF1493;
+}
