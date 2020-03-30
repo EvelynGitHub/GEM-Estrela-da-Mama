@@ -69,6 +69,24 @@ class CRUD extends Conexao
 
     }
 
+    public function excluir($tabela, $id)
+    {
+        //Colocar verificações aqui
+        $sql = "DELETE FROM $tabela WHERE ".$id[0]."=:id"; 
+
+        $instrucao = parent::$conn->prepare($sql);
+        $instrucao->bindParam(":id", $id[1]);
+
+        if ($instrucao->execute()) {
+            return "<br>Excluido com sucesso<br>";
+        } else {
+            return "<br>Não foi possível excluir<br>";  
+        }
+
+    }
+
+    
+
     
 
 
