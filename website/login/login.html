@@ -1,1 +1,28 @@
-<h1>Login</h1>
+<?php
+    session_start();
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Login</title>
+</head>
+<body>
+    <form action="Login.php" method="post">
+        <input type="text" name="usuario" id="usuario">
+        <input type="password" name="senha" id="senha">
+        <input type="submit" value="Enviar" name="enviar">
+    </form>
+    <p style="color: red;">
+        <?php
+            if(isset($_SESSION['nao_autenticado'])){
+                echo $_SESSION[nao_autenticado];
+                unset ($_SESSION['nao_autenticado']);
+            }
+        ?>
+    </p>
+</body>
+</html>
