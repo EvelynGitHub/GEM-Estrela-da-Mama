@@ -3,13 +3,13 @@
 namespace website\classe;
 
 // require_once __DIR__.'/../global/Conexao.php';
-require_once __DIR__.'/../global/Interface.php';
-require_once __DIR__.'/../global/CRUD.php';
+require_once __DIR__ . '/../global/Interface.php';
+require_once __DIR__ . '/../global/CRUD.php';
 
 use Exception;
 use CRUD;
 
-class Afiliado 
+class Afiliado
 {
 	use IGlobal;
 
@@ -43,6 +43,10 @@ class Afiliado
 
 	public function __construct($nomeCompleto = "", $rg = "", $cpf = "", $nacionalidade = "", $sexo = "", $dataNascimento = "", $estado = "", $cidade = "", $bairro = "", $rua = "", $numeroResidencial = "", $complemento = "", $cep = "", $telefone = "", $celular = "", $email = "", $escolaridade = "", $situacaoProfissional = "", $setorVoluntario = "", $disponibilidade = "", $cirurgiaMama = "", $diagnostico = "", $convenioMedico = "", $itens = "", $assistida = "", $voluntaria = "")
 	{
+		if (!isset($_SESSION['usuario']) == true) {
+		    unset($_SESSION['usuario']);
+		header("Location: /");
+		}
 
 		$this->nomeCompleto = $nomeCompleto;
 		$this->rg = $rg;
@@ -72,22 +76,24 @@ class Afiliado
 		$this->voluntaria = $voluntaria;
 	}
 
-	public function __get($atributo){
-        if(!property_exists($this, $atributo)){
-            throw new Exception("Atributo {$atributo} não existe nessa classe");
+	public function __get($atributo)
+	{
+		if (!property_exists($this, $atributo)) {
+			throw new Exception("Atributo {$atributo} não existe nessa classe");
 		}
-		
-      	return $this->{$atributo};
-    }
 
-    public function __set($atributo, $valor){
-     
-        if(!property_exists($this, $atributo)){
-            throw new Exception("Atributo {$atributo} não existe nessa classe");
-        }
+		return $this->{$atributo};
+	}
 
-        $this->{$atributo} = $valor;
-    }
+	public function __set($atributo, $valor)
+	{
+
+		if (!property_exists($this, $atributo)) {
+			throw new Exception("Atributo {$atributo} não existe nessa classe");
+		}
+
+		$this->{$atributo} = $valor;
+	}
 
 
 	public function cadastrarAfiliado($afiliado)
@@ -113,10 +119,31 @@ class Afiliado
 							cd_telefone AS 'Telefone',
 							nm_estado AS 'Estado',
 							'' AS 'Opção' FROM afiliado ";
+			$preparaSQL = "";
 
 			$banco = new CRUD();
-			
-			$matriz = $banco->obterRegistros($sql);
+
+			if (isset($_POST["btnAfiliado"])) { // Se o botão foi clicado
+				$filtroAfiliado = isset($_POST["afiliado"]) ? $_POST["afiliado"] : "";
+				if ($filtroAfiliado != "todos") { // E se o valor do radio for diferente de "todos"
+					$sql .= "WHERE nm_tipo_afiliado=LOWER(:filtro) "; // coloque este WHERE
+					$preparaSQL = array(':filtro' => $filtroAfiliado); // prepare este sql
+				}
+			} else if (isset($_POST["btnAssistida"])) { // Se o botão foi clicado
+
+				$filtroAssistida = isset($_POST["assistida"]) ? $_POST["assistida"] : "";
+				// Falta informação para concluir o select
+				echo "Está função ainda não foi construida, por favor aguarde ou entre em contato.";
+				// $sql .= "WHERE nm_tipo_afiliado=LOWER(:filtro) "; 
+				// $preparaSQL = array(':filtro' => $filtroAfiliado); 
+
+			} else if (isset($_POST["btnCargo"])) {
+				$afiliadoCargo = isset($_POST["cargo"]) ? $_POST["cargo"] : "";
+				$sql .= "WHERE nm_area_interesse LIKE :cargo "; // coloque este WHERE
+				$preparaSQL = array(':cargo' => "%$afiliadoCargo%");
+			}
+
+			$matriz = $banco->obterRegistros($sql, $preparaSQL);
 
 			$array['cd'] = array('Opção' => "<a href='exemplo1?id=@codigo@' class=''>
 												<i class='far fa-eye' style='font-size: 1.5rem;'></i>
@@ -125,9 +152,8 @@ class Afiliado
 												<i class='far fa-edit' style='font-size: 1.5rem;'></i>
 											</a>");
 
-		
-			echo $this->rederizarTabela($matriz, $array, "@codigo@");	
-			
+
+			echo $this->rederizarTabela($matriz, $array, "@codigo@");
 		} catch (Exception $e) {
 			echo "Erro ao listar Afiliados: $e";
 		}
@@ -145,5 +171,13 @@ class Afiliado
 	{
 		echo "retornarAfiliado() >> $afiliado";
 	}
-
 }
+
+
+// $filtro = isset($_POST["afiliado"]) ? $_POST["afiliado"] : "";
+
+// if (isset($_POST["btnAfiliado"])) {
+// 	echo "foi clicado btnAfiliado";
+// }else{
+// 	echo "não foi clicado $filtro";
+// }

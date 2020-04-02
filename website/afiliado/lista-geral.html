@@ -22,13 +22,13 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+        </script>
 
     <title>Home</title>
 </head>
@@ -69,7 +69,7 @@
                 <div class="col-1">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Sair</a>
+                            <a class="nav-link" href="afiliado/sair">Sair</a>
                         </li>
                     </ul>
                 </div>
@@ -79,7 +79,7 @@
     </header>
 
     <div class="container">
-        <form action="" class="">
+        <form action="" method="POST">
             <div class="row border-size-b mb-3">
 
                 <div class="col-md-4 col-sm-6">
@@ -91,21 +91,22 @@
                         <div class="input-group center incolumn">
 
                             <label class="" for="todos">
-                                <input type="radio" class="option-input radio" name="afiliado" id="todos">Todos
+                                <input type="radio" class="option-input radio" name="afiliado" value="todos">Todos
                             </label>
 
                             <label class="" for="voluntario">
                                 <input type="radio" class="option-input radio" name="afiliado"
-                                    id="voluntario">Voluntários
+                                    value="voluntario">Voluntários
                             </label>
 
                             <label class="" for="assitidas">
-                                <input type="radio" class="option-input radio" name="afiliado" id="assitidas">Assistidas
+                                <input type="radio" class="option-input radio" name="afiliado"
+                                    value="assitidas">Assistidas
                             </label>
 
-                                <button class="btn btn-outline-secondary btn-lg-custom" type="button">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                            <button class="btn btn-outline-secondary btn-lg-custom" type="submit" name="btnAfiliado">
+                                <i class="fas fa-search"></i>
+                            </button>
 
                         </div>
 
@@ -123,22 +124,24 @@
 
 
                             <label for="asstratamento">
-                                <input type="radio" class="option-input radio" name="assitida"
-                                    id="asstratamento">Tratamento
+                                <input type="radio" class="option-input radio" name="assistida"
+                                    value="asstratamento">Tratamento
                             </label>
 
 
                             <label for="assobservacao">
-                                <input type="radio" class="option-input radio" name="assitida"
-                                    id="assobservacao">Observação
+                                <input type="radio" class="option-input radio" name="assistida"
+                                    value="assobservacao">Observação
                             </label>
 
 
                             <label for="asscurada">
-                                <input type="radio" class="option-input radio" name="assitida" id="asscurada"> Curadas
+                                <input type="radio" class="option-input radio" name="assistida" value="asscurada">
+                                Curadas
                             </label>
 
-                            <button class="btn btn-outline-secondary btn-lg-custom" type="button" style="margin-left: 2.5px;">
+                            <button class="btn btn-outline-secondary btn-lg-custom" type="submit" name="btnAssistida"
+                                style="margin-left: 2.5px;">
                                 <i class="fas fa-search"></i>
                             </button>
 
@@ -155,11 +158,11 @@
                         <legend class="w-auto">Voluntario:</legend>
 
                         <div class="input-group mb-3 incolumn">
-                            <input type="text" class="form-control" placeholder="Cargo">
-                        
-                                <button class="btn btn-outline-secondary btn-lg-custom" type="button">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                            <input type="text" class="form-control" placeholder="Cargo" name="cargo">
+
+                            <button class="btn btn-outline-secondary btn-lg-custom" type="submit" name="btnCargo">
+                                <i class="fas fa-search"></i>
+                            </button>
 
                         </div>
 
