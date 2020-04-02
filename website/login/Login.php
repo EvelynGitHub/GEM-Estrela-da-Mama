@@ -15,9 +15,9 @@ class Login {
     private $usuario;
     private $senha;
 
-    public function __contructor($usuario, $senha){
-        $this->usuario=$usuario;
-        $this->senha=$senha;
+     function setValores($usu, $pass){
+        $this->usuario=$usu;
+        $this->senha=$pass;
 
         $this->Login();
     }
@@ -34,32 +34,27 @@ class Login {
     public function Login(){
 
         session_start();
-        
-        //$usuario = mysqli_real_escape_string($conn, $_POST['usuario']);
-        //$senha = mysqli_real_escape_string($conn, $_POST['senha']);
 
-        $sql = "SELECT * 
+        
+            $sql = "SELECT * 
                 FROM login 
                 WHERE nm_login = :usuario 
                 AND nm_senha = :senha";
 
-        $preparaSql = array(':usuario' => $this->$usuario, ':senha' => $this->$senha);
+            $preparaSql = array(':usuario' => $this->usuario, ':senha' => $this->senha);
 
-        $banco = new CRUD();
-        $matriz = $banco->obterRegistros($sql, $preparaSql);
+            $banco = new CRUD();
+            $matriz = $banco->obterRegistros($sql, $preparaSql);
 
-        //não entendi o CRUD direito, mas se for retornado 1 registro, faz a sessão
-        //muito provavelmente oq eu fiz esta errado kk
-
-        if(count($matriz) == 1){
-            $_SESSION['usuario'] = $this->$usuario;
-            header('Location: /lista-geral.html');
-            //exit();
-        }else{
-            $_SESSION['nao_autenticado'] = "Nome de usuário ou senha invalidos";
-            header('Location: /login.html');
-            //exit();
-        }
+            if(count($matriz) == 1){
+                $_SESSION['usuario'] = $this->usuario;
+                header('Location: ../afiliado/listageral.html');
+                //exit();
+            }else{
+                echo "<script>alert('Nome de usuário ou senha invalidos');</script>";
+                header('Location: ./login.html');
+            }
+        
     }
 
     public function Lougout(){
@@ -68,4 +63,13 @@ class Login {
         header('Location: /login.html');
         //exit();
     }
+
+
 }
+
+$user = new Login;
+
+$login = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
+$senha = isset($_POST["senha"]) ? $_POST["senha"] : "";
+
+$user->setValores($login, $senha);

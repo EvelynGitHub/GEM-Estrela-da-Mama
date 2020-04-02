@@ -11,18 +11,10 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="" method="POST">
+    <form action="Login.php" method="POST">
         <input type="text" name="usuario" id="usuario">
         <input type="password" name="senha" id="senha">
         <input type="submit" value="Enviar" name="enviar">
     </form>
-    <p style="color: red;">
-        <?php
-            if(isset($_SESSION['nao_autenticado'])){
-                echo $_SESSION[nao_autenticado];
-                unset ($_SESSION['nao_autenticado']);
-            }
-        ?>
-    </p>
 </body>
 </html>
