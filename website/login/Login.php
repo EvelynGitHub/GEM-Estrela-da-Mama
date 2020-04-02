@@ -48,11 +48,15 @@ class Login {
 
             if(count($matriz) == 1){
                 $_SESSION['usuario'] = $this->usuario;
-                header('Location: ../afiliado/listageral.html');
+                header('Location: /lista-geral');
                 //exit();
             }else{
-                echo "<script>alert('Nome de usuário ou senha invalidos');</script>";
-                header('Location: ./login.html');
+                echo "<script>
+                        alert('Nome de usuário ou senha invalidos');
+                        self.location.href='/login';
+                    </script>";
+                //header('Location: ./login.html');
+                //exit();
             }
         
     }
@@ -60,7 +64,7 @@ class Login {
     public function Lougout(){
         //destruir sessão
         session_destroy();
-        header('Location: /login.html');
+        header('Location: /login');
         //exit();
     }
 
