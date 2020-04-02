@@ -24,8 +24,14 @@ class CRUD extends Conexao
                     echo '<br>Está instrução é um <b>select complexo</b>, portanto devesse usar o seundo parametro desta função! <br>';
                     return array();
                 } else {
-                    $query = parent::$conn->query($select);
-                    return $query->fetchAll(PDO::FETCH_ASSOC);
+                    $query = parent::$conn->prepare($select);
+                    if ($query->execute()) {
+                        return $query->fetchAll(PDO::FETCH_ASSOC);
+                    }else{
+                        echo "<br>Não foi possível executar está instrução <b>select</b>,<br>
+                                 por favor, verifique se existem dados para serem selecionados. <br>";
+                        return array();
+                    }
                 }
             } else {
                 $instrucao = parent::$conn->prepare($select);
@@ -64,15 +70,14 @@ class CRUD extends Conexao
         if ($instrucao->execute()) {
             return "<br>Cadastro realizado com sucesso<br>";
         } else {
-            return "<br>Não foi possível efetuar o cadastro<br>";  
+            return "<br>Não foi possível efetuar o cadastro<br>";
         }
-
     }
 
     public function excluir($tabela, $id)
     {
         //Colocar verificações aqui
-        $sql = "DELETE FROM $tabela WHERE ".$id[0]."=:id"; 
+        $sql = "DELETE FROM $tabela WHERE " . $id[0] . "=:id";
 
         $instrucao = parent::$conn->prepare($sql);
         $instrucao->bindParam(":id", $id[1]);
@@ -80,18 +85,9 @@ class CRUD extends Conexao
         if ($instrucao->execute()) {
             return "<br>Excluido com sucesso<br>";
         } else {
-            return "<br>Não foi possível excluir<br>";  
+            return "<br>Não foi possível excluir<br>";
         }
-
     }
-
-    
-
-    
-
-
-
-
 }
 
 // if ($stmt->execute()) {
