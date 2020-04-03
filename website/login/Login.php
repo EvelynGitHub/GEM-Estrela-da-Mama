@@ -48,7 +48,7 @@ class Login
 
         if (!empty($matriz)) {
             $_SESSION['usuario'] = $this->usuario;
-            header('Location: /Projetos/GEM/GEM-Estrela-da-Mama-2/lista-geral');
+            header('Location: /lista-geral');
             //exit();
         } else {
             echo "<script>

@@ -47,7 +47,7 @@ class Afiliado
 		if (!isset($_SESSION['usuario']) == true) {
 			unset($_SESSION['usuario']);
 			session_destroy();
-			header("Location: /Projetos/GEM/GEM-Estrela-da-Mama-2/");
+			header("Location: /");
 		}
 
 		$this->nomeCompleto = $nomeCompleto;
