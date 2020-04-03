@@ -18,7 +18,11 @@ class Atividade {
 	private $quantidadeAulas;
 	
 	public function __construct($nomeAtividade = "", $horaAtividade = "", $date = "", $afiliado = "", $quantidadeAulas = ""){
-
+        if (!isset($_SESSION['usuario']) == true) {
+			unset($_SESSION['usuario']);
+			header("Location: /");
+        }
+        
 		$this->nomeAtividade = $nomeAtividade;
 		$this->horaAtivdade = $horaAtividade;
 		$this->date = $date;
