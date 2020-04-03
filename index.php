@@ -56,7 +56,7 @@ class Rota
                 echo "<br>A url Está correta?";
             }
         } catch (Exception $e) {
-            echo "Não foi possível acessar está rota.<br> Erro $e";
+            echo "Não foi possível acessar está rota.<br> <b>Erro retornado:</b> $e->getMessage()";
         }
     }
 

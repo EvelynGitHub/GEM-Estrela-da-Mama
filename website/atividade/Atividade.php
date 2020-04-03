@@ -24,7 +24,7 @@ class Atividade {
         }
         
 		$this->nomeAtividade = $nomeAtividade;
-		$this->horaAtivdade = $horaAtividade;
+		$this->horaAtividade = $horaAtividade;
 		$this->date = $date;
     	$this->afiliado = $afiliado;
 		$this->quantidadeAulas = $quantidadeAulas;
