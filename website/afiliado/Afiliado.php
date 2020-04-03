@@ -117,7 +117,7 @@ class Afiliado
 							nm_area_interesse AS 'Função', 
 							dt_nascimento AS 'Data de Nascimento', 
 							cd_telefone AS 'Telefone',
-							nm_estado AS 'Estado',
+							nm_status_voluntario AS 'Estado',
 							'' AS 'Opção' FROM afiliado ";
 			$preparaSQL = "";
 
