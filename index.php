@@ -27,6 +27,7 @@ class Rota
         $this->rotas['/lista-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
         $this->rotas['/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
+        $this->rotas['/atividade/cadastrar'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-atividade.html'));
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
 
         //Rotas do localhost (desenvolvimento)
