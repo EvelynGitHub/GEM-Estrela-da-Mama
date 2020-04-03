@@ -190,6 +190,7 @@
         </form>
 
         <div class="table-responsive">
+            <button class="btn btn-primary" onclick="imprimir()">Imprimir<i class="fa fa-print" aria-hidden="true"></i></button>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -200,7 +201,7 @@
                         <th scope="col">Data de Nascimento</th>
                         <th scope="col">Telefone</th>
                         <th scope="col">Estado</th>
-                        <th scope="col">Opção <a href="" onclick="window.print"><i class="fa fa-print" aria-hidden="true"></i></a></th>
+                        <th scope="col">Opção</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -239,6 +240,11 @@
         </div>
     </div>
 
+    <script>
+        function imprimir(){
+            window.print();
+        }
+    </script>
 </body>
 
 </html>
