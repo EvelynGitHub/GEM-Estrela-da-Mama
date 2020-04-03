@@ -36,7 +36,7 @@ class Rota
         // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
         // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
-        // $this->rotas['/Projetos/estrelas-da-mama-3.0/home'] = array('classe' => 'Afiliado', 'metodo' => "getTelaPrincipalHTML");
+        
     }
 
     public function executar($url = null)

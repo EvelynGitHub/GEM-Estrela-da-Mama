@@ -9,6 +9,7 @@ require_once __DIR__ . '/../global/CRUD.php';
 use Exception;
 use CRUD;
 
+session_start();
 class Login
 {
 
@@ -37,7 +38,6 @@ class Login
     public function Login()
     {
 
-        session_start();
 
         $sql = "SELECT * FROM login WHERE nm_login = :usuario AND nm_senha = :senha ";
 
