@@ -38,24 +38,25 @@ class Rota
         // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
         // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
-        
+
     }
 
     public function executar($url = null)
     {
-        
-        if (array_key_exists($url, $this->rotas)) {
+        try {
+            if (array_key_exists($url, $this->rotas)) {
 
-            $classe = "\\website\\classe\\" . $this->rotas[$url]['classe'];
-            $metodo = $this->rotas[$url]['metodo'];
-            $parametro = $this->rotas[$url]['parametro'];
+                $classe = "\\website\\classe\\" . $this->rotas[$url]['classe'];
+                $metodo = $this->rotas[$url]['metodo'];
+                $parametro = $this->rotas[$url]['parametro'];
 
-            $obj = new $classe;
-            call_user_func_array( array($obj, $metodo), $parametro );
-                   
-
-        } else {
-            echo "<br>A url Está correta?";
+                $obj = new $classe;
+                call_user_func_array(array($obj, $metodo), $parametro);
+            } else {
+                echo "<br>A url Está correta?";
+            }
+        } catch (Exception $e) {
+            echo "Não foi possível acessar está rota.<br> Erro $e";
         }
     }
 
