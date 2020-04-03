@@ -43,10 +43,10 @@ class Afiliado
 
 	public function __construct($nomeCompleto = "", $rg = "", $cpf = "", $nacionalidade = "", $sexo = "", $dataNascimento = "", $estado = "", $cidade = "", $bairro = "", $rua = "", $numeroResidencial = "", $complemento = "", $cep = "", $telefone = "", $celular = "", $email = "", $escolaridade = "", $situacaoProfissional = "", $setorVoluntario = "", $disponibilidade = "", $cirurgiaMama = "", $diagnostico = "", $convenioMedico = "", $itens = "", $assistida = "", $voluntaria = "")
 	{
-		//session_start();
+		session_start();
 		if (!isset($_SESSION['usuario']) == true) {
 			unset($_SESSION['usuario']);
-			//session_destroy();
+			session_destroy();
 			header("Location: /");
 		}
 
