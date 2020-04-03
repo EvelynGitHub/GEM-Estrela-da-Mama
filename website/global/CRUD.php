@@ -37,7 +37,9 @@ class CRUD extends Conexao
                 $instrucao = parent::$conn->prepare($select);
 
                 foreach ($preparaSelect as $key => $value) {
-                    $instrucao->bindParam($key, $value);
+                    // echo "<br>Chave:> $key <br> Valor:> $value";
+                    // Troque de bindParan Para bindValue, aparentemente bindParan estava sobrescrevendo valores
+                    $instrucao->bindValue($key, $value);
                 }
 
                 if ($instrucao->execute()) {
