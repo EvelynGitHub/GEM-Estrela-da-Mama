@@ -44,7 +44,7 @@ class Afiliado
 	public function __construct($nomeCompleto = "", $rg = "", $cpf = "", $nacionalidade = "", $sexo = "", $dataNascimento = "", $estado = "", $cidade = "", $bairro = "", $rua = "", $numeroResidencial = "", $complemento = "", $cep = "", $telefone = "", $celular = "", $email = "", $escolaridade = "", $situacaoProfissional = "", $setorVoluntario = "", $disponibilidade = "", $cirurgiaMama = "", $diagnostico = "", $convenioMedico = "", $itens = "", $assistida = "", $voluntaria = "")
 	{
 		if (!isset($_SESSION['usuario']) == true) {
-			unset($_SESSION['usuario']);			
+			unset($_SESSION['usuario']);
 			header("Location: /");
 		}
 
@@ -138,9 +138,22 @@ class Afiliado
 				// $preparaSQL = array(':filtro' => $filtroAfiliado); 
 
 			} else if (isset($_POST["btnCargo"])) {
+				$afiliadoVoluntario = isset($_POST["voluntario"]) ?  $_POST["voluntario"] : "";
 				$afiliadoCargo = isset($_POST["cargo"]) ? $_POST["cargo"] : "";
-				$sql .= "WHERE nm_area_interesse LIKE :cargo "; // coloque este WHERE
-				$preparaSQL = array(':cargo' => "%$afiliadoCargo%");
+
+				if (isset($afiliadoVoluntario)) {
+
+					$sql .= "WHERE nm_status_voluntario = LOWER(:status)";
+					$preparaSQL = array(':status' => $afiliadoVoluntario);
+
+					if (isset($afiliadoCargo)) {
+						$sql .= "AND nm_area_interesse LIKE :cargo ";
+						$preparaSQL[":cargo"] = "%$afiliadoCargo%";
+					}
+				} else {
+					$sql .= "WHERE nm_area_interesse LIKE :cargo "; // coloque este WHERE
+					$preparaSQL = array(':cargo' => "%$afiliadoCargo%");
+				}
 			}
 
 			$matriz = $banco->obterRegistros($sql, $preparaSQL);
