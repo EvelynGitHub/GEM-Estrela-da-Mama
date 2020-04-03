@@ -49,14 +49,14 @@ class Login
         if (!empty($matriz)) {
             $_SESSION['usuario'] = $this->usuario;
             header('Location: /lista-geral');
-            //exit();
+            die();
         } else {
             echo "<script>
                         alert('Nome de usuário ou senha invalidos');
                         /*self.location.href='/login';*/
                     </script>";
             //header('Location: ./login.html');
-            //exit();
+            die();
         }
     }
 
@@ -65,7 +65,7 @@ class Login
         //destruir sessão
         session_destroy();
         header('Location: /');
-        //exit();
+        die();
     }
 }
 

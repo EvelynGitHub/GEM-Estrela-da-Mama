@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Referencia ao icone SERVIDOR ** IMPORTANTE DESCOMENTAR ANTES DE SUBIR **-->
+    <link rel="shortcut icon" href="/website/global/img/icon/laco.jpg" type="image/jpg">
+
+    <!-- Referencia ao icone LOCAL ** IMPORTANTE COMENTAR ANTES DE SUBIR **
+    <link rel="shortcut icon" href="../global/img/icon/laco.jpg" type="image/jpg">-->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -12,28 +18,41 @@
     <link rel="stylesheet" href="/website/afiliado/css/lista-geral.css">
 
     <!-- Referencia ao CSS do LOCALHOST ** IMPORTANTE COMENTAR ANTES DE SUBIR ** 
-    <link rel="stylesheet" href="css/lista-geral.css"> -->
+    <link rel="stylesheet" href="css/lista-geral.css">-->
 
-    <!-- Referencia ao CSS do FONT-AWESOME do SERVIDOR ** IMPORTANTE DESCOMENTAR ANTES DE SUBIR **--> 
+    <!-- Referencia ao CSS do FONT-AWESOME do SERVIDOR ** IMPORTANTE DESCOMENTAR ANTES DE SUBIR ** -->
     <link rel="stylesheet" href="/website/global/font-awesome/css/all.css">
 
     <!-- Referencia ao CSS do FONT-AWESOME LOCAL ** IMPORTANTE COMENTAR ANTES DE SUBIR ** 
-    <link rel="stylesheet" href="../global/font-awesome/css/all.css">-->
+    <link rel="stylesheet" href="../global/font-awesome/css/all.css"> -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-        </script>
+    </script>
 
-    <title>Home</title>
+    <title class="no-imprimir">Home</title>
 </head>
 
 <body>
+
+    <div class="cabecalho imprimir">
+        <div class="row">
+            <div class="col"> <img src="/website/global/img/laco.png" width="150" height="" alt=""> </div>
+            <!--<div class="col-3"> <img src="../global/img/laco.png" width="150" height="" alt=""> </div>-->
+            <div class="col">
+                <h3>ONG - Estrelas da Mama</h3>
+                <h4>Relação de afiliados á ONG</h4>
+                <p>Endereço: </p>
+                <p>Telefone: </p>
+            </div>
+        </div>
+    </div>
 
     <header class="border-size-b">
 
@@ -91,16 +110,17 @@
                         <div class="input-group center incolumn">
 
                             <label class="" for="todos">
-                                <input type="radio" class="option-input radio" name="afiliado" value="todos">Todos
+                                <input type="radio" class="option-input radio" name="afiliado" id="todos"
+                                    value="todos">Todos
                             </label>
 
                             <label class="" for="voluntario">
-                                <input type="radio" class="option-input radio" name="afiliado"
+                                <input type="radio" class="option-input radio" name="afiliado" id="voluntario"
                                     value="voluntario">Voluntários
                             </label>
 
                             <label class="" for="assitidas">
-                                <input type="radio" class="option-input radio" name="afiliado"
+                                <input type="radio" class="option-input radio" name="afiliado" id="assitidas"
                                     value="assitidas">Assistidas
                             </label>
 
@@ -124,19 +144,20 @@
 
 
                             <label for="asstratamento">
-                                <input type="checkbox" class="option-input checkbox" name="assistida"
+                                <input type="checkbox" class="option-input checkbox" name="assistida" id="asstratamento"
                                     value="asstratamento">Tratamento
                             </label>
 
 
                             <label for="assobservacao">
-                                <input type="checkbox" class="option-input checkbox" name="assistida"
+                                <input type="checkbox" class="option-input checkbox" name="assistida" id="assobservacao"
                                     value="assobservacao">Observação
                             </label>
 
 
                             <label for="asscurada">
-                                <input type="checkbox" class="option-input checkbox" name="assistida" value="asscurada">
+                                <input type="checkbox" class="option-input checkbox" name="assistida" id="asscurada"
+                                    value="asscurada">
                                 Curadas
                             </label>
 
@@ -157,8 +178,21 @@
 
                         <legend class="w-auto">Voluntario:</legend>
 
-                        <div class="input-group mb-3 incolumn">
-                            <input type="text" class="form-control" placeholder="Cargo" name="cargo">
+                        <div class="input-group mb-3 center incolumn">
+
+                            <label for="voluntario-ativo">
+                                <input type="radio" class="option-input radio" name="voluntario" id="voluntario-ativo"
+                                    value="ativo">
+                                Ativo
+                            </label>
+
+                            <label for="voluntario-inativo">
+                                <input type="radio" class="option-input radio" name="voluntario" id="voluntario-inativo"
+                                    value="inativo">
+                                Inativo
+                            </label>
+
+                            <input type="text" class="form-control" placeholder="Função" name="cargo">
 
                             <button class="btn btn-outline-secondary btn-lg-custom" type="submit" name="btnCargo">
                                 <i class="fas fa-search"></i>
@@ -171,8 +205,11 @@
                 </div>
             </div>
         </form>
+        <button class="btn btn-primary no-imprimir" onclick="imprimir()">Imprimir <i class="fa fa-print"
+                aria-hidden="true"></i></button>
 
         <div class="table-responsive">
+
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -222,6 +259,11 @@
         </div>
     </div>
 
+    <script>
+        function imprimir() {
+            window.print();
+        }
+    </script>
 </body>
 
 </html>
