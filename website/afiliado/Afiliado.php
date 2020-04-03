@@ -141,12 +141,12 @@ class Afiliado
 				$afiliadoVoluntario = isset($_POST["voluntario"]) ?  $_POST["voluntario"] : "";
 				$afiliadoCargo = isset($_POST["cargo"]) ? $_POST["cargo"] : "";
 
-				if (isset($afiliadoVoluntario)) {
+				if ($afiliadoVoluntario != "") {
 
 					$sql .= "WHERE nm_status_voluntario = LOWER(:status)";
 					$preparaSQL = array(':status' => $afiliadoVoluntario);
 
-					if (isset($afiliadoCargo)) {
+					if ($afiliadoCargo != "") {
 						$sql .= "AND nm_area_interesse LIKE :cargo ";
 						$preparaSQL[":cargo"] = "%$afiliadoCargo%";
 					}
