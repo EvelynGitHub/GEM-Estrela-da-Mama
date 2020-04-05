@@ -5,25 +5,21 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="http://localhost/GEM/website/login/css/style.css">
     <title>Login - GEM</title>
 </head>
-
 <body>
     <div class="container">
         <div class="row">
-            <div class="col form-signin">
+            <form action="" method="POST" class="col form-signin">
                 <h2 class="text-center">Login - GEM</h2>
                 <hr>
-                <input type="text" class="form-control mb-3" name="" id="" placeholder="Nome de Usuário">
-                <input type="password" class="form-control mb-3" name="" id="" placeholder="Senha">
+                <input type="text" class="form-control mb-3" name="usuario" id="usuario" placeholder="Nome de Usuário" required>
+                <input type="password" class="form-control mb-3" name="senha" id="senha" placeholder="Senha" required>
 
-                <button type="submit" class="btn btn-lg btn-block">
-                    Acessar
-                </button>
-            </div>
+                <input type="submit" value="Acessar" name="enviar" class="btn btn-lg btn-block">
+            </form>
         </div>
     </div>
 </body>
-
 </html>

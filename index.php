@@ -30,14 +30,15 @@ class Rota
         $this->rotas['/atividade/cadastrar'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'cadastrar-atividade.html'));
         $this->rotas['/atividade/listar-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
-
-        //Rotas do localhost (desenvolvimento)
-        // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
-        // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'lista-geral.html'));
-        // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/lista-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
-        // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
-        // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
-        // $this->rotas['/Projetos/GEM/GEM-Estrela-da-Mama-2/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
+        
+        //Rotas do localhost (desenvolvimento)/Projetos/GEM/GEM-Estrela-da-Mama-2/
+        //$this->rotas['/GEM/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
+        //$this->rotas['/GEM/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'lista-geral.html'));
+        //$this->rotas['/GEM/lista-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
+        //$this->rotas['/GEM/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
+        //$this->rotas['/GEM/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
+        //$this->rotas['/GEM/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
+        //$this->rotas['/GEM/Login'] = array('class' => 'Login', 'metodo' => "setValores", 'parametro' => array());
     }
 
     public function executar($url = null)

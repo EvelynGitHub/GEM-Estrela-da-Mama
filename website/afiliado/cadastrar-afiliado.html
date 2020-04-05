@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/website/afiliado/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <title>Cadastro de Afiliado</title>
 </head>
@@ -19,39 +19,39 @@
         <div class="container container-fluid">
             <div class="row">
                 <div class="col-4">
-                    <input type="text" class="form-control mb-3" name="nome" id="nome" placeholder="Nome Completo">
-                    <input type="text" class="form-control mb-3" name="rg" id="rg" placeholder="RG">
-                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" placeholder="CPF">
+                    <input type="text" class="form-control mb-3" name="nome" id="nome" placeholder="Nome Completo" required>
+                    <input type="text" class="form-control mb-3" name="rg" id="rg" placeholder="RG" required>
+                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" placeholder="CPF" required>
                     <input type="text" class="form-control mb-3" name="nacionalidade" id="nacionalidade"
-                        placeholder="Nacionalidade">
-                    <input type="date" class="form-control mb-3" name="data" id="data">
+                        placeholder="Nacionalidade" required>
+                    <input type="date" class="form-control mb-3" name="data" id="data" required>
                 </div>
                 <div class="col-4">
                     <div class="row mb-3">
                         <div class="col-6">
-                            <select class="form-control" name="estado" id="estado">
+                            <select class="form-control" name="estado" id="estado" required>
                                 <option class="" value="Estado">
                                     Estado
                                 </option>
                             </select>
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade">
+                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" required>
                         </div>
                     </div>
-                    <input type="text" class="form-control mb-3" name="bairro" id="bairro" placeholder="Bairro">
-                    <input type="text" class="form-control mb-3" name="cep" id="cep" placeholder="CEP">
+                    <input type="text" class="form-control mb-3" name="bairro" id="bairro" placeholder="Bairro" required>
+                    <input type="text" class="form-control mb-3" name="cep" id="cep" placeholder="CEP" required>
                     <input type="text" class="form-control mb-3" name="telefone" id="telefone"
-                        placeholder="(00)0000-0000">
+                        placeholder="(00)0000-0000" required>
                     <input type="text" class="form-control mb-3" name="celular" id="celular"
-                        placeholder="(00)00000-0000">
+                        placeholder="(00)00000-0000" required>
                 </div>
                 <div class="col-4">
-                    <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email">
+                    <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email" required>
                     <input type="text" class="form-control mb-3" name="escolaridade" id="escolaridade"
-                        placeholder="Escolaridade">
+                        placeholder="Escolaridade" required>
                     <input type="text" class="form-control mb-3" name="sitProfissional" id="sitProfissional"
-                        placeholder="Situação profissional">
+                        placeholder="Situação profissional" required>
                     <div class="row mb-4">
                         <label class="px-3">
                             Sexo:
@@ -88,7 +88,7 @@
                 <div class="col-4">
                     <h4>Voluntário</h4>
                     <input type="text" class="form-control mb-3" name="interesse" id="interesse"
-                        placeholder="Área de interesse">
+                        placeholder="Área de interesse" required>
                 </div>
             </div>
             <h6>Disponibilidade</h6>
@@ -156,7 +156,7 @@
             </button>
         </center>
     </form>
-    <script src="/website/afiliado/js/cadastrar-afiliado.js"></script>
+    <script src="js/cadastrar-afiliado.js"></script>
 </body>
 
 </html>
