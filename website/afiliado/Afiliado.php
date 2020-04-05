@@ -3,13 +3,13 @@
 namespace website\classe;
 
 // require_once __DIR__.'/../global/Conexao.php';
-require_once __DIR__.'/../global/Interface.php';
-require_once __DIR__.'/../global/CRUD.php';
+require_once __DIR__ . '/../global/Interface.php';
+require_once __DIR__ . '/../global/CRUD.php';
 
 use Exception;
 use CRUD;
 
-class Afiliado 
+class Afiliado
 {
 	use IGlobal;
 
@@ -43,6 +43,10 @@ class Afiliado
 
 	public function __construct($nomeCompleto = "", $rg = "", $cpf = "", $nacionalidade = "", $sexo = "", $dataNascimento = "", $estado = "", $cidade = "", $bairro = "", $rua = "", $numeroResidencial = "", $complemento = "", $cep = "", $telefone = "", $celular = "", $email = "", $escolaridade = "", $situacaoProfissional = "", $setorVoluntario = "", $disponibilidade = "", $cirurgiaMama = "", $diagnostico = "", $convenioMedico = "", $itens = "", $assistida = "", $voluntaria = "")
 	{
+		if (!isset($_SESSION['usuario']) == true) {
+			unset($_SESSION['usuario']);
+			header("Location: /");
+		}
 
 		$this->nomeCompleto = $nomeCompleto;
 		$this->rg = $rg;
@@ -72,264 +76,23 @@ class Afiliado
 		$this->voluntaria = $voluntaria;
 	}
 
-	public function getNomeCompleto()
+	public function __get($atributo)
 	{
-		return $this->nomeCompleto;
+		if (!property_exists($this, $atributo)) {
+			throw new Exception("Atributo {$atributo} não existe nessa classe");
+		}
+
+		return $this->{$atributo};
 	}
 
-	public function setNomeCompleto($nomeCompleto)
+	public function __set($atributo, $valor)
 	{
-		$this->nomeCompleto = $nomeCompleto;
-	}
 
-	public function getRg()
-	{
-		return $this->rg;
-	}
+		if (!property_exists($this, $atributo)) {
+			throw new Exception("Atributo {$atributo} não existe nessa classe");
+		}
 
-	public function setRg($rg)
-	{
-		$this->rg = $rg;
-	}
-
-	public function getCpf()
-	{
-		return $this->cpf;
-	}
-
-	public function setCpf($cpf)
-	{
-		$this->cpf = $cpf;
-	}
-
-	public function getNacionalidade()
-	{
-		return $this->nacionalidade;
-	}
-
-	public function setNacionalidade($nacionalidade)
-	{
-		$this->nacionalidade = $nacionalidade;
-	}
-
-	public function getSexo()
-	{
-		return $this->sexo;
-	}
-
-	public function setSexo($sexo)
-	{
-		$this->sexo = $sexo;
-	}
-
-	public function getDataNascimento()
-	{
-		return $this->dataNascimento;
-	}
-
-	public function setDataNascimento($dataNascimento)
-	{
-		$this->dataNascimento = $dataNascimento;
-	}
-
-	public function getEstado()
-	{
-		return $this->estado;
-	}
-
-	public function setEstado($estado)
-	{
-		$this->estado = $estado;
-	}
-
-	public function getCidade()
-	{
-		return $this->cidade;
-	}
-
-	public function setCidade($cidade)
-	{
-		$this->cidade = $cidade;
-	}
-
-	public function getBairro()
-	{
-		return $this->bairro;
-	}
-
-	public function setBairro($bairro)
-	{
-		$this->bairro = $bairro;
-	}
-
-	public function getRua()
-	{
-		return $this->rua;
-	}
-
-	public function setRua($rua)
-	{
-		$this->rua = $rua;
-	}
-
-	public function getNumeroResidencial()
-	{
-		return $this->numeroResidencial;
-	}
-
-	public function setNumeroResidencial($numeroResidencial)
-	{
-		$this->numeroResidencial = $numeroResidencial;
-	}
-
-	public function getComplemento()
-	{
-		return $this->complemento;
-	}
-
-	public function setComplemento($complemento)
-	{
-		$this->complemento = $complemento;
-	}
-
-	public function getCep()
-	{
-		return $this->cep;
-	}
-
-	public function setCep($cep)
-	{
-		$this->cep = $cep;
-	}
-
-	public function getTelefone()
-	{
-		return $this->telefone;
-	}
-
-	public function setTelefone($telefone)
-	{
-		$this->telefone = $telefone;
-	}
-
-	public function getCelular()
-	{
-		return $this->celular;
-	}
-
-	public function setCelular($celular)
-	{
-		$this->celular = $celular;
-	}
-
-	public function getEmail()
-	{
-		return $this->email;
-	}
-
-	public function setEmail($email)
-	{
-		$this->email = $email;
-	}
-
-	public function getEscolaridade()
-	{
-		return $this->escolaridade;
-	}
-
-	public function setEscolaridade($escolaridade)
-	{
-		$this->escolaridade = $escolaridade;
-	}
-
-	public function getSituacaoProfissional()
-	{
-		return $this->situacaoProfissional;
-	}
-
-	public function setSituacaoProfissional($situacaoProfissional)
-	{
-		$this->situacaoProfissional = $situacaoProfissional;
-	}
-
-	public function getSetorVoluntario()
-	{
-		return $this->setorVoluntario;
-	}
-
-	public function setSetorVoluntario($setorVoluntario)
-	{
-		$this->setorVoluntario = $setorVoluntario;
-	}
-
-	public function getDisponibilidade()
-	{
-		return $this->disponibilidade;
-	}
-
-	public function setDisponibilidade($disponibilidade)
-	{
-		$this->disponibilidade = $disponibilidade;
-	}
-
-	public function getCirurgiaMama()
-	{
-		return $this->cirurgiaMama;
-	}
-
-	public function setCirurgiaMama($cirurgiaMama)
-	{
-		$this->cirurgiaMama = $cirurgiaMama;
-	}
-
-	public function getDiagnostico()
-	{
-		return $this->diagnostico;
-	}
-
-	public function setDiagnostico($diagnostico)
-	{
-		$this->diagnostico = $diagnostico;
-	}
-
-	public function getConvenioMedico()
-	{
-		return $this->convenioMedico;
-	}
-
-	public function setConvenioMedico($convenioMedico)
-	{
-		$this->convenioMedico = $convenioMedico;
-	}
-
-	public function getItens()
-	{
-		return $this->itens;
-	}
-
-	public function setItens($itens)
-	{
-		$this->itens = $itens;
-	}
-
-	public function getAssistida()
-	{
-		return $this->assistida;
-	}
-
-	public function setAssistida($assistida)
-	{
-		$this->assistida = $assistida;
-	}
-
-	public function getVoluntaria()
-	{
-		return $this->voluntaria;
-	}
-
-	public function setVoluntaria($voluntaria)
-	{
-		$this->voluntaria = $voluntaria;
+		$this->{$atributo} = $valor;
 	}
 
 
@@ -354,12 +117,46 @@ class Afiliado
 							nm_area_interesse AS 'Função', 
 							dt_nascimento AS 'Data de Nascimento', 
 							cd_telefone AS 'Telefone',
-							nm_estado AS 'Estado',
+							nm_status_voluntario AS 'Estado',
 							'' AS 'Opção' FROM afiliado ";
+			$preparaSQL = "";
 
 			$banco = new CRUD();
-			
-			$matriz = $banco->obterRegistros($sql);
+
+			if (isset($_POST["btnAfiliado"])) { // Se o botão foi clicado
+				$filtroAfiliado = isset($_POST["afiliado"]) ? $_POST["afiliado"] : "";
+				if ($filtroAfiliado != "todos") { // E se o valor do radio for diferente de "todos"
+					$sql .= "WHERE nm_tipo_afiliado=LOWER(:filtro) "; // coloque este WHERE
+					$preparaSQL = array(':filtro' => $filtroAfiliado); // prepare este sql
+				}
+			} else if (isset($_POST["btnAssistida"])) { // Se o botão foi clicado
+
+				$filtroAssistida = isset($_POST["assistida"]) ? $_POST["assistida"] : "";
+				// Falta informação para concluir o select
+				echo "Está função ainda não foi construida, por favor aguarde ou entre em contato.";
+				// $sql .= "WHERE nm_tipo_afiliado=LOWER(:filtro) "; 
+				// $preparaSQL = array(':filtro' => $filtroAfiliado); 
+
+			} else if (isset($_POST["btnCargo"])) {
+				$afiliadoVoluntario = isset($_POST["voluntario"]) ?  $_POST["voluntario"] : "";
+				$afiliadoCargo = isset($_POST["cargo"]) ? $_POST["cargo"] : "";
+
+				if ($afiliadoVoluntario != "") {
+
+					$sql .= "WHERE nm_status_voluntario = LOWER(:status)";
+					$preparaSQL = array(':status' => $afiliadoVoluntario);
+
+					if ($afiliadoCargo != "") {
+						$sql .= "AND nm_area_interesse LIKE :cargo ";
+						$preparaSQL[":cargo"] = "%$afiliadoCargo%";
+					}
+				} else {
+					$sql .= "WHERE nm_area_interesse LIKE :cargo "; // coloque este WHERE
+					$preparaSQL = array(':cargo' => "%$afiliadoCargo%");
+				}
+			}
+
+			$matriz = $banco->obterRegistros($sql, $preparaSQL);
 
 			$array['cd'] = array('Opção' => "<a href='exemplo1?id=@codigo@' class=''>
 												<i class='far fa-eye' style='font-size: 1.5rem;'></i>
@@ -368,9 +165,8 @@ class Afiliado
 												<i class='far fa-edit' style='font-size: 1.5rem;'></i>
 											</a>");
 
-		
-			echo $this->rederizarTabela($matriz, $array, "@codigo@");	
-			
+
+			echo $this->rederizarTabela($matriz, $array, "@codigo@");
 		} catch (Exception $e) {
 			echo "Erro ao listar Afiliados: $e";
 		}
@@ -388,5 +184,13 @@ class Afiliado
 	{
 		echo "retornarAfiliado() >> $afiliado";
 	}
-
 }
+
+
+// $filtro = isset($_POST["afiliado"]) ? $_POST["afiliado"] : "";
+
+// if (isset($_POST["btnAfiliado"])) {
+// 	echo "foi clicado btnAfiliado";
+// }else{
+// 	echo "não foi clicado $filtro";
+// }

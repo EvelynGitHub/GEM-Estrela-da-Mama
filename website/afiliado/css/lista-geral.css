@@ -1,0 +1,173 @@
+.border-size-b {
+    border-bottom: 2px solid black;
+}
+
+.border-input {
+    border-radius: 5px;
+}
+
+legend.scheduler-border {
+    width: auto !important;
+    border: none;
+    font-size: 10px;
+}
+
+legend {
+    font-size: 20px;
+}
+
+label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    margin-right: 3.5px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: white;
+    color: black;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+    background-color: rgb(248, 192, 205);
+    color: black;
+}
+
+th {
+    background-color: rgb(255, 95, 152);
+    border: 1px solid white;
+    color: #000;
+}
+
+tr {
+    border: 1px solid white;
+}
+
+td {
+    border: 1px solid white;
+}
+
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: #cbd1d8;
+    appearance: none;
+    position: relative;
+    /* top: 3px; */
+    outline: none;
+    margin-right: 3px;
+}
+
+.option-input:checked {
+    background: #FFF;
+    border: solid 5px #ff1493;
+}
+
+.option-input.radio {
+    border-radius: 50%;
+}
+
+.option-input.checkbox {
+    border-radius: 20%;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #ff1493;
+}
+
+.imprimir {
+    display: none;
+}
+
+.no-imprimir {
+    display: block;
+}
+
+@media only screen and (max-width: 500px) {
+    .incolumn {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .center {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .btn-lg-custom {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .center {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .btn-lg-custom {
+        width: 50%;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 991px) {
+    .incolumn {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .center {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .btn-lg-custom {
+        width: 50%;
+    }
+}
+
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        filter: none !important;
+        -ms-filter: none !important;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        line-height: 1.4em;
+    }
+
+    header,
+    form,
+    button {
+        display: none;
+    }
+
+    .imprimir {
+        display: block;
+    }
+
+    .no-imprimir {
+        display: none;
+    }
+}

@@ -1,22 +1,80 @@
 <?php
 
+
 namespace website\classe;
 
-require_once __DIR__.'/../global/Interface.php';
-require_once __DIR__.'/../global/CRUD.php';
+require_once __DIR__ . '/../global/Interface.php';
+require_once __DIR__ . '/../global/CRUD.php';
 
 use Exception;
 use CRUD;
-class Login {
-    
+
+session_start();
+class Login
+{
+
     use IGlobal;
-    
-    public function getTelaPrincipalHTML()
+
+    private $usuario;
+    private $senha;
+
+    function setValores($usu, $pass)
     {
-        $this->renderizarHTML("login.html");
+        $this->usuario = $usu;
+        $this->senha = $pass;
+
+        $this->Login();
     }
-    public function renderizarHTML($ver){
-        include "website//login//$ver";
+
+    /*public function verificaLogin(){
+        //verifica se há uma sessão ativa
+        //se não tiver retorna para pagina de login
+        if(isset($_POST['usuario']) && isset($_POST['senha'])){
+            header('Location: /login.html');
+            //exit();
+        }
+    }*/
+
+    public function Login()
+    {
+
+
+        $sql = "SELECT * FROM login WHERE nm_login = :usuario AND nm_senha = :senha ";
+
+        $preparaSql = array(":usuario" => $this->usuario, ":senha" => $this->senha);
+
+        $banco = new CRUD();
+        $matriz = $banco->obterRegistros($sql, $preparaSql);
+
+        if (!empty($matriz)) {
+            $_SESSION['usuario'] = $this->usuario;
+            header('Location: /lista-geral');
+            die();
+        } else {
+            echo "<script>
+                        alert('Nome de usuário ou senha invalidos');
+                        /*self.location.href='/login';*/
+                    </script>";
+            //header('Location: ./login.html');
+            die();
+        }
     }
-    
+
+    public function Lougout()
+    {
+        //destruir sessão
+        session_destroy();
+        header('Location: /');
+        die();
+    }
+}
+
+$user = new Login;
+
+$login = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
+$senha = isset($_POST["senha"]) ? $_POST["senha"] : "";
+
+if (isset($_POST["enviar"])) {
+    $user->setValores($login, $senha);
+    unset($_POST["enviar"]);
 }
