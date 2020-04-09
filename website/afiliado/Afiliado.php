@@ -154,7 +154,7 @@ class Afiliado
 
 			$matriz = $banco->obterRegistros($sql, $preparaSQL);
 
-			$array['cd'] = array('Opção' => "<a href='exemplo1?id=@codigo@' class=''>
+			$array['cd'] = array('Opção' => "<a href='lista-geral/ver?id=@codigo@' class=''>
 												<i class='far fa-eye' style='font-size: 1.5rem;'></i>
 											</a>
 											<a href='exemplo2?id=@codigo@' class=''>
