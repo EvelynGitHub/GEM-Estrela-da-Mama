@@ -11,8 +11,10 @@ class CRUD extends Conexao
 
     public function __construct()
     {
-        $this->conectar();
-        // parent::conectar();
+        if (parent::$conn == null) {
+            $this->conectar();
+            // parent::conectar();
+        }
     }
 
     public function obterRegistros($select, $preparaSelect = array())
@@ -26,8 +28,10 @@ class CRUD extends Conexao
                 } else {
                     $query = parent::$conn->prepare($select);
                     if ($query->execute()) {
-                        return $query->fetchAll(PDO::FETCH_ASSOC);
-                    }else{
+                        $retorno =  $query->fetchAll(PDO::FETCH_ASSOC);
+                        $this->fecharConexao();
+                        return $retorno;
+                    } else {
                         echo "<br>Não foi possível executar está instrução <b>select</b>,<br>
                                  por favor, verifique se existem dados para serem selecionados. <br>";
                         return array();
@@ -43,7 +47,9 @@ class CRUD extends Conexao
                 }
 
                 if ($instrucao->execute()) {
-                    return $instrucao->fetchAll(PDO::FETCH_ASSOC);
+                    $retorno = $instrucao->fetchAll(PDO::FETCH_ASSOC);
+                    $this->fecharConexao();
+                    return $retorno;
                 } else {
                     echo "<br>Não foi possível executar está instrução <b>select</b>, por favor, verifique a escreita. <br>";
                     return array();

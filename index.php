@@ -24,6 +24,7 @@ class Rota
         // Rotas do Servidor (produção)
         $this->rotas['/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
         $this->rotas['/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'lista-geral.html'));
+        $this->rotas['/lista-geral/ver'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado','ver-afiliado.html'));
         $this->rotas['/lista-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
         $this->rotas['/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
@@ -32,18 +33,24 @@ class Rota
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
         
         //Rotas do localhost (desenvolvimento)/Projetos/GEM/GEM-Estrela-da-Mama-2/
-        //$this->rotas['/GEM/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
-        //$this->rotas['/GEM/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'lista-geral.html'));
-        //$this->rotas['/GEM/lista-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
-        //$this->rotas['/GEM/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
-        //$this->rotas['/GEM/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
-        //$this->rotas['/GEM/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
-        //$this->rotas['/GEM/Login'] = array('class' => 'Login', 'metodo' => "setValores", 'parametro' => array());
+        // $this->rotas['/GEM-Estrela-da-mama/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
+        // $this->rotas['/GEM-Estrela-da-mama/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'lista-geral.html'));
+        // $this->rotas['/GEM-Estrela-da-mama/lista-geral/ver'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado','ver-afiliado.html'));
+        // $this->rotas['/GEM-Estrela-da-mama/lista-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
+        // $this->rotas['/GEM-Estrela-da-mama/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
+        // $this->rotas['/GEM-Estrela-da-mama/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
+        // $this->rotas['/GEM-Estrela-da-mama/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
+        // $this->rotas['/GEM-Estrela-da-mama/Login'] = array('class' => 'Login', 'metodo' => "setValores", 'parametro' => array());
     }
 
     public function executar($url = null)
     {
         try {
+            if (!isset($_SESSION['usuario']) && $url != "/") {
+                // echo "Não tem SESSION ".session_status();
+                header("Location: /");
+            }
+    
             if (array_key_exists($url, $this->rotas)) {
 
                 $classe = "\\website\\classe\\" . $this->rotas[$url]['classe'];
@@ -52,6 +59,8 @@ class Rota
 
                 $obj = new $classe;
                 call_user_func_array(array($obj, $metodo), $parametro);
+
+                $obj = null;
             } else {
                 echo "<br>A url Está correta?";
             }
