@@ -257,6 +257,17 @@
                 <?php $this->listarAfiliado();?>
             </table>
         </div>
+
+
+
+
+        <?php 
+        
+        if(empty($_GET)){
+            $this->renderizarHTML('afiliado','ver-afiliado.html');
+        }
+        
+        ?>
     </div>
 
     <script>
