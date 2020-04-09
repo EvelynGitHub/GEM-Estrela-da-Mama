@@ -43,11 +43,6 @@ class Afiliado
 
 	public function __construct($nomeCompleto = "", $rg = "", $cpf = "", $nacionalidade = "", $sexo = "", $dataNascimento = "", $estado = "", $cidade = "", $bairro = "", $rua = "", $numeroResidencial = "", $complemento = "", $cep = "", $telefone = "", $celular = "", $email = "", $escolaridade = "", $situacaoProfissional = "", $setorVoluntario = "", $disponibilidade = "", $cirurgiaMama = "", $diagnostico = "", $convenioMedico = "", $itens = "", $assistida = "", $voluntaria = "")
 	{
-		if (!isset($_SESSION['usuario']) == true) {
-			unset($_SESSION['usuario']);
-			header("Location: /");
-		}
-
 		$this->nomeCompleto = $nomeCompleto;
 		$this->rg = $rg;
 		$this->cpf = $cpf;
@@ -96,8 +91,9 @@ class Afiliado
 	}
 
 
-	public function cadastrarAfiliado($afiliado)
+	public function cadastrarAfiliado($afiliado = "")
 	{
+		echo " <br> $this->nomeCompleto Esta no metodo de cadastro";
 	}
 
 	public function editarAfiliado($afiliado)
@@ -186,11 +182,14 @@ class Afiliado
 	}
 }
 
+if(isset($_POST['btn-enviar'])){
 
-// $filtro = isset($_POST["afiliado"]) ? $_POST["afiliado"] : "";
+	$cadAfiliado = new Afiliado();
 
-// if (isset($_POST["btnAfiliado"])) {
-// 	echo "foi clicado btnAfiliado";
-// }else{
-// 	echo "não foi clicado $filtro";
-// }
+	$cadAfiliado->nomeCompleto = $_POST['teste'];
+
+	$cadAfiliado->cadastrarAfiliado();
+
+}else {
+	echo "Não foi clicado";
+}
