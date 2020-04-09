@@ -178,18 +178,24 @@ class Afiliado
 
 	private function retornarAfiliado($afiliado)
 	{
-		echo "retornarAfiliado() >> $afiliado";
+		$sql = " SELECT * FROM afiliado WHERE cd_afiliado = :cd";
+
+		$preparaSql = array(':cd' => $afiliado);
+
+		$banco = new CRUD();
+		$matriz = $banco->obterRegistros($sql, $preparaSql);
+
+		return $matriz[0];
 	}
 }
 
-if(isset($_POST['btn-enviar'])){
+if (isset($_POST['btn-enviar'])) {
 
 	$cadAfiliado = new Afiliado();
 
 	$cadAfiliado->nomeCompleto = $_POST['teste'];
 
 	$cadAfiliado->cadastrarAfiliado();
-
-}else {
+} else {
 	echo "Não foi clicado";
 }
