@@ -24,7 +24,6 @@ class Rota
         // Rotas do Servidor (produção)
         $this->rotas['/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
         $this->rotas['/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'lista-geral.html'));
-        $this->rotas['/lista-geral/ver'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado','ver-afiliado.html'));
         $this->rotas['/lista-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
         $this->rotas['/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
@@ -35,7 +34,6 @@ class Rota
         //Rotas do localhost (desenvolvimento)/Projetos/GEM/GEM-Estrela-da-Mama-2/
         // $this->rotas['/GEM-Estrela-da-mama/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
         // $this->rotas['/GEM-Estrela-da-mama/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'lista-geral.html'));
-        // $this->rotas['/GEM-Estrela-da-mama/lista-geral/ver'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado','ver-afiliado.html'));
         // $this->rotas['/GEM-Estrela-da-mama/lista-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
         // $this->rotas['/GEM-Estrela-da-mama/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         // $this->rotas['/GEM-Estrela-da-mama/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
