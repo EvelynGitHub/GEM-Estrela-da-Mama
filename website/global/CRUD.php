@@ -124,26 +124,26 @@ class CRUD extends Conexao
             // Exemplo de como fica o sql tratado
             // "INSERT INTO login (nm_login, nm_senha) VALUES (:nm_login, :nm_senha)";
             $sql = "INSERT INTO $tabela ($colunas) VALUES ($substituir_valores)";
-            
+
             $instrucao = parent::$conn->prepare($sql);
 
             $valor = array_values($valores);
 
             for ($i = 0; $i < count($valor); $i++) {
-                 $instrucao->bindParam(($i+1), $valor[$i]);
+                $instrucao->bindParam(($i + 1), $valor[$i]);
             }
-
-            // foreach ($valores as $key => $value) {
-            //     $instrucao->bindParam((":$key"), $value);
-            //     echo "$key : $value<br>";
-            // }
 
             if ($instrucao->execute()) {
-                return "<br>Cadastro realizado com sucesso<br>";
+                return "<script>
+                            alert('Cadastro realizado com sucesso!');
+                            self.location.href='/afiliado/cadastrar';
+                        </script>";
             } else {
-                return "<br>Não foi possível efetuar o cadastro<br>";
+                return "<script>
+                            alert('Não foi possível efetuar o cadastro!');
+                            self.location.href='/afiliado/cadastrar';
+                        </script>";
             }
-
         } catch (PDOException $e) {
             echo "Erro: " . $e->getMessage();
             exit;
