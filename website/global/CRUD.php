@@ -82,6 +82,50 @@ class CRUD extends Conexao
         }
     }
 
+    /** Método genêrico que realiza o insert na banco de dados
+     * @param $tabela : é o nome da tabela na qual deseja realizar a inserção dos dados
+     * @param $valores : array() no qual devesse especificar qual coluna deve receber determinado valor
+     * Exemplo: array = array('nm_login' => 'nome@gmail.com', 'nm_senha'=>'123456');
+     * inserir('login', array);
+     */
+    public function inserirGenerica($tabela, $valores)
+    {
+        try {
+            $sql = "";
+            $colunas = "";
+            $substituir_valores = "";
+
+            foreach ($valores as $key => $value) {
+                $colunas .= "$key, ";
+                $substituir_valores .= ":$key, ";
+            }
+            // Remove a última , de $colunas
+            $colunas = substr($colunas, 0, 2);
+            // Remove a última , de $substituir_valores
+            $substituir_valores = substr($colunas, 0, 2);
+
+            // Exemplo de como fica o sql tratado
+            // "INSERT INTO login (nm_login, nm_senha) VALUES (:nm_login, :nm_senha)";
+            $sql = "INSERT INTO $tabela ($colunas) VALUES ($substituir_valores)";
+
+            $instrucao = parent::$conn->prepare($sql);
+
+            foreach ($valores as $key => $value) {
+                $instrucao->bindParam((":$key"), $value);
+            }
+
+            if ($instrucao->execute()) {
+                return "<br>Cadastro realizado com sucesso<br>";
+            } else {
+                return "<br>Não foi possível efetuar o cadastro<br>";
+            }
+
+        } catch (PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+            exit;
+        }
+    }
+
     public function excluir($tabela, $id)
     {
         //Colocar verificações aqui
