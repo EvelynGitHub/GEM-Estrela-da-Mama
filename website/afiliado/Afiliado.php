@@ -8,6 +8,8 @@ require_once __DIR__ . '/../global/CRUD.php';
 
 use Exception;
 use CRUD;
+use Error;
+use Throwable;
 
 class Afiliado
 {
@@ -22,54 +24,59 @@ class Afiliado
 	private $estado;
 	private $cidade;
 	private $bairro;
-	private $rua;
-	private $numeroResidencial;
-	private $complemento;
+	// private $rua;
+	// private $numeroResidencial;
+	// private $complemento;
+	private $endereco;
 	private $cep;
 	private $telefone;
 	private $celular;
 	private $email;
 	private $escolaridade;
 	private $situacaoProfissional;
+	private $tipoAfiliado;
 	private $setorVoluntario;
 	private $disponibilidade;
-	private $cirurgiaMama;
 	private $diagnostico;
+	private $cirurgiaMamaDireita;
+	private $anoCirurgiaDireita;
+	private $cirurgiaMamaEsquerda;
+	private $anoCirurgiaEsquerda;
 	private $convenioMedico;
 	private $itens;
-	private $assistida;
-	private $voluntaria;
+	// private $assistida;
+	// private $voluntaria;
 
 
-	public function __construct($nomeCompleto = "", $rg = "", $cpf = "", $nacionalidade = "", $sexo = "", $dataNascimento = "", $estado = "", $cidade = "", $bairro = "", $rua = "", $numeroResidencial = "", $complemento = "", $cep = "", $telefone = "", $celular = "", $email = "", $escolaridade = "", $situacaoProfissional = "", $setorVoluntario = "", $disponibilidade = "", $cirurgiaMama = "", $diagnostico = "", $convenioMedico = "", $itens = "", $assistida = "", $voluntaria = "")
-	{
-		$this->nomeCompleto = $nomeCompleto;
-		$this->rg = $rg;
-		$this->cpf = $cpf;
-		$this->nacionalidade = $nacionalidade;
-		$this->sexo = $sexo;
-		$this->dataNascimento = $dataNascimento;
-		$this->estado = $estado;
-		$this->cidade = $cidade;
-		$this->bairro = $bairro;
-		$this->rua = $rua;
-		$this->numeroResidencial = $numeroResidencial;
-		$this->complemento = $complemento;
-		$this->cep = $cep;
-		$this->telefone = $telefone;
-		$this->celular = $celular;
-		$this->email = $email;
-		$this->escolaridade = $escolaridade;
-		$this->situacaoProfissional = $situacaoProfissional;
-		$this->setorVoluntario = $setorVoluntario;
-		$this->disponibilidade = $disponibilidade;
-		$this->cirurgiaMama = $cirurgiaMama;
-		$this->diagnostico = $diagnostico;
-		$this->convenioMedico = $convenioMedico;
-		$this->itens = $itens;
-		$this->assistida = $assistida;
-		$this->voluntaria = $voluntaria;
-	}
+
+	// public function __construct($nomeCompleto = "", $rg = "", $cpf = "", $nacionalidade = "", $sexo = "", $dataNascimento = "", $estado = "", $cidade = "", $bairro = "", $cep = "", $telefone = "", $celular = "", $email = "", $escolaridade = "", $situacaoProfissional = "", $setorVoluntario = "", $disponibilidade = "", $diagnostico = "", $convenioMedico = ""/*, $itens = ""*/)
+	// {
+	// 	$this->nomeCompleto = $nomeCompleto;
+	// 	$this->rg = $rg;
+	// 	$this->cpf = $cpf;
+	// 	$this->nacionalidade = $nacionalidade;
+	// 	$this->sexo = $sexo;
+	// 	$this->dataNascimento = $dataNascimento;
+	// 	$this->estado = $estado;
+	// 	$this->cidade = $cidade;
+	// 	$this->bairro = $bairro;
+	// 	// $this->rua = $rua;
+	// 	// $this->numeroResidencial = $numeroResidencial;
+	// 	// $this->complemento = $complemento;
+	// 	$this->cep = $cep;
+	// 	$this->telefone = $telefone;
+	// 	$this->celular = $celular;
+	// 	$this->email = $email;
+	// 	$this->escolaridade = $escolaridade;
+	// 	$this->situacaoProfissional = $situacaoProfissional;
+	// 	$this->setorVoluntario = $setorVoluntario;
+	// 	$this->disponibilidade = $disponibilidade;
+	// 	$this->diagnostico = $diagnostico;
+	// 	$this->convenioMedico = $convenioMedico;
+	// 	// $this->assistida = $assistida;
+	// 	// $this->voluntario = $voluntario;
+	// 	// $this->itens = $itens;
+	// }
 
 	public function __get($atributo)
 	{
@@ -93,7 +100,9 @@ class Afiliado
 
 	public function cadastrarAfiliado($afiliado = "")
 	{
-		echo " <br> $this->nomeCompleto Esta no metodo de cadastro";
+		$crud = new CRUD();
+		
+		echo $crud->inserir("afiliado", get_object_vars($afiliado));
 	}
 
 	public function editarAfiliado($afiliado)
@@ -193,9 +202,60 @@ if (isset($_POST['btn-enviar'])) {
 
 	$cadAfiliado = new Afiliado();
 
-	$cadAfiliado->nomeCompleto = $_POST['teste'];
+	try {
+		// CAMPOS OBRIGATÓRIOS 
+		$cadAfiliado->nomeCompleto = $_POST['nome'];
+		$cadAfiliado->rg = $_POST['rg'];
+		$cadAfiliado->cpf = $_POST['cpf'];
+		$cadAfiliado->nacionalidade = $_POST['nacionalidade'];
+		// $cadAfiliado->dataNascimento = $_POST['data'];
+		$cadAfiliado->dataNascimento = '2010/10/20';
+		$cadAfiliado->estado = $_POST['estado'];
+		$cadAfiliado->cidade = $_POST['cidade'];
+		$cadAfiliado->bairro = $_POST['bairro'];
+		$cadAfiliado->cep = $_POST['cep'];
+		$cadAfiliado->endereco = "Sem endereco";
+		$cadAfiliado->telefone = $_POST['telefone'];
+		$cadAfiliado->celular = $_POST['celular'];
+		$cadAfiliado->email = $_POST['email'];
+		$cadAfiliado->escolaridade = $_POST['escolaridade'];
+		$cadAfiliado->situacaoProfissional = $_POST['sitProfissional'];
+		$cadAfiliado->sexo = $_POST['sexo'];
+		$cadAfiliado->tipoAfiliado = $_POST['tipo'];
 
-	$cadAfiliado->cadastrarAfiliado();
-} else {
-	echo "Não foi clicado";
+
+		// CAMPOS NÃO OBRIGATÓRIOS
+
+		// 	- VOLUNTÁRIO
+
+		$cadAfiliado->setorVoluntario = isset($_POST['interesse']) ? $_POST['interesse'] : "";
+
+		$semanas = $_POST['semana'];
+
+		$diponibiliadadeAfiliado = "";
+
+		for ($i = 0; $i < count($semanas); $i++) {
+			$diponibiliadadeAfiliado = "$diponibiliadadeAfiliado ; $semanas[$i]";
+		}
+
+		$cadAfiliado->disponibilidade = isset($diponibiliadadeAfiliado) ? $diponibiliadadeAfiliado : "";
+
+
+		// 	- ASSISTIDA
+		$cadAfiliado->diagnostico = isset($_POST['diagnostico']) ? $_POST['diagnostico'] : "";
+
+		$cadAfiliado->cirurgiaMamaDireita = isset($_POST['mamaDireita']) ? $_POST['mamaDireita'] : "false";
+		$cadAfiliado->anoCirurgiaDireita = isset($_POST['anoDireita']) ? $_POST['anoDireita'] : NULL;
+
+		$cadAfiliado->cirurgiaMamaEsquerda = isset($_POST['mamaEsquerda']) ? $_POST['mamaEsquerda'] : "false";
+		$cadAfiliado->anoCirurgiaEsquerda = isset($_POST['anoEsquerda']) ? $_POST['anoEsquerda'] : NULL;
+
+		$cadAfiliado->convenioMedico = isset($_POST['convenio']) ? $_POST['convenio'] : "";
+	} catch (Exception $e) {
+		echo $e;
+	} catch (Throwable $e) {
+		echo $e;
+	}
+
+	$cadAfiliado->cadastrarAfiliado($cadAfiliado);
 }

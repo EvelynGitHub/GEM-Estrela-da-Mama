@@ -60,25 +60,40 @@ class CRUD extends Conexao
         }
     }
 
-    public function inserir($tabela, $valores)
+    public function inserir($tabela, $valores, $colunas = "")
     {
         //Colocar verificações aqui
-        $sql = "INSERT INTO $tabela VALUES (? "; //O primeiro é sempre o auto_increment
-        for ($x = 1; $x < count($valores); $x++) {
-            $sql .= ",?";
-        }
-        $sql .= ")";
+        try {
 
-        $instrucao = parent::$conn->prepare($sql);
+            $sql = "INSERT INTO $tabela 
+                    (nm_afiliado, cd_rg, cd_cpf, nm_nacionalidade, ic_sexo, dt_nascimento, nm_estado, nm_cidade, nm_bairro, nm_endereco, cd_cep, cd_telefone, cd_contato, nm_email, nm_escolaridade, nm_situacao_profissional, nm_tipo_afiliado, nm_area_interesse, nm_disponibilidade, nm_diagnostico, nm_cirurgia_mama_direita, dt_cirugia_mama_direita, nm_cirurgia_mama_esquerda, dt_cirugia_mama_esquerda, nm_convenio_medico) 
+                    VALUES (?"; //O primeiro é sempre o auto_increment
+            for ($x = 1; $x < count($valores); $x++) {
+                $sql .= ", ?";
+            }
+            $sql .= ")";
 
-        foreach ($valores as $key => $value) {
-            $instrucao->bindParam($key, $value);
-        }
+            $instrucao = parent::$conn->prepare($sql);
 
-        if ($instrucao->execute()) {
-            return "<br>Cadastro realizado com sucesso<br>";
-        } else {
-            return "<br>Não foi possível efetuar o cadastro<br>";
+            // foreach ($valores as $key => $value) {
+            //     $instrucao->bindParam($contador, $value);
+            //     echo "$key : $value : $contador<br>";
+            //     $contador++;
+            // }
+
+            $valor = array_values($valores);
+
+            for ($i = 0; $i < count($valor); $i++) {
+                 $instrucao->bindParam(($i+1), $valor[$i]);
+            }
+
+            if ($instrucao->execute()) {
+                return "<br>Cadastro realizado com sucesso<br>";
+            } else {
+                return "<br>Não foi possível efetuar o cadastro<br>";
+            }
+        } catch (Exception $e) {
+            echo $e. "Mensagem do catch CRUD";
         }
     }
 
