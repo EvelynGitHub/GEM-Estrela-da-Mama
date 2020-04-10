@@ -103,7 +103,7 @@ class CRUD extends Conexao
      * Exemplo: array = array('nm_login' => 'nome@gmail.com', 'nm_senha'=>'123456');
      * inserir('login', array);
      */
-    public function inserirGenerica($tabela, $valores)
+    public function inserirGenerico($tabela, $valores)
     {
         try {
             $sql = "";
@@ -112,22 +112,31 @@ class CRUD extends Conexao
 
             foreach ($valores as $key => $value) {
                 $colunas .= "$key, ";
-                $substituir_valores .= ":$key, ";
+                // $substituir_valores .= ":$key, ";
+                $substituir_valores .= "?, ";
             }
+
             // Remove a última , de $colunas
-            $colunas = substr($colunas, 0, 2);
+            $colunas = substr($colunas, 0, -2);
             // Remove a última , de $substituir_valores
-            $substituir_valores = substr($colunas, 0, 2);
+            $substituir_valores = substr($substituir_valores, 0, -2);
 
             // Exemplo de como fica o sql tratado
             // "INSERT INTO login (nm_login, nm_senha) VALUES (:nm_login, :nm_senha)";
             $sql = "INSERT INTO $tabela ($colunas) VALUES ($substituir_valores)";
-
+            
             $instrucao = parent::$conn->prepare($sql);
 
-            foreach ($valores as $key => $value) {
-                $instrucao->bindParam((":$key"), $value);
+            $valor = array_values($valores);
+
+            for ($i = 0; $i < count($valor); $i++) {
+                 $instrucao->bindParam(($i+1), $valor[$i]);
             }
+
+            // foreach ($valores as $key => $value) {
+            //     $instrucao->bindParam((":$key"), $value);
+            //     echo "$key : $value<br>";
+            // }
 
             if ($instrucao->execute()) {
                 return "<br>Cadastro realizado com sucesso<br>";

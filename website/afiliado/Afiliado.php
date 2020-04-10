@@ -101,8 +101,36 @@ class Afiliado
 	public function cadastrarAfiliado($afiliado = "")
 	{
 		$crud = new CRUD();
+
+		$inserirAfiliado = array(
+		'nm_afiliado' => $this->nomeCompleto,
+		'cd_rg' => $this->rg,
+		'cd_cpf' => $this->cpf,
+		'nm_nacionalidade' => $this->nacionalidade,
+		'ic_sexo' => $this->sexo,
+		'dt_nascimento' => $this->dataNascimento,
+		'nm_estado' => $this->estado,
+		'nm_cidade' => $this->cidade,
+		'nm_bairro' => $this->bairro,
+		'nm_endereco' => $this->endereco,
+		'cd_cep' => $this->cep,
+		'cd_telefone' => $this->telefone,
+		'cd_contato' => $this->celular,
+		'nm_email' => $this->email,
+		'nm_escolaridade' => $this->escolaridade,
+		'nm_situacao_profissional' => $this->situacaoProfissional,
+		'nm_tipo_afiliado' => $this->tipoAfiliado,
+		'nm_area_interesse' => $this->setorVoluntario,
+		'nm_disponibilidade' => $this->disponibilidade,
+		'nm_diagnostico' => $this->diagnostico,
+		'nm_cirurgia_mama_direita' => $this->cirurgiaMamaDireita,
+		'dt_cirugia_mama_direita' => $this->anoCirurgiaDireita,
+		'nm_cirurgia_mama_esquerda' => $this->cirurgiaMamaEsquerda,
+		'dt_cirugia_mama_esquerda' => $this->anoCirurgiaEsquerda,
+		'nm_convenio_medico' => $this->convenioMedico);
 		
-		echo $crud->inserir("afiliado", get_object_vars($afiliado));
+		echo $crud->inserirGenerico("afiliado", $inserirAfiliado);
+		die();
 	}
 
 	public function editarAfiliado($afiliado)
@@ -230,7 +258,7 @@ if (isset($_POST['btn-enviar'])) {
 
 		$cadAfiliado->setorVoluntario = isset($_POST['interesse']) ? $_POST['interesse'] : "";
 
-		$semanas = $_POST['semana'];
+		$semanas = isset($_POST['semana']) ? $_POST['semana'] : [];
 
 		$diponibiliadadeAfiliado = "";
 
