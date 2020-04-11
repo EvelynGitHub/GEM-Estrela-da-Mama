@@ -103,32 +103,33 @@ class Afiliado
 		$crud = new CRUD();
 
 		$inserirAfiliado = array(
-		'nm_afiliado' => $this->nomeCompleto,
-		'cd_rg' => $this->rg,
-		'cd_cpf' => $this->cpf,
-		'nm_nacionalidade' => $this->nacionalidade,
-		'ic_sexo' => $this->sexo,
-		'dt_nascimento' => $this->dataNascimento,
-		'nm_estado' => $this->estado,
-		'nm_cidade' => $this->cidade,
-		'nm_bairro' => $this->bairro,
-		'nm_endereco' => $this->endereco,
-		'cd_cep' => $this->cep,
-		'cd_telefone' => $this->telefone,
-		'cd_contato' => $this->celular,
-		'nm_email' => $this->email,
-		'nm_escolaridade' => $this->escolaridade,
-		'nm_situacao_profissional' => $this->situacaoProfissional,
-		'nm_tipo_afiliado' => $this->tipoAfiliado,
-		'nm_area_interesse' => $this->setorVoluntario,
-		'nm_disponibilidade' => $this->disponibilidade,
-		'nm_diagnostico' => $this->diagnostico,
-		'nm_cirurgia_mama_direita' => $this->cirurgiaMamaDireita,
-		'dt_cirugia_mama_direita' => $this->anoCirurgiaDireita,
-		'nm_cirurgia_mama_esquerda' => $this->cirurgiaMamaEsquerda,
-		'dt_cirugia_mama_esquerda' => $this->anoCirurgiaEsquerda,
-		'nm_convenio_medico' => $this->convenioMedico);
-		
+			'nm_afiliado' => $this->nomeCompleto,
+			'cd_rg' => $this->rg,
+			'cd_cpf' => $this->cpf,
+			'nm_nacionalidade' => $this->nacionalidade,
+			'ic_sexo' => $this->sexo,
+			'dt_nascimento' => $this->dataNascimento,
+			'nm_estado' => $this->estado,
+			'nm_cidade' => $this->cidade,
+			'nm_bairro' => $this->bairro,
+			'nm_endereco' => $this->endereco,
+			'cd_cep' => $this->cep,
+			'cd_telefone' => $this->telefone,
+			'cd_contato' => $this->celular,
+			'nm_email' => $this->email,
+			'nm_escolaridade' => $this->escolaridade,
+			'nm_situacao_profissional' => $this->situacaoProfissional,
+			'nm_tipo_afiliado' => $this->tipoAfiliado,
+			'nm_area_interesse' => $this->setorVoluntario,
+			'nm_disponibilidade' => $this->disponibilidade,
+			'nm_diagnostico' => $this->diagnostico,
+			'nm_cirurgia_mama_direita' => $this->cirurgiaMamaDireita,
+			'dt_cirugia_mama_direita' => $this->anoCirurgiaDireita,
+			'nm_cirurgia_mama_esquerda' => $this->cirurgiaMamaEsquerda,
+			'dt_cirugia_mama_esquerda' => $this->anoCirurgiaEsquerda,
+			'nm_convenio_medico' => $this->convenioMedico
+		);
+
 		echo $crud->inserirGenerico("afiliado", $inserirAfiliado);
 		die();
 	}
@@ -157,20 +158,23 @@ class Afiliado
 			$banco = new CRUD();
 
 			if (isset($_POST["btnAfiliado"])) { // Se o botão foi clicado
+				
 				$filtroAfiliado = isset($_POST["afiliado"]) ? $_POST["afiliado"] : "";
+				
 				if ($filtroAfiliado != "todos") { // E se o valor do radio for diferente de "todos"
 					$sql .= "WHERE nm_tipo_afiliado=LOWER(:filtro) "; // coloque este WHERE
 					$preparaSQL = array(':filtro' => $filtroAfiliado); // prepare este sql
 				}
-			} else if (isset($_POST["btnAssistida"])) { // Se o botão foi clicado
 
-				$filtroAssistida = isset($_POST["assistida"]) ? $_POST["assistida"] : "";
-				// Falta informação para concluir o select
-				echo "Está função ainda não foi construida, por favor aguarde ou entre em contato.";
-				// $sql .= "WHERE nm_tipo_afiliado=LOWER(:filtro) "; 
-				// $preparaSQL = array(':filtro' => $filtroAfiliado); 
+			} else if (isset($_POST["btnAssistida"])) { // Se o botão foi clicado
+				
+				$statusAssistida = isset($_POST["assistida"]) ? $_POST["assistida"] : "";
+				
+				$sql .= "WHERE nm_status_assistida=LOWER(:filtro) ";
+				$preparaSQL = array(':filtro' => $statusAssistida);
 
 			} else if (isset($_POST["btnCargo"])) {
+				
 				$afiliadoVoluntario = isset($_POST["voluntario"]) ?  $_POST["voluntario"] : "";
 				$afiliadoCargo = isset($_POST["cargo"]) ? $_POST["cargo"] : "";
 
@@ -180,12 +184,16 @@ class Afiliado
 					$preparaSQL = array(':status' => $afiliadoVoluntario);
 
 					if ($afiliadoCargo != "") {
+				
 						$sql .= "AND nm_area_interesse LIKE :cargo ";
 						$preparaSQL[":cargo"] = "%$afiliadoCargo%";
+				
 					}
 				} else {
+					
 					$sql .= "WHERE nm_area_interesse LIKE :cargo "; // coloque este WHERE
 					$preparaSQL = array(':cargo' => "%$afiliadoCargo%");
+				
 				}
 			}
 
