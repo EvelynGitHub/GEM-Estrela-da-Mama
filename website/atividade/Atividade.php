@@ -79,10 +79,10 @@ class Atividade
     }
     public function listarAtividades()
     {
-        $sql = " SELECT  cd_atividade = :cd,nm_atividade = :nomeAtividade FROM atividade ";
-        $preparaSql = array(':cd' => $this->cdAtividade  , ':nomeAtividade' => $this->nomeAtividade);
+        $sql = " SELECT  cd_atividade,nm_atividade  FROM atividade ";
+       
 			$banco = new CRUD();
-            $matriz = $banco->obterRegistros($sql, $preparaSql);
+            $matriz = $banco->obterRegistros($sql);
             if($matriz != null){
             
                 echo $matriz;
