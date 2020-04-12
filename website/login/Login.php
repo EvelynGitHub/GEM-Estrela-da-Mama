@@ -26,15 +26,6 @@ class Login
         $this->Login();
     }
 
-    /*public function verificaLogin(){
-        //verifica se há uma sessão ativa
-        //se não tiver retorna para pagina de login
-        if(isset($_POST['usuario']) && isset($_POST['senha'])){
-            header('Location: /login.html');
-            //exit();
-        }
-    }*/
-
     public function Login()
     {
 
@@ -53,16 +44,14 @@ class Login
         } else {
             echo "<script>
                         alert('Nome de usuário ou senha invalidos');
-                        /*self.location.href='/login';*/
+                        self.location.href='http://estreladamama.tk/';
                     </script>";
-            //header('Location: ./login.html');
             die();
         }
     }
 
     public function Lougout()
     {
-        //destruir sessão
         session_destroy();
         header('Location: /');
         die();
