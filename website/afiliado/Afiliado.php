@@ -295,3 +295,7 @@ if (isset($_POST['btn-enviar'])) {
 
 	$cadAfiliado->cadastrarAfiliado($cadAfiliado);
 }
+
+if (isset($_POST['btn-cancelar'])) {
+	header("Location: http://estreladamama.tk/lista-geral");
+}
