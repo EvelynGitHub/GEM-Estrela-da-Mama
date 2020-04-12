@@ -31,6 +31,9 @@ class Atividade
         $this->quantidadeAulas = $quantidadeAulas;
     }
 
+   
+
+
     public function __get($atributo)
     {
         if (!property_exists($this, $atributo)) {
@@ -76,6 +79,18 @@ class Atividade
     }
     public function listarAtividades()
     {
+        $sql = " SELECT  cd_atividade = :cd,nm_atividade = :nomeAtividade FROM atividade ";
+        $preparaSql = array(':cd' => $this->cdAtividade  , ':nomeAtividade' => $this->nomeAtividade);
+			$banco = new CRUD();
+            $matriz = $banco->obterRegistros($sql, $preparaSql);
+            if($matriz != null){
+            
+                echo $matriz;
+            
+        }
+        else{
+            echo "nao tem atividade cadastradas";
+        }
     }
     public function adicionarAfiliado($afiliado)
     {
