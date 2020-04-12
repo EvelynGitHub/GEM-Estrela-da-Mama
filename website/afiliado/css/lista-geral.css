@@ -102,6 +102,20 @@ td {
     display: block;
 }
 
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.btn-w-50 {
+    width: 45%;
+}
+
+
+
 @media only screen and (max-width: 500px) {
     .incolumn {
         display: flex;
@@ -173,12 +187,6 @@ td {
     .no-imprimir {
         display: none;
     }
-
-    /* .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
-        font-size: 6px;
-    }
-*/
-    
 
     .table>thead>tr>th:nth-child(8),
     .table>tbody>tr>td:nth-child(8) {
