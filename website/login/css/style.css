@@ -16,7 +16,7 @@ input, button, textarea, select, label {
     font: 400 18px Roboto, sans-serif;
 }
 
-button {
+input[type="submit"] {
     cursor: pointer;
     background-color: #FF1493;
     color: #fdfdfd;
