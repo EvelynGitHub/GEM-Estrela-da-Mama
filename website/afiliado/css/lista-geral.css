@@ -184,6 +184,19 @@ td {
     .no-imprimir {
         display: none;
     }
+
+    .table>thead>tr>th:nth-child(8),
+    .table>tbody>tr>td:nth-child(8) {
+        font-size: 50px;
+        visibility: hidden;
+    }
+
+    .overflow {
+        height: 100%;
+        overflow-y: hidden;
+        margin-left: 10%;
+    }
+
 }
 
 footer{

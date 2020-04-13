@@ -145,7 +145,7 @@ class Afiliado
 	public function listarAfiliado()
 	{
 		try {
-			$sql = " SELECT cd_afiliado AS '#',
+			$sql = " SELECT cd_afiliado AS 'cd',
 							nm_afiliado AS 'Nome', 
 							nm_tipo_afiliado AS 'Tipo',
 							nm_area_interesse AS 'Função', 
@@ -158,23 +158,21 @@ class Afiliado
 			$banco = new CRUD();
 
 			if (isset($_POST["btnAfiliado"])) { // Se o botão foi clicado
-				
+
 				$filtroAfiliado = isset($_POST["afiliado"]) ? $_POST["afiliado"] : "";
-				
+
 				if ($filtroAfiliado != "todos") { // E se o valor do radio for diferente de "todos"
 					$sql .= "WHERE nm_tipo_afiliado=LOWER(:filtro) "; // coloque este WHERE
 					$preparaSQL = array(':filtro' => $filtroAfiliado); // prepare este sql
 				}
-
 			} else if (isset($_POST["btnAssistida"])) { // Se o botão foi clicado
-				
+
 				$statusAssistida = isset($_POST["assistida"]) ? $_POST["assistida"] : "";
-				
+
 				$sql .= "WHERE nm_status_assistida=LOWER(:filtro) ";
 				$preparaSQL = array(':filtro' => $statusAssistida);
-
 			} else if (isset($_POST["btnCargo"])) {
-				
+
 				$afiliadoVoluntario = isset($_POST["voluntario"]) ?  $_POST["voluntario"] : "";
 				$afiliadoCargo = isset($_POST["cargo"]) ? $_POST["cargo"] : "";
 
@@ -184,22 +182,20 @@ class Afiliado
 					$preparaSQL = array(':status' => $afiliadoVoluntario);
 
 					if ($afiliadoCargo != "") {
-				
+
 						$sql .= "AND nm_area_interesse LIKE :cargo ";
 						$preparaSQL[":cargo"] = "%$afiliadoCargo%";
-				
 					}
 				} else {
-					
+
 					$sql .= "WHERE nm_area_interesse LIKE :cargo "; // coloque este WHERE
 					$preparaSQL = array(':cargo' => "%$afiliadoCargo%");
-				
 				}
 			}
 
 			$matriz = $banco->obterRegistros($sql, $preparaSQL);
 
-			$array['#'] = array('Opção' => "<a href='?id=@codigo@' class=''>
+			$array['cd'] = array('Opção' => "<a href='?id=@codigo@' class=''>
 												<i class='far fa-id-card' style='font-size: 1.5rem;'></i>
 											</a>
 											<a href='editar?id=@codigo@' class=''>
@@ -223,7 +219,7 @@ class Afiliado
 
 	private function retornarAfiliado($afiliado)
 	{
-		$sql = " SELECT * FROM afiliado WHERE cd_afiliado = :cd";
+		$sql = "SELECT * FROM vw_afiliado WHERE cd_afiliado = :cd";
 
 		$preparaSql = array(':cd' => $afiliado);
 
