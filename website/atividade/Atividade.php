@@ -90,7 +90,7 @@ class Atividade
                     
                 
                 }
-                echo  "<button class = 'ver-atividade'>" $pegaValores['nm_atividade'] "</button>";
+                echo  "<button class = 'ver-atividade'>" $pegaValores "</button>";
                 //echo rederizarTabela($matriz );
             }else{
                 echo "Não tem atividade cadastradas";
