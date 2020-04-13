@@ -1,3 +1,19 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 .border-size-b {
     border-bottom: 2px solid black;
 }
@@ -100,11 +116,11 @@ td {
     display: block;
 }
 
-.fa-id-card{
+.fa-id-card {
     color: #FF1493;
 }
 
-.fa-edit{
+.fa-edit {
     color: #FF1493;
 }
 
