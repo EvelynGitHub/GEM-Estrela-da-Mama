@@ -84,9 +84,9 @@ class Atividade
 			$banco = new CRUD();
             $matriz = $banco->obterRegistros($sql);
             
-            while($pegaValores = mysqli_fetch_assoc($matriz)){
+            while($pegaValores = count($matriz)){
                 
-                echo $botaoLista= "<button class = 'ver-atividade'>$pegaValores</button>";
+                echo $botaoLista = "<button class = 'ver-atividade'>$pegaValores</button>";
                 
             }
 
