@@ -86,7 +86,7 @@ class Atividade
             if($matriz != null){
                 for($i = 0; $i <= count($matriz); $i++)
                 {
-                    $pegaValores[$i] = mysqli_fetch_assoc($matriz[$i]);
+                    $pegaValores['nm_atividade'] = mysqli_fetch_assoc($matriz[$i]);
                     echo  "<button class = 'ver-atividade'>$pegaValores['nm_atividade'] </button>";
                 
                 }
