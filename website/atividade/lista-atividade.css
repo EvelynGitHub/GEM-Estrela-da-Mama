@@ -1,9 +1,23 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
 }
-body{
-    background-color: white;
-    color: black;
+.titulo{
+    text-align: center;
+}
+.ver-atividade{
+    margin: 10px 15px;
+    background-color: palevioletred;
+    border: none;
+    width: 90%;
+    height: 50px;
+}
+@media only screen and (min-width: 700px){
+    .ver-atividade{
+        margin: 10px 11px;
+        background-color: palevioletred;
+        border: none;
+        width: 20%;
+        height: 50px;
+    }
 }
