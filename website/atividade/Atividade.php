@@ -86,11 +86,11 @@ class Atividade
             if($matriz != null){
                 while(mysqli_fetch_assoc($matriz))
                 {
-                    $pegaValores = mysqli_fetch_assoc($matriz);
+                    $pegaValores['nm_atividade'] = mysqli_fetch_assoc($matriz);
                     
                 
                 }
-                echo  "<button class = 'ver-atividade'>$pegaValores </button>";
+                echo  "<button class = 'ver-atividade'>" $pegaValores['nm_atividade'] "</button>";
                 //echo rederizarTabela($matriz );
             }else{
                 echo "Não tem atividade cadastradas";
