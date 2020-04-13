@@ -84,9 +84,9 @@ class Atividade
 			$banco = new CRUD();
             $matriz = $banco->obterRegistros($sql);
             if($matriz != null){
-                while($matriz){
+                
                     echo $this->rederizarTabela($matriz);
-                }
+                
         }
         else{
             echo "nao tem atividade cadastradas";
