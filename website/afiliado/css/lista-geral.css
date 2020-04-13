@@ -169,3 +169,8 @@ td {
         display: none;
     }
 }
+
+footer{
+    background-color: lightpink;
+    margin-top: 5%;
+}
