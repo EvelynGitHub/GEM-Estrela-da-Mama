@@ -79,14 +79,14 @@ class Atividade
     }
     public function listarAtividades()
     {
-        $sql = " SELECT  cd_atividade,nm_atividade  FROM atividade ";
+        $sql = " SELECT nm_atividade  FROM atividade ";
        
 			$banco = new CRUD();
             $matriz = $banco->obterRegistros($sql);
             if($matriz != null){
-            
-                echo $matriz;
-            
+                
+                    echo $this->rederizarTabela($matriz);
+                
         }
         else{
             echo "nao tem atividade cadastradas";
