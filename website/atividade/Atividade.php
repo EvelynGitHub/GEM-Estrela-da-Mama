@@ -84,8 +84,8 @@ class Atividade
 			$banco = new CRUD();
             $matriz = $banco->obterRegistros($sql);
             
-            while($pegaValores = count($matriz)){
-                
+            if($matriz != null){
+                $pegaValores = count($matriz);
                 echo $botaoLista = "<button class = 'ver-atividade'>$pegaValores</button>";
                 
             }
