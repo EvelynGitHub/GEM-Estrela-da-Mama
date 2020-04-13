@@ -83,13 +83,16 @@ class Atividade
        
 			$banco = new CRUD();
             $matriz = $banco->obterRegistros($sql);
-          
-            while(mysqli_fetch_assoc($matriz)){
-                $pegaValores = mysqli_fetch_assoc($matriz);
-                echo $botaoLista = "<button class = 'ver-atividade'>$pegaValores</button>";
+            if($matriz != null){
+                for($i = 0;$i <= count($matriz); $i++)
+                {
+                    $pegaValores = mysqli_fetch_assoc($matriz[$i]);
+                    echo $botaoLista = "<button class = 'ver-atividade'>$pegaValores</button>";
                 
+                }
+            }else{
+                echo "Não tem atividade cadastradas";
             }
-        
 
            
     }
