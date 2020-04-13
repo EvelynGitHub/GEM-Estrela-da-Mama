@@ -87,10 +87,10 @@ class Atividade
                 while($teste=mysqli_fetch_assoc($matriz))
                 {
                     $pegaValores = $teste;
-                    
+                    echo  "<button class = 'ver-atividade'>" $pegaValores "</button>";
                 
                 }
-                echo  "<button class = 'ver-atividade'>" $pegaValores "</button>";
+                
                 //echo rederizarTabela($matriz );
             }else{
                 echo "Não tem atividade cadastradas";
