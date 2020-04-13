@@ -240,8 +240,8 @@ if (isset($_POST['btn-enviar'])) {
 		$cadAfiliado->rg = $_POST['rg'];
 		$cadAfiliado->cpf = $_POST['cpf'];
 		$cadAfiliado->nacionalidade = $_POST['nacionalidade'];
-		// $cadAfiliado->dataNascimento = $_POST['data'];
-		$cadAfiliado->dataNascimento = '2010/10/20';
+		$cadAfiliado->dataNascimento = $_POST['data'];
+		// $cadAfiliado->dataNascimento = '2010/10/20';
 		$cadAfiliado->estado = $_POST['estado'];
 		$cadAfiliado->cidade = $_POST['cidade'];
 		$cadAfiliado->bairro = $_POST['bairro'];
