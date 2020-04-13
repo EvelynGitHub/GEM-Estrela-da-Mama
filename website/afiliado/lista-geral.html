@@ -43,7 +43,7 @@
 
     <div class="cabecalho imprimir">
         <div class="row">
-            <div class="col"> <img src="/website/global/img/laco.png" width="150" height="" alt=""> </div>
+            <div class="col-3"> <img src="/website/global/img/laco.png" width="150" height="" alt=""> </div>
             <!--<div class="col-3"> <img src="../global/img/laco.png" width="150" height="" alt=""> </div>-->
             <div class="col">
                 <h3>ONG - Estrelas da Mama</h3>
@@ -219,13 +219,23 @@
         <?php 
         
         if(!empty($_GET)){
-            echo "tem get na url";
+            //echo "tem get na url";
             $this->renderizarHTML('afiliado','ver-afiliado.html');
         }
         
         ?>
         <!-- FIM: função que verifica se existe id na URL para Visualizar Afiliado -->
     </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+            <a href="https://www.fatecpg.edu.br/"> Fatec PG</a>
+        </div>
+
+    </footer>
+    <!-- Footer -->
 
     <script>
         function imprimir() {
