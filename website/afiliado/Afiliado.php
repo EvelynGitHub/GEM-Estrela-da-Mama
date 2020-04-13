@@ -158,23 +158,21 @@ class Afiliado
 			$banco = new CRUD();
 
 			if (isset($_POST["btnAfiliado"])) { // Se o botão foi clicado
-				
+
 				$filtroAfiliado = isset($_POST["afiliado"]) ? $_POST["afiliado"] : "";
-				
+
 				if ($filtroAfiliado != "todos") { // E se o valor do radio for diferente de "todos"
 					$sql .= "WHERE nm_tipo_afiliado=LOWER(:filtro) "; // coloque este WHERE
 					$preparaSQL = array(':filtro' => $filtroAfiliado); // prepare este sql
 				}
-
 			} else if (isset($_POST["btnAssistida"])) { // Se o botão foi clicado
-				
+
 				$statusAssistida = isset($_POST["assistida"]) ? $_POST["assistida"] : "";
-				
+
 				$sql .= "WHERE nm_status_assistida=LOWER(:filtro) ";
 				$preparaSQL = array(':filtro' => $statusAssistida);
-
 			} else if (isset($_POST["btnCargo"])) {
-				
+
 				$afiliadoVoluntario = isset($_POST["voluntario"]) ?  $_POST["voluntario"] : "";
 				$afiliadoCargo = isset($_POST["cargo"]) ? $_POST["cargo"] : "";
 
@@ -184,16 +182,14 @@ class Afiliado
 					$preparaSQL = array(':status' => $afiliadoVoluntario);
 
 					if ($afiliadoCargo != "") {
-				
+
 						$sql .= "AND nm_area_interesse LIKE :cargo ";
 						$preparaSQL[":cargo"] = "%$afiliadoCargo%";
-				
 					}
 				} else {
-					
+
 					$sql .= "WHERE nm_area_interesse LIKE :cargo "; // coloque este WHERE
 					$preparaSQL = array(':cargo' => "%$afiliadoCargo%");
-				
 				}
 			}
 
@@ -223,12 +219,14 @@ class Afiliado
 
 	private function retornarAfiliado($afiliado)
 	{
-		$sql = " SELECT * FROM afiliado WHERE cd_afiliado = :cd";
+		$sql = "SELECT * FROM vw_afiliado WHERE cd_afiliado = :cd";
 
 		$preparaSql = array(':cd' => $afiliado);
 
 		$banco = new CRUD();
 		$matriz = $banco->obterRegistros($sql, $preparaSql);
+
+		unset($matriz[0]['cd_afiliado']);
 
 		return $matriz[0];
 	}
