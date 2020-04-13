@@ -145,7 +145,7 @@ class Afiliado
 	public function listarAfiliado()
 	{
 		try {
-			$sql = " SELECT cd_afiliado AS '#',
+			$sql = " SELECT cd_afiliado AS 'cd',
 							nm_afiliado AS 'Nome', 
 							nm_tipo_afiliado AS 'Tipo',
 							nm_area_interesse AS 'Função', 
@@ -195,8 +195,8 @@ class Afiliado
 
 			$matriz = $banco->obterRegistros($sql, $preparaSQL);
 
-			$array['#'] = array('Opção' => "<a href='?id=@codigo@' class=''>
-												<i class='far fa-id-card' style='font-size: 1.5rem;'></i>
+			$array['cd'] = array('Opção' => "<a href='?id=@codigo@' class=''>
+												<i class='far fa-eye' style='font-size: 1.5rem;'></i>
 											</a>
 											<a href='editar?id=@codigo@' class=''>
 												<i class='far fa-edit' style='font-size: 1.5rem;'></i>
@@ -225,8 +225,6 @@ class Afiliado
 
 		$banco = new CRUD();
 		$matriz = $banco->obterRegistros($sql, $preparaSql);
-
-		unset($matriz[0]['cd_afiliado']);
 
 		return $matriz[0];
 	}
