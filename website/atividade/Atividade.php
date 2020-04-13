@@ -85,7 +85,7 @@ class Atividade
             $matriz = $banco->obterRegistros($sql);
             if($matriz != null){
             
-                echo $matriz;
+                echo $this->rederizarTabela($matriz);
             
         }
         else{
