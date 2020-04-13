@@ -84,12 +84,13 @@ class Atividade
 			$banco = new CRUD();
             $matriz = $banco->obterRegistros($sql);
             if($matriz != null){
-                for($i = 0; $i <= count($matriz); $i++)
+                /*for($i = 0; $i <= count($matriz); $i++)
                 {
                     $pegaValores[$i] = mysqli_fetch_assoc($matriz[$i]);
                     echo  "<button class = 'ver-atividade'>$pegaValores[$i] </button>";
                 
-                }
+                }*/
+                echo "<button class = 'ver-atividade'>" rederizarTabela($matriz ) "</button>";
             }else{
                 echo "Não tem atividade cadastradas";
             }
