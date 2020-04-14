@@ -83,13 +83,13 @@ class Atividade
        
 			$banco = new CRUD();
             $matriz = $banco->obterRegistros($sql);
-            
-                while(count($matriz))
+                $teste=count($matriz);
+                for($i=0;%i<=$teste;$i++)
                 {
                    $pegaValores[] = mysqli_fetch_assoc($matriz);
-                   
+                   echo  "<button class = 'ver-atividade'>" $pegaValores "</button>";
                 }
-                echo  "<button class = 'ver-atividade'>" $pegaValores "</button>";
+                
                 //echo rederizarTabela($matriz );
             
                
