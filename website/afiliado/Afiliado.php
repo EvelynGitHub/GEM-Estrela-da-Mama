@@ -145,14 +145,7 @@ class Afiliado
 	public function listarAfiliado()
 	{
 		try {
-			$sql = " SELECT cd_afiliado AS 'cd',
-							nm_afiliado AS 'Nome', 
-							nm_tipo_afiliado AS 'Tipo',
-							nm_area_interesse AS 'Função', 
-							dt_nascimento AS 'Data de Nascimento', 
-							cd_telefone AS 'Telefone',
-							nm_status_voluntario AS 'Estado',
-							'' AS 'Opção' FROM afiliado ";
+			$sql = " SELECT * FROM vw_afiliado ";
 			$preparaSQL = "";
 
 			$banco = new CRUD();
@@ -162,7 +155,7 @@ class Afiliado
 				$filtroAfiliado = isset($_POST["afiliado"]) ? $_POST["afiliado"] : "";
 
 				if ($filtroAfiliado != "todos") { // E se o valor do radio for diferente de "todos"
-					$sql .= "WHERE nm_tipo_afiliado=LOWER(:filtro) "; // coloque este WHERE
+					$sql .= "WHERE Tipo=LOWER(:filtro) "; // coloque este WHERE
 					$preparaSQL = array(':filtro' => $filtroAfiliado); // prepare este sql
 				}
 			} else if (isset($_POST["btnAssistida"])) { // Se o botão foi clicado
@@ -219,7 +212,7 @@ class Afiliado
 
 	private function retornarAfiliado($afiliado)
 	{
-		$sql = "SELECT * FROM vw_afiliado WHERE cd_afiliado = :cd";
+		$sql = "SELECT * FROM vw_dados_afiliado WHERE cd_afiliado = :cd";
 
 		$preparaSql = array(':cd' => $afiliado);
 
