@@ -85,14 +85,12 @@ class Atividade
             $matriz = $banco->obterRegistros($sql);
             
                 //while($teste = mysqli_fetch_assoc($matriz))
-                var_dump($matriz);
+                //var_dump($matriz);
                 //$pegaValor[] = mysqli_fetch_assoc($matriz);
                 //var_dump($pegaValor);
                 foreach($matriz as $valor){
                    
                     echo $valor;//"<button class='ver-atividade'>".mysqli_fetch_assoc($valor)."</button>";
-                   
-                   
                    
                 }
                  
