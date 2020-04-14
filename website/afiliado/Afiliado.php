@@ -21,14 +21,14 @@ class Afiliado
 	private $nacionalidade;
 	private $sexo;
 	private $dataNascimento;
-	private $estado;
-	private $cidade;
-	private $bairro;
+	// private $estado;
+	// private $cidade;
+	// private $bairro;
 	// private $rua;
 	// private $numeroResidencial;
 	// private $complemento;
 	private $endereco;
-	private $cep;
+	// private $cep;
 	private $telefone;
 	private $celular;
 	private $email;
@@ -109,11 +109,11 @@ class Afiliado
 			'nm_nacionalidade' => $this->nacionalidade,
 			'ic_sexo' => $this->sexo,
 			'dt_nascimento' => $this->dataNascimento,
-			'nm_estado' => $this->estado,
-			'nm_cidade' => $this->cidade,
-			'nm_bairro' => $this->bairro,
+			// 'nm_estado' => $this->estado,
+			// 'nm_cidade' => $this->cidade,
+			// 'nm_bairro' => $this->bairro,
 			'nm_endereco' => $this->endereco,
-			'cd_cep' => $this->cep,
+			// 'cd_cep' => $this->cep,
 			'cd_telefone' => $this->telefone,
 			'cd_contato' => $this->celular,
 			'nm_email' => $this->email,
@@ -145,14 +145,7 @@ class Afiliado
 	public function listarAfiliado()
 	{
 		try {
-			$sql = " SELECT cd_afiliado AS 'cd',
-							nm_afiliado AS 'Nome', 
-							nm_tipo_afiliado AS 'Tipo',
-							nm_area_interesse AS 'Função', 
-							dt_nascimento AS 'Data de Nascimento', 
-							cd_telefone AS 'Telefone',
-							nm_status_voluntario AS 'Estado',
-							'' AS 'Opção' FROM afiliado ";
+			$sql = " SELECT * FROM vw_afiliado ";
 			$preparaSQL = "";
 
 			$banco = new CRUD();
@@ -162,7 +155,7 @@ class Afiliado
 				$filtroAfiliado = isset($_POST["afiliado"]) ? $_POST["afiliado"] : "";
 
 				if ($filtroAfiliado != "todos") { // E se o valor do radio for diferente de "todos"
-					$sql .= "WHERE nm_tipo_afiliado=LOWER(:filtro) "; // coloque este WHERE
+					$sql .= "WHERE Tipo=LOWER(:filtro) "; // coloque este WHERE
 					$preparaSQL = array(':filtro' => $filtroAfiliado); // prepare este sql
 				}
 			} else if (isset($_POST["btnAssistida"])) { // Se o botão foi clicado
@@ -202,7 +195,7 @@ class Afiliado
 												<i class='far fa-edit' style='font-size: 1.5rem;'></i>
 											</a>");
 
-
+			echo "<p id='qtdRetornados' hidden> N°: ". count($matriz). "</p>";
 			echo $this->rederizarTabela($matriz, $array, "@codigo@");
 		} catch (Exception $e) {
 			echo "Erro ao listar Afiliados: $e";
@@ -219,7 +212,7 @@ class Afiliado
 
 	private function retornarAfiliado($afiliado)
 	{
-		$sql = "SELECT * FROM vw_afiliado WHERE cd_afiliado = :cd";
+		$sql = "SELECT * FROM vw_dados_afiliado WHERE cd_afiliado = :cd";
 
 		$preparaSql = array(':cd' => $afiliado);
 
@@ -241,12 +234,11 @@ if (isset($_POST['btn-enviar'])) {
 		$cadAfiliado->cpf = $_POST['cpf'];
 		$cadAfiliado->nacionalidade = $_POST['nacionalidade'];
 		$cadAfiliado->dataNascimento = $_POST['data'];
-		// $cadAfiliado->dataNascimento = '2010/10/20';
-		$cadAfiliado->estado = $_POST['estado'];
-		$cadAfiliado->cidade = $_POST['cidade'];
-		$cadAfiliado->bairro = $_POST['bairro'];
-		$cadAfiliado->cep = $_POST['cep'];
-		$cadAfiliado->endereco = "Sem endereco";
+		// $cadAfiliado->estado = "";
+		// $cadAfiliado->cidade = "";
+		// $cadAfiliado->bairro = "";
+		// $cadAfiliado->cep = "";
+		$cadAfiliado->endereco = $_POST['bairro']. " ". $_POST['cidade']. "/". $_POST['estado']. " ". $_POST['cep'];
 		$cadAfiliado->telefone = $_POST['telefone'];
 		$cadAfiliado->celular = $_POST['celular'];
 		$cadAfiliado->email = $_POST['email'];
@@ -276,10 +268,10 @@ if (isset($_POST['btn-enviar'])) {
 		// 	- ASSISTIDA
 		$cadAfiliado->diagnostico = isset($_POST['diagnostico']) ? $_POST['diagnostico'] : "";
 
-		$cadAfiliado->cirurgiaMamaDireita = isset($_POST['mamaDireita']) ? $_POST['mamaDireita'] : "false";
+		$cadAfiliado->cirurgiaMamaDireita = isset($_POST['mamaDireita']) ? TRUE : FALSE;
 		$cadAfiliado->anoCirurgiaDireita = isset($_POST['anoDireita']) ? $_POST['anoDireita'] : NULL;
 
-		$cadAfiliado->cirurgiaMamaEsquerda = isset($_POST['mamaEsquerda']) ? $_POST['mamaEsquerda'] : "false";
+		$cadAfiliado->cirurgiaMamaEsquerda = isset($_POST['mamaEsquerda']) ? TRUE : FALSE;
 		$cadAfiliado->anoCirurgiaEsquerda = isset($_POST['anoEsquerda']) ? $_POST['anoEsquerda'] : NULL;
 
 		$cadAfiliado->convenioMedico = isset($_POST['convenio']) ? $_POST['convenio'] : "";

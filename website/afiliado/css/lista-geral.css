@@ -203,3 +203,15 @@ footer{
     background-color: lightpink;
     margin-top: 5%;
 }
+
+.formatp{
+    font-size: 150%;
+    display: flex;
+    justify-content: center;
+    font-family: fantasy;
+    color: #FF1493;
+}
+
+a:link{
+    text-decoration: none;
+}

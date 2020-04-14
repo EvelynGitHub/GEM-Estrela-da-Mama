@@ -3,55 +3,66 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/website/afiliado/css/style.css">
+    <link rel="stylesheet" href="/website/global/font-awesome/css/all.css">
 
     <title>Cadastro de Afiliado</title>
 </head>
 
 <body>
-    <center>
-        <h2>Ficha de Cadastro de Afiliado</h2>
-    </center>
+    
+    <!-- Div para o Botão Voltar juntamento com o Titulo -->
+    <div class="row">
+        <div class="col-1">
+            <a class="btn" href="/lista-geral"><i class="fas fa-arrow-left"> Voltar</i></a>
+        </div>
+        <div class="col center-title">
+            <h2>Ficha de Cadastro de Afiliado</h2>
+        </div>
+    </div>
+    <!--  FIM da Div do Botão Volta e do Titulo -->
+
     <hr>
     <form action="" method="POST">
-        <div class="container container-fluid" >
+        <div class="container">
             <div class="row">
-                <div class="col-4">
-                    <input type="text" class="form-control mb-3" name="nome" id="nome" placeholder="Nome Completo" >
-                    <input type="text" class="form-control mb-3" name="rg" id="rg" placeholder="RG" >
-                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" placeholder="CPF" >
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <input type="text" class="form-control mb-3" name="nome" id="nome" placeholder="Nome Completo">
+                    <input type="text" class="form-control mb-3" name="rg" id="rg" placeholder="RG">
+                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" placeholder="CPF">
                     <input type="text" class="form-control mb-3" name="nacionalidade" id="nacionalidade"
                         placeholder="Nacionalidade">
-                    <input type="date" class="form-control mb-3" name="data" id="data" >
+                    <input type="date" class="form-control mb-3" name="data" id="data">
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="row mb-3">
                         <div class="col-6">
-                            <select class="form-control" name="estado" id="estado" >
+                            <select class="form-control" name="estado" id="estado">
                                 <option class="" value="Estado">
                                     Estado
                                 </option>
                             </select>
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" >
+                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade">
                         </div>
                     </div>
-                    <input type="text" class="form-control mb-3" name="bairro" id="bairro" placeholder="Bairro" >
-                    <input type="text" class="form-control mb-3" name="cep" id="cep" placeholder="CEP" >
+                    <input type="text" class="form-control mb-3" name="bairro" id="bairro" placeholder="Bairro">
+                    <input type="text" class="form-control mb-3" name="cep" id="cep" placeholder="CEP">
                     <input type="text" class="form-control mb-3" name="telefone" id="telefone"
-                        placeholder="(00)0000-0000" >
+                        placeholder="(00)0000-0000">
                     <input type="text" class="form-control mb-3" name="celular" id="celular"
-                        placeholder="(00)00000-0000" >
+                        placeholder="(00)00000-0000">
                 </div>
-                <div class="col-4">
-                    <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email" >
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email">
                     <input type="text" class="form-control mb-3" name="escolaridade" id="escolaridade"
-                        placeholder="Escolaridade" >
+                        placeholder="Escolaridade">
                     <input type="text" class="form-control mb-3" name="sitProfissional" id="sitProfissional"
-                        placeholder="Situação profissional" >
+                        placeholder="Situação profissional">
                     <div class="row mb-4">
                         <label class="px-3">
                             Sexo:
@@ -70,22 +81,22 @@
                             Tipo:
                         </label>
                         <div class="custom-control custom-radio ml-1">
-                            <input type="radio" class="custom-control-input align-bottom" name="tipo"
-                                id="tipoAssistida" value="Assistida">
+                            <input type="radio" class="custom-control-input align-bottom" name="tipo" id="tipoAssistida"
+                                value="Assistida">
                             <label class="custom-control-label" for="tipoAssistida">Assistida</label>
                         </div>
                         <div class="custom-control custom-radio ml-3">
                             <input type="radio" class="custom-control-input align-bottom" name="tipo"
-                                id="tipoVoluntario" value="Voluntario">
+                                id="tipoVoluntario" value="Voluntário">
                             <label class="custom-control-label" for="tipoVoluntario">Voluntário</label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container container-fluid" id="voluntario" hidden>
+        <div class="container" id="voluntario" hidden>
             <div class="row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <h4>Voluntário</h4>
                     <input type="text" class="form-control mb-3" name="interesse" id="interesse"
                         placeholder="Área de interesse">
@@ -93,36 +104,45 @@
             </div>
             <h6>Disponibilidade</h6>
             <div class="row">
-                <div class="custom-control custom-checkbox mx-3">
-                    <input type="checkbox" class="custom-control-input" value="Segunda" name="semana[]" id="segunda">
-                    <label class="custom-control-label" for="segunda">Segunda</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" value="Terça" name="semana[]" id="terca">
-                    <label class="custom-control-label" for="terca">Terça</label>
-                </div>
-                <div class="custom-control custom-checkbox mx-2">
-                    <input type="checkbox" class="custom-control-input" value="Quarta" name="semana[]" id="quarta">
-                    <label class="custom-control-label" for="quarta">Quarta</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" value="Quinta" name="semana[]" id="quinta">
-                    <label class="custom-control-label" for="quinta">Quinta</label>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="row">
+                        <div class="custom-control custom-checkbox mx-1">
+                            <input type="checkbox" class="custom-control-input" value="Segunda" name="semana[]"
+                                id="segunda">
+                            <label class="custom-control-label" for="segunda">Segunda</label>
+                        </div>
+                        <div class="custom-control custom-checkbox mx-1">
+                            <input type="checkbox" class="custom-control-input" value="Terça" name="semana[]"
+                                id="terca">
+                            <label class="custom-control-label" for="terca">Terça</label>
+                        </div>
+                        <div class="custom-control custom-checkbox mx-1">
+                            <input type="checkbox" class="custom-control-input" value="Quarta" name="semana[]"
+                                id="quarta">
+                            <label class="custom-control-label" for="quarta">Quarta</label>
+                        </div>
+                        <div class="custom-control custom-checkbox mx-1">
+                            <input type="checkbox" class="custom-control-input" value="Quinta" name="semana[]"
+                                id="quinta">
+                            <label class="custom-control-label" for="quinta">Quinta</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container container-fluid" id="assistida" hidden>
+        <div class="container" id="assistida" hidden>
             <h4>Assistida</h4>
             <div class="row">
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <h6 class="mt-4">Diagnóstico:</h6>
                     <textarea class="form-control" name="diagnostico" id="diagnostico" cols="20" rows="4"></textarea>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <h6 class="mt-4">Cirurgia da Mama:</h6>
                     <div class="row">
                         <div class="col-3 custom-control custom-checkbox ml-3">
-                            <input type="checkbox" class="custom-control-input" value="true" name="mamaDireita" id="mamaDireita">
+                            <input type="checkbox" class="custom-control-input" value="true" name="mamaDireita"
+                                id="mamaDireita">
                             <label class="custom-control-label" for="mamaDireita">Direita</label>
                         </div>
                         <div class="col-6 custom-control custom-checkbox">
@@ -132,7 +152,8 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-3 custom-control custom-checkbox ml-3">
-                            <input type="checkbox" class="custom-control-input"  value="true" name="mamaEsquerda" id="mamaEsquerda">
+                            <input type="checkbox" class="custom-control-input" value="true" name="mamaEsquerda"
+                                id="mamaEsquerda">
                             <label class="custom-control-label" for="mamaEsquerda">Esquerda</label>
                         </div>
                         <div class="col-6 custom-control custom-checkbox">
@@ -141,20 +162,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <h6 class="mt-4">Convênio:</h6>
                     <textarea class="form-control" name="convenio" id="convenio" cols="20" rows="4"></textarea>
                 </div>
             </div>
         </div>
-        <center>
+        <div class="d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-success btn-lg m-4" name="btn-enviar">
                 Cadastrar
             </button>
             <button type="submit" class="btn btn-danger btn-lg" name="btn-cancelar">
                 Cancelar
             </button>
-        </center>
+        </div>
     </form>
 
     <script src="/website/afiliado/js/cadastrar-afiliado.js"></script>

@@ -28,3 +28,12 @@ button {
     background-color: #FF1493;
 }
 
+.fa-arrow-left{
+    font-size: 1.3rem;
+    color: #FF1493;
+}
+
+.center-title{
+    text-align: center;
+    margin-right: 7%;
+}
