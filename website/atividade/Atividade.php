@@ -87,13 +87,13 @@ class Atividade
                 //while($teste = mysqli_fetch_assoc($matriz))
                 
                 while(mysqli_fetch_assoc($matriz)){
-                    $pegaValor  = mysqli_fetch_assoc($matriz);
+                    $pegaValor[] = mysqli_fetch_assoc($matriz);
                     
                    //"<button class='ver-atividade'>".$pegaValor."</button>";
-                   echo var_dump($pegaValor);
+                   
                    
                 }
-                
+                 var_dump($pegaValor);
             
 
            
