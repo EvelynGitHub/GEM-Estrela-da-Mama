@@ -85,7 +85,7 @@ class Atividade
             $matriz = $banco->obterRegistros($sql);
             
                 //while($teste = mysqli_fetch_assoc($matriz))
-                
+                var_dump($matriz);
                 while(mysqli_fetch_assoc($matriz)){
                     $pegaValor[] = mysqli_fetch_assoc($matriz);
                     
@@ -93,7 +93,7 @@ class Atividade
                    
                    
                 }
-                 var_dump($pegaValor);
+                 
             
 
            
