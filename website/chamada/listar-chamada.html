@@ -1,1 +1,45 @@
-<h1>Lista chamada</h1>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/website/global/bootstrap.min.css">
+    <link rel="stylesheet" href="/website/global/font-awesome/css/all.css">
+
+    <title>Lista de chamada</title>
+</head>
+
+<body>
+    <!-- INICIO: Cabeçalho -->
+    <header class="border-size-b">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/atividade/listar-atividade">
+                <i class="fas fa-arrow-left"> Voltar</i>
+            </a>           
+        </nav>
+    </header>
+    <!-- FIM: Cabeçalho -->
+
+
+    <!-- INICIO: Informações da atividade e tabela de chamada -->
+    <div class="container">
+        <h3>Nome da atividade</h3>
+
+        <!-- Tabela de chamada -->
+        <div class="table-responsive overflow">
+            <table class="table table-bordered table-striped">
+                <?php $this->();?>
+            </table>
+        </div>
+    </div>
+    <!-- FIM: Informações da atividade e tabela de chamada -->
+
+
+
+    <?php $this->renderizarHTML('global', 'footer.html');?>
+</body>
+
+</html>
