@@ -12,6 +12,8 @@
     border: none;
     width: 90%;
     height: 50px;
+    text-align: center;
+    display: block;
 }
 @media only screen and (min-width: 700px){
     .ver-atividade{
