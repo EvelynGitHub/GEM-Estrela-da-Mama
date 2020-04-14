@@ -21,14 +21,14 @@ class Afiliado
 	private $nacionalidade;
 	private $sexo;
 	private $dataNascimento;
-	private $estado;
-	private $cidade;
-	private $bairro;
+	// private $estado;
+	// private $cidade;
+	// private $bairro;
 	// private $rua;
 	// private $numeroResidencial;
 	// private $complemento;
 	private $endereco;
-	private $cep;
+	// private $cep;
 	private $telefone;
 	private $celular;
 	private $email;
@@ -109,11 +109,11 @@ class Afiliado
 			'nm_nacionalidade' => $this->nacionalidade,
 			'ic_sexo' => $this->sexo,
 			'dt_nascimento' => $this->dataNascimento,
-			'nm_estado' => $this->estado,
-			'nm_cidade' => $this->cidade,
-			'nm_bairro' => $this->bairro,
+			// 'nm_estado' => $this->estado,
+			// 'nm_cidade' => $this->cidade,
+			// 'nm_bairro' => $this->bairro,
 			'nm_endereco' => $this->endereco,
-			'cd_cep' => $this->cep,
+			// 'cd_cep' => $this->cep,
 			'cd_telefone' => $this->telefone,
 			'cd_contato' => $this->celular,
 			'nm_email' => $this->email,
@@ -241,10 +241,10 @@ if (isset($_POST['btn-enviar'])) {
 		$cadAfiliado->cpf = $_POST['cpf'];
 		$cadAfiliado->nacionalidade = $_POST['nacionalidade'];
 		$cadAfiliado->dataNascimento = $_POST['data'];
-		$cadAfiliado->estado = "";
-		$cadAfiliado->cidade = "";
-		$cadAfiliado->bairro = "";
-		$cadAfiliado->cep = "";
+		// $cadAfiliado->estado = "";
+		// $cadAfiliado->cidade = "";
+		// $cadAfiliado->bairro = "";
+		// $cadAfiliado->cep = "";
 		$cadAfiliado->endereco = $_POST['bairro']. " ". $_POST['cidade']. "/". $_POST['estado']. " ". $_POST['cep'];
 		$cadAfiliado->telefone = $_POST['telefone'];
 		$cadAfiliado->celular = $_POST['celular'];
