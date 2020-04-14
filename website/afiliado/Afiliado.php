@@ -171,13 +171,10 @@ class Afiliado
 
 				if ($afiliadoVoluntario != "") {
 
-					$sql .= "WHERE LOWER(Status) IN LOWER(:status)";
-					// $preparaSQL = array(':status' => "'".$afiliadoVoluntario."'");
-					$preparaSQL = array(':status' => 'ativo');
-
-					
+					$sql .= "WHERE LOWER(Status) = LOWER(:status)";
+					$preparaSQL = array(':status' => $afiliadoVoluntario);
+										
 					if ($afiliadoCargo != "") {
-
 						$sql .= "AND nm_area_interesse LIKE :cargo ";
 						$preparaSQL[":cargo"] = "%$afiliadoCargo%";
 					}
@@ -187,8 +184,6 @@ class Afiliado
 					$preparaSQL = array(':cargo' => "%$afiliadoCargo%");
 				}
 			}
-			echo "<h1> $sql</h1>";
-
 
 			$matriz = $banco->obterRegistros($sql, $preparaSQL);
 
