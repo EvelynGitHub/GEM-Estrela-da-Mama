@@ -275,10 +275,10 @@ if (isset($_POST['btn-enviar'])) {
 		// 	- ASSISTIDA
 		$cadAfiliado->diagnostico = isset($_POST['diagnostico']) ? $_POST['diagnostico'] : "";
 
-		$cadAfiliado->cirurgiaMamaDireita = isset($_POST['mamaDireita']) ? $_POST['mamaDireita'] : "false";
+		$cadAfiliado->cirurgiaMamaDireita = isset($_POST['mamaDireita']) ? $_POST['mamaDireita'] : FALSE;
 		$cadAfiliado->anoCirurgiaDireita = isset($_POST['anoDireita']) ? $_POST['anoDireita'] : NULL;
 
-		$cadAfiliado->cirurgiaMamaEsquerda = isset($_POST['mamaEsquerda']) ? $_POST['mamaEsquerda'] : "false";
+		$cadAfiliado->cirurgiaMamaEsquerda = isset($_POST['mamaEsquerda']) ? $_POST['mamaEsquerda'] : FALSE;
 		$cadAfiliado->anoCirurgiaEsquerda = isset($_POST['anoEsquerda']) ? $_POST['anoEsquerda'] : NULL;
 
 		$cadAfiliado->convenioMedico = isset($_POST['convenio']) ? $_POST['convenio'] : "";
