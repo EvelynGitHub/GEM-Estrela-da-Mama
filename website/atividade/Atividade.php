@@ -86,7 +86,7 @@ class Atividade
             if($matriz != null){
                 while($teste = mysqli_fetch_assoc($matriz))
                 {
-                   $pegaValores['nm_atividade'] = $teste;
+                   $pegaValores = $teste;
                    
                 
                 }
