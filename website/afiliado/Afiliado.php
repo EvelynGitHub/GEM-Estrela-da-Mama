@@ -162,7 +162,7 @@ class Afiliado
 
 				$statusAssistida = isset($_POST["assistida"]) ? $_POST["assistida"] : "";
 
-				$sql .= "WHERE nm_status_assistida=LOWER(:filtro) ";
+				$sql .= "WHERE LOWER(Status) = LOWER(:filtro) ";
 				$preparaSQL = array(':filtro' => $statusAssistida);
 			} else if (isset($_POST["btnCargo"])) {
 
