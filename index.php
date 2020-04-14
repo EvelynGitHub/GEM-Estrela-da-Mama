@@ -29,7 +29,7 @@ class Rota
         $this->rotas['/atividade/cadastrar'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'cadastrar-atividade.html'));
         $this->rotas['/atividade/listar-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
         $this->rotas['/chamada/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
-        $this->rotas['/chamada/adicionar-afiliado'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'editar-chamada.html'));
+        $this->rotas['/chamada/editar-afiliado'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'editar-chamada.html'));
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
         
         //Rotas do localhost (desenvolvimento)/Projetos/GEM/GEM-Estrela-da-Mama-2/

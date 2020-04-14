@@ -12,7 +12,7 @@
       <div class="modal-body">
         <?php 
               $a = $this->retornarAfiliado($_GET['id']);
-              unset($a['cd_afiliado']);              
+              unset($a['cd']);              
               foreach ($a as $k=>$v) {
                 echo "<p><b>$k </b> $v </p>";
               }

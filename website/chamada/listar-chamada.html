@@ -11,14 +11,23 @@
     <title>Lista de chamada</title>
 </head>
 
+<style>
+    .btn-chamada {
+        background: #FF1493;
+        font-size: 1.2rem;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+
 <body>
     <!-- INICIO: Cabeçalho -->
     <header class="border-size-b">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/atividade/listar-atividade">
+            <a class="navbar-brand" href="lista-chamada">
                 <i class="fas fa-arrow-left"> Voltar</i>
-            </a>           
+            </a>
         </nav>
     </header>
     <!-- FIM: Cabeçalho -->
@@ -26,17 +35,25 @@
 
     <!-- INICIO: Informações da atividade e tabela de chamada -->
     <div class="container">
-        <h3>Nome da atividade</h3>
+        <div class="row mt-3">
+            <div class="col">
+                <h3>Nome da atividade:</h3>
+            </div>
+            <div class="col-3">
+                <a href="editar-afiliado?idAtividade=<?=$_GET['idAtividade']?>" class="btn btn-chamada">Editar</a>
+                <button class="btn btn-chamada">Iniciar Chamada</button>
+            </div>
+        </div>
+
 
         <!-- Tabela de chamada -->
         <div class="table-responsive overflow">
             <table class="table table-bordered table-striped">
-                <?php $this->();?>
+                <?php $this->listarChamada($_GET['idAtividade']);?>
             </table>
         </div>
     </div>
     <!-- FIM: Informações da atividade e tabela de chamada -->
-
 
 
     <?php $this->renderizarHTML('global', 'footer.html');?>

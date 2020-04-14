@@ -61,7 +61,7 @@ class CRUD extends Conexao
                 }
             }
         } catch (PDOException $e) {
-            return "O seguinte erro foi encontrado ao executar esse select: <br> $e->getMessage ";
+            return "O seguinte erro foi encontrado ao executar esse select: <br> $e ";
         }
     }
 
