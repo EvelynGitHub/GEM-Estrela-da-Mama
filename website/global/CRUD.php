@@ -46,13 +46,18 @@ class CRUD extends Conexao
                     $instrucao->bindValue($key, $value);
                 }
 
-                if ($instrucao->execute()) {
+                $sucesso = $instrucao->execute();
+
+                if (!$sucesso) {
+                    // throw new SqlException("Mensagem de erro");
+                    print_r($instrucao->errorInfo());
+                    echo "<br>Não foi possível executar está instrução <b>select</b>, por favor, verifique a escreita. <br>";
+                    return array();
+                }
+                else {
                     $retorno = $instrucao->fetchAll(PDO::FETCH_ASSOC);
                     $this->fecharConexao();
                     return $retorno;
-                } else {
-                    echo "<br>Não foi possível executar está instrução <b>select</b>, por favor, verifique a escreita. <br>";
-                    return array();
                 }
             }
         } catch (PDOException $e) {
