@@ -241,12 +241,11 @@ if (isset($_POST['btn-enviar'])) {
 		$cadAfiliado->cpf = $_POST['cpf'];
 		$cadAfiliado->nacionalidade = $_POST['nacionalidade'];
 		$cadAfiliado->dataNascimento = $_POST['data'];
-		// $cadAfiliado->dataNascimento = '2010/10/20';
-		$cadAfiliado->estado = $_POST['estado'];
-		$cadAfiliado->cidade = $_POST['cidade'];
-		$cadAfiliado->bairro = $_POST['bairro'];
-		$cadAfiliado->cep = $_POST['cep'];
-		$cadAfiliado->endereco = "Sem endereco";
+		$cadAfiliado->estado = "";
+		$cadAfiliado->cidade = "";
+		$cadAfiliado->bairro = "";
+		$cadAfiliado->cep = "";
+		$cadAfiliado->endereco = $_POST['bairro']. " ". $_POST['cidade']. "/". $_POST['estado']. " ". $_POST['cep'];
 		$cadAfiliado->telefone = $_POST['telefone'];
 		$cadAfiliado->celular = $_POST['celular'];
 		$cadAfiliado->email = $_POST['email'];
