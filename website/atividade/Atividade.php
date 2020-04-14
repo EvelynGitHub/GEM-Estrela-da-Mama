@@ -86,7 +86,7 @@ class Atividade
             
                 //while($teste = mysqli_fetch_assoc($matriz))
 
-                echo  mysqli_fetch_assoc($matriz);
+                echo  count($matriz);
             
 
            
