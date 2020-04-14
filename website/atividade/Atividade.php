@@ -87,9 +87,9 @@ class Atividade
                 //while($teste = mysqli_fetch_assoc($matriz))
                 $contador = 0;
                 while($contador <= count($matriz)){
-                    $teste[]  = mysqli_fetch_assoc($matriz['nm_atividade']);
+                    $pegaValor  = mysqli_fetch_assoc($matriz);
                     
-                    echo  "<button class='ver-atividade'>".$teste."</button>";
+                    echo  "<button class='ver-atividade'>".$pegaValor."</button>";
                     $contador += 1;
                 }
                 
