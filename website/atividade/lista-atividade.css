@@ -20,11 +20,11 @@
 }
 @media only screen and (min-width: 700px){
     .ver-atividade{
-        margin: 10px 11px;
+        margin: 10px 10px;
         background-color: palevioletred;
         color: black;
         border: none;
-        width: 40%;
+        width: 30%;
         height: 50px;
         white-space: normal;
     }
