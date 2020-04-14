@@ -1,9 +1,15 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 i{
     margin: 5px 0px;
+}
+i:hover{
+    color: #FF1493;
+}
+.navbar-nav .nav-item .nav-link:hover {
     color: #FF1493;
 }
 .titulo{
@@ -32,7 +38,7 @@ i{
         background-color: #FF1493;
         color: white;
         border: none;
-        width: 25%;
+        width: 20%;
         height: 50px;
         white-space: normal;
     }
