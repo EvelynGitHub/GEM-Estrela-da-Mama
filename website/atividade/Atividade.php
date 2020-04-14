@@ -93,7 +93,7 @@ class Atividade
                    
                     $contador += 1;
                 }
-                echo  var_dump($pegaValor);
+                 var_dump($pegaValor);
             
 
            
