@@ -90,7 +90,7 @@ class Atividade
                     $pegaValor  = mysqli_fetch_assoc($matriz);
                     
                    //"<button class='ver-atividade'>".$pegaValor."</button>";
-                   var_dump($pegaValor);
+                   echo var_dump($pegaValor);
                    
                 }
                 
