@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    white-space: normal;
+    
 }
 @media only screen and (min-width: 700px){
     .ver-atividade{
@@ -26,5 +26,6 @@
         border: none;
         width: 20%;
         height: 50px;
+        white-space: normal;
     }
 }
