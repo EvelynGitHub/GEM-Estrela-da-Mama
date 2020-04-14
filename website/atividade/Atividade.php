@@ -86,10 +86,10 @@ class Atividade
             
                 while(mysqli_fetch_assoc($matriz))
                 {
-                   $pegaValores = mysqli_fetch_assoc($matriz);
-                   echo  "<button class = 'ver-atividade'>" $pegaValores "</button>";
+                   $pegaValores[] = mysqli_fetch_assoc($matriz);
+                   
                 }
-                
+                echo  "<button class = 'ver-atividade'>" $pegaValores "</button>";
                 //echo rederizarTabela($matriz );
             
                
