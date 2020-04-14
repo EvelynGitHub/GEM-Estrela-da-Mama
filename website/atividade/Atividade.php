@@ -84,7 +84,7 @@ class Atividade
 			$banco = new CRUD();
             $matriz = $banco->obterRegistros($sql);
             
-                while(mysqli_fetch_assoc($matriz))
+                while(count($matriz))
                 {
                    $pegaValores[] = mysqli_fetch_assoc($matriz);
                    
