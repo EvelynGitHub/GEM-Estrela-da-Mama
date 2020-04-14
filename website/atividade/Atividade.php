@@ -89,9 +89,9 @@ class Atividade
                 //$pegaValor[] = mysqli_fetch_assoc($matriz);
                 //var_dump($pegaValor);
                 foreach($matriz as $valor){
-                   
-                    echo "<button class='ver-atividade'>".$valor."</button>";
-                   
+                   foreach($valor as $pegaValor){
+                    echo "<button class='ver-atividade'>".$pegaValor."</button>";
+                   }
                 }
                  
             
