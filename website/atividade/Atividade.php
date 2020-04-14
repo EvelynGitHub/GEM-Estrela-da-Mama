@@ -85,8 +85,13 @@ class Atividade
             $matriz = $banco->obterRegistros($sql);
             
                 //while($teste = mysqli_fetch_assoc($matriz))
-
-                echo  count($matriz);
+                $contador = 0;
+                while($contador <= count($matriz)){
+                    $teste[]  = mysqli_fetch_assoc($matriz);
+                    echo  $teste;
+                    $contador += 1;
+                }
+                
             
 
            
