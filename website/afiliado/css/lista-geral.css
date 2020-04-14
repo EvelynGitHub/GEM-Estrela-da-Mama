@@ -211,3 +211,7 @@ footer{
     font-family: fantasy;
     color: #FF1493;
 }
+
+a:link{
+    text-decoration: none;
+}
