@@ -205,8 +205,14 @@
                 </div>
             </div>
         </form>
-        <button class="btn btn-primary no-imprimir mb-3" onclick="imprimir()">Imprimir <i class="fa fa-print"
-                aria-hidden="true"></i></button>
+
+        <div class="row">
+            <button class="btn btn-primary no-imprimir mb-3" onclick="imprimir()">Imprimir <i class="fa fa-print"
+                    aria-hidden="true"></i></button>
+            <div class="col formatp">
+                <p id="retornoQtdAfiliadosFiltro"></p>
+            </div>
+        </div>
 
         <div class="table-responsive overflow">
             <table class="table table-bordered table-striped">
@@ -241,6 +247,10 @@
         function imprimir() {
             window.print();
         }
+
+        let qtdRetornados = document.getElementById('qtdRetornados');
+        let retornoQtdAfiliadosFiltro = document.getElementById('retornoQtdAfiliadosFiltro');
+        retornoQtdAfiliadosFiltro.innerText = qtdRetornados.innerText;
     </script>
 </body>
 

@@ -202,7 +202,7 @@ class Afiliado
 												<i class='far fa-edit' style='font-size: 1.5rem;'></i>
 											</a>");
 
-
+			echo "<p id='qtdRetornados' hidden> N°: ". count($matriz). "</p>";
 			echo $this->rederizarTabela($matriz, $array, "@codigo@");
 		} catch (Exception $e) {
 			echo "Erro ao listar Afiliados: $e";
