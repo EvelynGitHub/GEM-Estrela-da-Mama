@@ -88,7 +88,7 @@ class Atividade
                 
                 while(mysqli_fetch_assoc($matriz)){
                     
-                    $pegaValor  = $matriz;
+                    $pegaValor  = mysqli_fetch_assoc($matriz);
 
                     echo  "<button class='ver-atividade'>".$pegaValor."</button>";
                     
