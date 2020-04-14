@@ -169,18 +169,19 @@ class Afiliado
 				$afiliadoVoluntario = isset($_POST["voluntario"]) ?  $_POST["voluntario"] : "";
 				$afiliadoCargo = isset($_POST["cargo"]) ? $_POST["cargo"] : "";
 
+				// Não tem problema os 'ç' e '~', pois estes são os nomes das colunas da view
 				if ($afiliadoVoluntario != "") {
 
 					$sql .= "WHERE LOWER(Status) = LOWER(:status)";
 					$preparaSQL = array(':status' => $afiliadoVoluntario);
 										
 					if ($afiliadoCargo != "") {
-						$sql .= "AND nm_area_interesse LIKE :cargo ";
+						$sql .= "AND Função LIKE :cargo ";
 						$preparaSQL[":cargo"] = "%$afiliadoCargo%";
 					}
 				} else {
 
-					$sql .= "WHERE nm_area_interesse LIKE :cargo "; // coloque este WHERE
+					$sql .= "WHERE Função LIKE :cargo "; // coloque este WHERE
 					$preparaSQL = array(':cargo' => "%$afiliadoCargo%");
 				}
 			}
