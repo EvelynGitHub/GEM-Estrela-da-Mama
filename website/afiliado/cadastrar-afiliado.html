@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/website/afiliado/css/style.css">
-    <link rel="stylesheet" href="/website/global/font-awesome/css/all.css">
-
     <title>Cadastro de Afiliado</title>
 </head>
 
@@ -16,10 +14,7 @@
     
     <!-- Div para o Botão Voltar juntamento com o Titulo -->
     <div class="row">
-        <div class="col-1">
-            <a class="btn" onClick="history.go(-1)"><i class="fas fa-arrow-left"> Voltar</i></a>
-        </div>
-        <div class="col center-title">
+        <div class="col-md-12 col-sm-12 center-title">
             <h2>Ficha de Cadastro de Afiliado</h2>
         </div>
     </div>
@@ -227,7 +222,7 @@
                             <label class="custom-control-label" for="mamaDireita">Direita</label>
                         </div>
                         <div class="col-6 custom-control custom-checkbox">
-                            <input type="text" class="form-control col-5 ml-3" name="anoDireita" id="anoDireita"
+                            <input type="date" class="form-control col-12 ml-3" name="anoDireita" id="anoDireita"
                                 placeholder="Ano">
                         </div>
                     </div>
@@ -238,7 +233,7 @@
                             <label class="custom-control-label" for="mamaEsquerda">Esquerda</label>
                         </div>
                         <div class="col-6 custom-control custom-checkbox">
-                            <input type="text" class="form-control col-5 ml-3" name="anoEsquerda" id="anoEsquerda"
+                            <input type="date" class="form-control col-12 ml-3" name="anoEsquerda" id="anoEsquerda"
                                 placeholder="Ano">
                         </div>
                     </div>
@@ -254,7 +249,7 @@
                 Cadastrar
             </button>
             <button type="submit" class="btn btn-danger btn-lg" name="btn-cancelar">
-                Cancelar
+                Voltar
             </button>
         </div>
     </form>

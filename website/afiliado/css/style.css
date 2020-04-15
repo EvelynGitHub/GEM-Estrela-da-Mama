@@ -7,13 +7,19 @@
 }
 
 body {
+    overflow-x: hidden;
     font: 400 14px Roboto, sans-serif;
     background: #f0f0f5;
     -webkit-font-smoothing: antialiased;
 }
 
-input, button, textarea, select, label {
+input, button, textarea, select, label{
     font: 400 18px Roboto, sans-serif;
+}
+
+hr {
+    border: 1px solid #FF1493;
+    border-radius: 10px;
 }
 
 button {
