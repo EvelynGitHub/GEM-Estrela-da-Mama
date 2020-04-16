@@ -90,7 +90,7 @@ class Atividade
                 //var_dump($pegaValor);
                 foreach($matriz as $valor){
                    foreach($valor as $pegaValor){
-                    echo "<a href='#' class='ver-atividade'>".$pegaValor."</a>";
+                    echo "<a href='#' class='ver-atividade'>".$pegaValor['nm_atividade']."</a>";
                    }
                 }
                 //FEITO COM SUCESSO
