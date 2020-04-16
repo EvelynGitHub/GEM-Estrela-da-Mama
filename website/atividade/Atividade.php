@@ -79,7 +79,7 @@ class Atividade
     }
     public function listarAtividades()
     {
-        $sql = " SELECT nm_atividade  FROM atividade ";
+        $sql = " SELECT cd_atividade,nm_atividade  FROM atividade ";
        
 			$banco = new CRUD();
             $matriz = $banco->obterRegistros($sql);
