@@ -93,7 +93,7 @@ class Atividade
                        //var_dump($valor['cd_atividade']);
                        //var_dump($valor['nm_atividade']);
                        echo "<br>";
-                       echo "<a href='#' class='ver-atividade'>".$valor['nm_atividade']."</a>";
+                       echo "<a href='/chamada/lista-chamada?idAtividade=".$valor['cd_atividade']."' class='ver-atividade'>".$valor['nm_atividade']."</a>";
                   // }
                 }
                 //FEITO COM SUCESSO
