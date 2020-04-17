@@ -89,9 +89,12 @@ class Atividade
                 //$pegaValor[] = mysqli_fetch_assoc($matriz);
                 //var_dump($pegaValor);
                 foreach($matriz as $valor){
-                   foreach($valor as $pegaValor){
-                    echo "<a href='#' class='ver-atividade'>".$pegaValor['nm_atividade']."</a>";
-                   }
+                   //foreach($valor as $pegaValor){
+                       var_dump($valor['cd_atividade']);
+                       var_dump($valor['nm_atividade']);
+                       echo "<br>";
+                    //echo "<a href='#' class='ver-atividade'>".$pegaValor."</a>";
+                  // }
                 }
                 //FEITO COM SUCESSO
                  
