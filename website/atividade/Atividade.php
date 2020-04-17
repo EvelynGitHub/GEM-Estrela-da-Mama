@@ -90,10 +90,10 @@ class Atividade
                 //var_dump($pegaValor);
                 foreach($matriz as $valor){
                    //foreach($valor as $pegaValor){
-                       var_dump($valor['cd_atividade']);
-                       var_dump($valor['nm_atividade']);
+                       //var_dump($valor['cd_atividade']);
+                       //var_dump($valor['nm_atividade']);
                        echo "<br>";
-                    //echo "<a href='#' class='ver-atividade'>".$pegaValor."</a>";
+                       echo "<a href='#' class='ver-atividade'>".$valor['nm_atividade']."</a>";
                   // }
                 }
                 //FEITO COM SUCESSO
