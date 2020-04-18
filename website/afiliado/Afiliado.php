@@ -134,8 +134,39 @@ class Afiliado
 		die();
 	}
 
-	public function editarAfiliado($afiliado)
+	public function editarAfiliado($codigoAfiliado = 0, $alta = '')
 	{
+		$crud = new CRUD();
+
+		$editarAfiliado = array(
+			'nm_afiliado' => $this->nomeCompleto,
+			'cd_rg' => $this->rg,
+			'cd_cpf' => $this->cpf,
+			'nm_nacionalidade' => $this->nacionalidade,
+			'ic_sexo' => $this->sexo,
+			'dt_nascimento' => $this->dataNascimento,
+			'nm_endereco' => $this->endereco,
+			'cd_telefone' => $this->telefone,
+			'cd_contato' => $this->celular,
+			'nm_email' => $this->email,
+			'nm_escolaridade' => $this->escolaridade,
+			'nm_situacao_profissional' => $this->situacaoProfissional,
+			'nm_tipo_afiliado' => $this->tipoAfiliado,
+			'nm_area_interesse' => $this->setorVoluntario,
+			'nm_disponibilidade' => $this->disponibilidade,
+			'nm_diagnostico' => $this->diagnostico,
+			'nm_cirurgia_mama_direita' => $this->cirurgiaMamaDireita,
+			'dt_cirugia_mama_direita' => $this->anoCirurgiaDireita,
+			'nm_cirurgia_mama_esquerda' => $this->cirurgiaMamaEsquerda,
+			'dt_cirugia_mama_esquerda' => $this->anoCirurgiaEsquerda,
+			'nm_convenio_medico' => $this->convenioMedico,
+			'nm_status_assistida' => $alta	
+		);
+
+		$editarCondicao = array('cd_afiliado' => $codigoAfiliado);
+
+		echo $crud->updateGenerico("afiliado", $editarAfiliado, $editarCondicao);
+		die();
 	}
 
 	public function excluirAfiliado($afiliado)
@@ -174,7 +205,7 @@ class Afiliado
 
 					$sql .= "WHERE LOWER(Status) = LOWER(:status)";
 					$preparaSQL = array(':status' => $afiliadoVoluntario);
-										
+
 					if ($afiliadoCargo != "") {
 						$sql .= "AND Função LIKE :cargo ";
 						$preparaSQL[":cargo"] = "%$afiliadoCargo%";
@@ -191,11 +222,11 @@ class Afiliado
 			$array['cd'] = array('Opção' => "<a href='?id=@codigo@' class=''>
 												<i class='far fa-id-card' style='font-size: 1.5rem;'></i>
 											</a>
-											<a href='editar?id=@codigo@' class=''>
+											<a href='/afiliado/editar?id=@codigo@' class=''>
 												<i class='far fa-edit' style='font-size: 1.5rem;'></i>
 											</a>");
 
-			echo "<p id='qtdRetornados' hidden> N°: ". count($matriz). "</p>";
+			echo "<p id='qtdRetornados' hidden> N°: " . count($matriz) . "</p>";
 			echo $this->rederizarTabela($matriz, $array, "@codigo@");
 		} catch (Exception $e) {
 			echo "Erro ao listar Afiliados: $e";
@@ -210,9 +241,9 @@ class Afiliado
 	{
 	}
 
-	private function retornarAfiliado($afiliado)
+	private function retornarAfiliado($afiliado, $tabela = 'vw_dados_afiliado')
 	{
-		$sql = "SELECT * FROM vw_dados_afiliado WHERE cd_afiliado = :cd";
+		$sql = "SELECT * FROM $tabela WHERE cd_afiliado = :cd";
 
 		$preparaSql = array(':cd' => $afiliado);
 
@@ -223,8 +254,8 @@ class Afiliado
 	}
 }
 
-if (isset($_POST['btn-enviar'])) {
-
+// if (isset($_POST['btn-enviar'])) {
+if (isset($_POST['formulario-afiliado'])) {
 	$cadAfiliado = new Afiliado();
 
 	try {
@@ -234,11 +265,11 @@ if (isset($_POST['btn-enviar'])) {
 		$cadAfiliado->cpf = $_POST['cpf'];
 		$cadAfiliado->nacionalidade = $_POST['nacionalidade'];
 		$cadAfiliado->dataNascimento = $_POST['data'];
-		// $cadAfiliado->estado = "";
-		// $cadAfiliado->cidade = "";
-		// $cadAfiliado->bairro = "";
-		// $cadAfiliado->cep = "";
-		$cadAfiliado->endereco = $_POST['bairro']. " ". $_POST['cidade']. "/". $_POST['estado']. " ". $_POST['cep'];
+		if (isset($_POST['bairro']) && isset($_POST['cidade'])) {
+			$cadAfiliado->endereco = $_POST['bairro'] . " " . $_POST['cidade'] . "/" . $_POST['estado'] . " " . $_POST['cep'];
+		} else {
+			$cadAfiliado->endereco = isset($_POST['endereco']) ? $_POST['endereco'] : "";
+		}
 		$cadAfiliado->telefone = $_POST['telefone'];
 		$cadAfiliado->celular = $_POST['celular'];
 		$cadAfiliado->email = $_POST['email'];
@@ -281,9 +312,16 @@ if (isset($_POST['btn-enviar'])) {
 		echo $e;
 	}
 
-	$cadAfiliado->cadastrarAfiliado($cadAfiliado);
-}
+	if (isset($_POST['btn-enviar'])) {
+		$cadAfiliado->cadastrarAfiliado($cadAfiliado);
+	}
 
-if (isset($_POST['btn-cancelar'])) {
-	header("Location: http://estreladamama.tk/lista-geral");
+	if (isset($_POST['btn-editar'])) {
+		
+		$cadAfiliado->editarAfiliado($_GET['id'], $_POST['alta']);
+	}
+
+	if (isset($_POST['btn-cancelar'])) {
+		header("Location: http://estreladamama.tk/lista-geral");
+	}
 }
