@@ -37,7 +37,7 @@ Class Administrador {
     }
     
     public function AdicionarAdminstrador(){
-	/*	$crud = new Crud();
+	/*	$crud = new Crud();            
 		if($login != null && $senha != null){
 			
 				$addAdministrador = array(
