@@ -5,6 +5,7 @@ include 'website//atividade//Atividade.php';
 include 'website//chamada//Chamada.php';
 include 'website//login//Login.php';
 // include 'website//lista-geral//.php';
+include 'website//Adminstrador//Adminstrador.php';
 
 
 $rota = new Rota;
