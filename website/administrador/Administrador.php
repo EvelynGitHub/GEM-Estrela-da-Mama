@@ -36,9 +36,9 @@ Class Administrador {
         $this->{$atributo} = $valor;
     }
     
-    public function AdicionarAdminstrador(){
-	/*	$crud = new Crud();            
-		if($login != null && $senha != null){
+    public function AdicionarAdminstrador($login,$senha){
+		$crud = new Crud();            
+		
 			
 				$addAdministrador = array(
 				 'nm_login' => $this->login,
@@ -46,7 +46,7 @@ Class Administrador {
 				);
 				echo $crud->inserirGenerico("login",$addAdministrador);
 				die();
-		}*/
+		
 		
 	}
 	public function editarAdminstrador($administrador){
