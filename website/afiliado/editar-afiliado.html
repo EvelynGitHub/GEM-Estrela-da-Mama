@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/website/afiliado/css/style.css">
+    <title>Editar Afiliado</title>
+</head>
+
+<body>
+
+    <!-- Div para o Botão Voltar juntamento com o Titulo -->
+    <div class="row">
+        <div class="col-md-12 col-sm-12 center-title">
+            <h2>Editar dados do Afiliado</h2>
+        </div>
+    </div>
+    <!--  FIM da Div do Botão Volta e do Titulo -->
+
+    <hr>
+    <!-- Dados vindo do PHP -->
+    <?php 
+        $a = $this->retornarAfiliado($_GET['id'], 'afiliado');                  
+    ?>
+    <!--  -->
+
+    <form action="" method="POST" id="formulario-afiliado">
+        <input type="hidden" name="formulario-afiliado" value="true">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <input type="text" class="form-control mb-3" name="nome" id="nome" required
+                        placeholder="Nome Completo" value="<?=$a['nm_afiliado']?>">
+                    <input type="text" class="form-control mb-3" name="rg" id="rg" required placeholder="RG"
+                        value="<?=$a['cd_rg']?>">
+                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" required placeholder="CPF"
+                        value="<?=$a['cd_cpf']?>">
+                    <input type="text" class="form-control mb-3" name="nacionalidade" id="nacionalidade" required
+                        placeholder="Nacionalidade" value="<?=$a['nm_nacionalidade']?>">
+                    <input type="date" class="form-control mb-3" name="data" id="data" value="<?=$a['dt_nascimento']?>">
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <input type="text" class="form-control  mb-3" name="endereco" id="endereco" 
+                    value="<?=$a['nm_endereco']?>" placeholder="Endereço">
+                    <input type="text" class="form-control mb-3" name="telefone" id="telefone"
+                        placeholder="(00)0000-0000" value="<?=$a['cd_telefone']?>">
+                    <input type="text" class="form-control mb-3" name="celular" id="celular"
+                        placeholder="(00)00000-0000" value="<?=$a['cd_contato']?>">
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email"
+                        value="<?=$a['nm_email']?>">
+                    <input type="text" class="form-control mb-3" name="escolaridade" id="escolaridade" required
+                        placeholder="Escolaridade" value="<?=$a['nm_escolaridade']?>">
+                    <input type="text" class="form-control mb-3" name="sitProfissional" id="sitProfissional" required
+                        placeholder="Situação profissional" value="<?=$a['nm_situacao_profissional']?>">
+                    <div class="row mb-4">
+                        <label class="px-3">
+                            Sexo:
+                            <?php 
+                            $sM = '';
+                            $sF = 'checked';
+                            if($a['ic_sexo'] == 'Masculino'){                                
+                                $sM = 'checked';
+                                $sF = '';
+                            }?>
+                        </label>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" name="sexo" id="sexoM" value="Masculino" required <?=$sM?> >
+                            <label class="custom-control-label" for="sexoM">Masculino</label>
+                        </div>
+                        <div class="custom-control custom-radio ml-2">
+                            <input type="radio" class="custom-control-input" name="sexo" id="sexoF" value="Feminino" <?=$sF?>>
+                            <label class="custom-control-label" for="sexoF">Feminino</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="px-3">
+                            Tipo:
+                            <?php 
+                            $tA = '';
+                            $tV = 'checked';
+                            if($a['nm_tipo_afiliado'] == 'Assistida'){                                
+                                $tA = 'checked';
+                                $tV = '';
+                            }?>
+                        </label>
+                        <div class="custom-control custom-radio ml-1">
+                            <input type="radio" class="custom-control-input align-bottom" name="tipo" id="tipoAssistida"
+                                value="Assistida" <?=$tA?>>
+                            <label class="custom-control-label" for="tipoAssistida">Assistida</label>
+                        </div>
+                        <div class="custom-control custom-radio ml-3">
+                            <input type="radio" class="custom-control-input align-bottom" name="tipo"
+                                id="tipoVoluntario" value="Voluntário" <?=$tV?>>
+                            <label class="custom-control-label" for="tipoVoluntario">Voluntário</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="voluntario" >
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <h4>Voluntário</h4>
+                    <input type="text" class="form-control mb-3" name="interesse" id="interesse"
+                        placeholder="Área de interesse" value="<?=$a['nm_area_interesse']?>" >
+                </div>
+            </div>
+            <h6>Disponibilidade</h6>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="row">
+
+                        <?php
+
+                        $dias = ['Segunda', 'Terça', 'Quarta', 'Quinta'];
+
+                        $disponibilidade = explode(" ; ",$a['nm_disponibilidade']);
+                        
+                        $tem = false;
+
+                        for($x=0; $x < 4; $x++){
+
+                            for($y=1; $y < count($disponibilidade); $y++){
+
+                                if($dias[$x] == $disponibilidade[$y]){
+
+                                   $tem = true;
+
+                                   break;
+                                }                                
+                            }
+
+                            if($tem){
+                                $tem = false; 
+                            ?>
+                            <div class="custom-control custom-checkbox mx-1">
+                                    <input type="checkbox" class="custom-control-input" value="<?=$dias[$x]?>" name="semana[]"
+                                                id="<?=$dias[$x]?>" checked>
+                                    <label class="custom-control-label" for="<?=$dias[$x]?>"><?=$dias[$x]?></label>
+                            </div>
+
+                            <?php 
+                            }
+                            else{
+                            ?>
+                            <div class="custom-control custom-checkbox mx-1">
+                                    <input type="checkbox" class="custom-control-input" value="<?=$dias[$x]?>" name="semana[]"
+                                        id="<?=$dias[$x]?>">
+                                    <label class="custom-control-label" for="<?=$dias[$x]?>"><?=$dias[$x]?></label>
+                            </div>
+                            
+                            <?php
+                            }
+                        }
+                        ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="assistida">
+            <h4>Assistida</h4>
+            <div class="row">
+                <div class="col-3 col-md-6 col-sm-12">
+                    <label class="" for="alta">Auta Hospitalar: </label>
+                    <input type="date" class="form-control" value="<?=$a['nm_status_assistida']?>" name="alta" >                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <h6 class="mt-4">Diagnóstico:</h6>
+                    <textarea class="form-control" name="diagnostico" id="diagnostico" cols="20" rows="4">
+                        <?=$a['nm_diagnostico']?>
+                    </textarea>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <h6 class="mt-4">Cirurgia da Mama:</h6>
+                    <div class="row">
+                        <div class="col-3 custom-control custom-checkbox ml-3">
+                            <input type="checkbox" class="custom-control-input" value="true" name="mamaDireita"
+                                id="mamaDireita" <?php echo ($a['nm_cirurgia_mama_direita'])?'checked':'' ?>>
+                            <label class="custom-control-label" for="mamaDireita">Direita</label>
+                        </div>
+                        <div class="col-6 custom-control custom-checkbox">
+                            <input type="date" class="form-control col-12 ml-3" name="anoDireita" id="anoDireita"
+                                placeholder="Ano" value="<?=$a['dt_cirugia_mama_direita']?>">
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3 custom-control custom-checkbox ml-3">
+                            <input type="checkbox" class="custom-control-input" value="true" name="mamaEsquerda"
+                                id="mamaEsquerda" <?php echo ($a['nm_cirurgia_mama_esquerda'])?'checked':'' ?>>
+                            <label class="custom-control-label" for="mamaEsquerda">Esquerda</label>
+                        </div>
+                        <div class="col-6 custom-control custom-checkbox">
+                            <input type="date" class="form-control col-12 ml-3" name="anoEsquerda" id="anoEsquerda"
+                                placeholder="Ano" value="<?=$a['dt_cirugia_mama_esquerda']?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <h6 class="mt-4">Convênio:</h6>
+                    <textarea class="form-control" name="convenio" id="convenio" cols="20" rows="4">
+                        <?=$a['nm_convenio_medico']?>
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <button type="submit" class="btn btn-success btn-lg m-4" name="btn-editar" id="btn-editar">
+                Salvar Edição
+            </button>
+            <button type="submit" class="btn btn-danger btn-lg" name="btn-cancelar-editar">
+                Cancelar
+            </button>
+        </div>
+    </form>
+
+    <script src="/website/afiliado/js/cadastrar-afiliado.js"></script>
+    <script>
+        let radio = document.getElementsByName('tipo');
+        let divAss = document.getElementById('assistida');
+        let divVol = document.getElementById('voluntario');
+        
+        if(radio[0].checked){           
+            divVol.setAttribute("hidden", "hidden");
+            divAss.removeAttribute("hidden");
+        }else{
+            divAss.setAttribute("hidden", "hidden");
+            divVol.removeAttribute("hidden");
+        }
+        
+
+    </script>
+</body>
+
+</html>

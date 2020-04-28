@@ -155,6 +155,55 @@ class CRUD extends Conexao
         }
     }
 
+    public function updateGenerico($tabela, $valores, $condicaoArray)
+    {
+        try {
+            $sql = "";
+            $colunas = "";
+            $condicao = "";
+
+            foreach ($valores as $key => $value) {
+                $colunas .= "$key = :$key , ";
+            }
+
+            foreach ($condicaoArray as $key => $value) {
+                $condicao .= "$key = :$key , ";
+            }
+
+            // Remove a última , de $colunas
+            $colunas = substr($colunas, 0, -2);
+            $condicao = substr($condicao, 0, -2);
+            
+            $sql = "UPDATE $tabela SET $colunas WHERE $condicao"; 
+            
+            $instrucao = parent::$conn->prepare($sql);
+
+            foreach($valores as $k => $v){
+                $instrucao->bindValue(':'.$k, $v);
+            }
+
+            foreach($condicaoArray as $k => $v){
+                $instrucao->bindValue(':'.$k, $v);
+            }
+
+
+            if ($instrucao->execute()) {
+                return "<script>
+                            alert('Dados atualizados com sucesso!');
+                            history.go(-1);
+                        </script>";
+            } else {
+                return "<script>
+                            alert('Não foi possível efetuar a atualização dos dados!');
+                            history.go(-1);
+                        </script>";
+            }
+        } catch (PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+            exit;
+        }
+    }
+
     public function excluir($tabela, $id)
     {
         //Colocar verificações aqui
@@ -170,5 +219,3 @@ class CRUD extends Conexao
         }
     }
 }
-
-// if ($stmt->execute()) {
