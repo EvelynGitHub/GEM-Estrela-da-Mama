@@ -54,13 +54,15 @@ class Administrador {
 				echo $crud->inserirGenerico("login",$addAdministrador);
 				echo "<script>
 						alert('Cadastrado com sucesso');
-						self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
+						//self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
 					</script>";
+					header('Location: /lista-geral');
 			}else{
 				echo "<script>
 						alert('email ja cadastrado');
 						self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
 					</script>";
+					
 			}
 				die();
 		
@@ -81,10 +83,10 @@ class Administrador {
 
 $user = new Administrador();
 
-$login = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
-$senha1 = isset($_POST["senha"]) ? $_POST["senha"] : "";
+$login = isset($_POST["novousuario"]) ? $_POST["novousuario"] : "";
+$senha1 = isset($_POST["novasenha"]) ? $_POST["novasenha"] : "";
 
-if (isset($_POST["cadastrar"])) {
+if (isset($_POST["cadastrarAdm"])) {
     $user->AdicionarAdminstrador($login, $senha1);
-    unset($_POST["cadastrar"]);
+    unset($_POST["cadastrarAdm"]);
 }
