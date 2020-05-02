@@ -7,7 +7,7 @@ require_once __DIR__.'/../global/CRUD.php';
 
 use Exception;
 use CRUD;
-Class Administrador {
+class Administrador {
 
     private $login;
 	private $senha;
@@ -37,15 +37,19 @@ Class Administrador {
     }
     
     public function AdicionarAdminstrador($login,$senha){
-		$crud = new Crud();            
+		//$crud = new Crud();            
 		
 			
-				$addAdministrador = array(
+			/*	$addAdministrador = array(
 				 'nm_login' => $this->login,
 				 'nm_senha'=> $this ->senha 
-				);
-				echo $crud->inserirGenerico("login",$addAdministrador);
-				die();
+				);*/
+
+			 //$banco = "INSERT INTO tb_login ('nm_login','nm_senha') VALUES ($login,$senha)";
+				
+				
+				//echo $crud->inserirGenerico("login",$addAdministrador);
+				//die();
 		
 		
 	}
