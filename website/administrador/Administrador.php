@@ -37,19 +37,19 @@ class Administrador {
     }
     
     public function AdicionarAdminstrador($login,$senha){
-		//$crud = new Crud();            
+		$crud = new Crud();            
 		
 			
-			/*	$addAdministrador = array(
+				$addAdministrador = array(
 				 'nm_login' => $this->login,
 				 'nm_senha'=> $this ->senha 
-				);*/
+				);
 
 			 //$banco = "INSERT INTO tb_login ('nm_login','nm_senha') VALUES ($login,$senha)";
 				
 				
-				//echo $crud->inserirGenerico("login",$addAdministrador);
-				//die();
+				echo $crud->inserirGenerico("login",$addAdministrador);
+				die();
 		
 		
 	}
