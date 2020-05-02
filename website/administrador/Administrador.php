@@ -10,12 +10,12 @@ use CRUD;
 class Administrador {
 	use IGlobal;
 
-    private $login;
+    private $usuario;
 	private $senha;
 	
-	public function __construct($login = "", $senha= ""){
+	public function __construct($usuario = "", $senha= ""){
 
-		$this->login = $login;
+		$this->usuario = $usuario;
 		$this->senha = $senha;	
 
 	}
@@ -37,21 +37,32 @@ class Administrador {
         $this->{$atributo} = $valor;
     }
     
-    public function AdicionarAdminstrador($login,$senha){
+    public function AdicionarAdminstrador($usuario,$senha){
 		$crud = new Crud();            
-		
+
+		$verificaUsuario = "SELECT nm_usuario FROM  login
+							WHERE  nm_usuario = :usuario";
 			
-				$addAdministrador = array(
-				 'nm_login' => $this->login,
-				 'nm_senha'=> $this ->senha 
+				$preparaSql = array(":usuario" => $this->usuario);
+				if($preparaSql == null){	
+
+					$addAdministrador = array(
+				 	'nm_usuario' => $this->usuario,
+				 	'nm_senha'=> $this ->senha 
 				);
 
-			 //$banco = "INSERT INTO tb_login ('nm_login','nm_senha') VALUES ($login,$senha)";
-				
-				
 				echo $crud->inserirGenerico("login",$addAdministrador);
+				echo "<script>
+						alert('Cadastrado com sucesso');
+						self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
+					</script>";
+			}else{
+				echo "<script>
+						alert('email ja cadastrado');
+						self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
+					</script>";
+			}
 				die();
-		
 		
 	}
 	public function editarAdminstrador($administrador){
@@ -63,7 +74,7 @@ class Administrador {
 	public function listarAdministradores(){
 
 	}
-	public function fazerLogin($administrador){
+	public function fazerusuario($administrador){
 
     }
 }
