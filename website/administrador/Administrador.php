@@ -78,3 +78,13 @@ class Administrador {
 
     }
 }
+
+$user = new Administrador();
+
+$login = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
+$senha = isset($_POST["senha"]) ? $_POST["senha"] : "";
+
+if (isset($_POST["enviar"])) {
+    $user->AdicionarAdminstrador($login, $senha);
+    unset($_POST["cadastro"]);
+}
