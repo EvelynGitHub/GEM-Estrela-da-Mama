@@ -51,11 +51,11 @@ class Administrador {
 				 	'nm_senha'=> $this ->senha 
 				);
 
-				echo $crud->inserirGenerico("login",$addAdministrador);
+				$crud->inserirGenerico("login",$addAdministrador);
 				echo "<script>
-						alert('Cadastrado com sucesso');
-						//self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
+						alert('Cadastrado com sucesso');						
 					</script>";
+					//self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
 					header('Location: /lista-geral');
 			}else{
 				echo "<script>
@@ -64,7 +64,7 @@ class Administrador {
 					</script>";
 					
 			}
-				die();
+			die();
 		
 	}
 	public function editarAdminstrador($administrador){
