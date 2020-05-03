@@ -50,8 +50,9 @@ class Administrador {
 		//var_dump($matriz);
 		
 		if(empty($matriz)){	
+			echo "entrou";
 
-			$addAdministrador = array(
+			/*$addAdministrador = array(
 				'nm_login' => $usuario,
 				'nm_senha'=> $senha 
 			);
@@ -64,6 +65,7 @@ class Administrador {
 				</script>";
 				die();	
 			//header('Location: /lista-geral');
+			*/
 		}else{
 			echo "<script>
 					alert('email ja cadastrado');	
