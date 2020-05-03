@@ -66,6 +66,7 @@ class Administrador {
 					alert('Cadastrado com sucesso');
 					self.location.href='/lista-geral';					
 				</script>";
+				
 				die();	
 			//header('Location: /lista-geral');
 			
