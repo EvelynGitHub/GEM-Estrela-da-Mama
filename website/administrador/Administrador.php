@@ -107,7 +107,7 @@ if (isset($_POST["cadastrarAdm"])) {
 	}else{
 		
 		echo "<script> alert('As senhas nao correspondem'); 
-		self.location.href='/cadastrar-administrador';
+		self.location.href='administrador/cadastrar-administrador';
 			</script>";
 		
 	}
