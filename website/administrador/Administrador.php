@@ -44,7 +44,7 @@ class Administrador {
 							WHERE  nm_usuario = :usuario";
 			
 				$preparaSql = array(":usuario" => $this->usuario);
-				if($preparaSql == null){	
+				if(count($preparaSql) == 0){	
 
 					$addAdministrador = array(
 				 	'nm_usuario' => $this->usuario,
