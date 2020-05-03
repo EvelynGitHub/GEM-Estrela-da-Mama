@@ -58,8 +58,8 @@ class Administrador {
 			);
 			//var_dump($addAdministrador);
 
-			$crud->inserirGenerico("login",$addAdministrador);
-			var_dump($crud);
+			var_dump($crud->inserirGenerico("login",$addAdministrador));
+			
 			/*
 			echo "<script>
 					alert('Cadastrado com sucesso');
