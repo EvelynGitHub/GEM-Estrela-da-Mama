@@ -46,7 +46,7 @@ class Administrador {
 		$preparaSql = array(":usuario" => $this->usuario);
 
 		$matriz = $crud->obterRegistros($sql, $preparaSql);
-		//var_dump($matriz);
+		var_dump($matriz);
 		if(empty($matriz)){	
 
 			$addAdministrador = array(
@@ -55,20 +55,20 @@ class Administrador {
 			);
 
 			$crud->inserirGenerico("login",$addAdministrador);
-			/*echo "<script>
+			echo "<script>
 					alert('Cadastrado com sucesso');
 					self.location.href='/lista-geral';					
 				</script>";
-				*/
-			header('Location: /lista-geral');
+				die();	
+			//header('Location: /lista-geral');
 		}else{
 			echo "<script>
 					alert('email ja cadastrado');	
 					self.location.href='administrador/cadastrar-administrador';
 				</script>";
-			
+				die();
 		}
-		die();
+	
 		
 	}
 	public function editarAdminstrador($administrador){
