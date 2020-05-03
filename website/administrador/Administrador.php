@@ -58,8 +58,8 @@ class Administrador {
 			);
 			//var_dump($addAdministrador);
 
-			$retorno = $crud->inserirGenerico("login",$addAdministrador);
-			var_dump($retorno);
+			//$retorno = $crud->inserirGenerico("login",$addAdministrador);
+			//var_dump($retorno);
 
 			/*
 			echo "<script>
@@ -69,6 +69,7 @@ class Administrador {
 				die();	
 			//header('Location: /lista-geral');
 			*/
+			header('administrador/teste.html');
 		}else{
 			echo "<script>
 					alert('email ja cadastrado');	

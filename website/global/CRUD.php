@@ -146,7 +146,7 @@ class CRUD extends Conexao
             } else {
                 return "<script>
                             alert('Não foi possível efetuar o cadastro!');
-                            
+                            self.location.href='/afiliado/cadastrar';
                         </script>";
             }
         } catch (PDOException $e) {
@@ -154,7 +154,6 @@ class CRUD extends Conexao
             exit;
         }
     }
- //self.location.href='/afiliado/cadastrar';
  //self.location.href='/afiliado/cadastrar';
     public function updateGenerico($tabela, $valores, $condicaoArray)
     {
