@@ -52,11 +52,12 @@ class Administrador {
 		if(empty($matriz)){	
 			echo "entrou";
 
-			/*$addAdministrador = array(
+			$addAdministrador = array(
 				'nm_login' => $usuario,
 				'nm_senha'=> $senha 
 			);
-
+			var_dump($addAdministrador);
+/*
 			$crud->inserirGenerico("login",$addAdministrador);
 			
 			echo "<script>
