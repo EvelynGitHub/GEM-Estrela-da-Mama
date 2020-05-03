@@ -56,9 +56,9 @@ class Administrador {
 				'nm_login' => $usuario,
 				'nm_senha'=> $senha 
 			);
-			//var_dump($addAdministrador);
+			var_dump($addAdministrador);
 
-			var_dump($crud->inserirGenerico("login",$addAdministrador));
+			//$crud->inserirGenerico("login",$addAdministrador);
 			
 			/*
 			echo "<script>
