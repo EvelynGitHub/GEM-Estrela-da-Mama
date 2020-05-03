@@ -63,9 +63,9 @@ class Administrador {
 			}else{
 				echo "<script>
 						alert('email ja cadastrado');
-						self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
+						
 					</script>";
-					
+					//self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
 			}
 			die();
 		
