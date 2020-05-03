@@ -50,8 +50,8 @@ class Administrador {
 		if(empty($matriz)){	
 
 			$addAdministrador = array(
-				'nm_login' => $this->usuario,
-				'nm_senha'=> $this ->senha 
+				'nm_login' => $usuario,
+				'nm_senha'=> $senha 
 			);
 
 			$crud->inserirGenerico("login",$addAdministrador);
