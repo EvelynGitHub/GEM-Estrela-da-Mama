@@ -57,7 +57,7 @@ class Administrador {
 			$crud->inserirGenerico("login",$addAdministrador);
 			echo "<script>
 					alert('Cadastrado com sucesso');
-					self.location.href='administrador/cadastrar-administrador';						
+					self.location.href='/lista-geral';						
 				</script>";
 				
 			//header('Location: /lista-geral');

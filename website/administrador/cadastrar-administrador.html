@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/website/login/css/style.css">
     <title>Administrador</title>
 </head>
 <body>
-    <form action="" method = "POST">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="" method = "POST" class="form-signin">
        
-        <p>email: <input type="email" name="novousuario" required>  </p>
-        <p>senha: <input type="password" name="novasenha" required> </p>
+                    <p> Email: <input type="email"  class="form-control mb-3" name="novousuario" required>  </p>
+                    <p> Senha: <input type="password"  class="form-control mb-3" name="novasenha" required> </p>
         
-        <input type="submit" value="cadastrar" name="cadastrarAdm">
+                    <input type="submit" value="cadastrar" name="cadastrarAdm" class="btn btn-lg btn-block">
 
-    </form>
+                </form>
+            </div>
+        </div>]
+    </div>
+
 </body>
 </html>
