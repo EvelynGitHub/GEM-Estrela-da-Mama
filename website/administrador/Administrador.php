@@ -40,11 +40,14 @@ class Administrador {
     public function AdicionarAdminstrador($usuario,$senha){
 		$crud = new Crud();            
 
-		$verificaUsuario = "SELECT nm_usuario FROM  login
+		$sql = "SELECT nm_usuario FROM  login
 							WHERE  nm_usuario = :usuario";
 			
 				$preparaSql = array(":usuario" => $this->usuario);
-				if(empty($preparaSql)){	
+
+				$matriz = $crud->obterRegistros($sql, $preparaSql);
+
+				if(empty($matriz)){	
 
 					$addAdministrador = array(
 				 	'nm_usuario' => $this->usuario,
