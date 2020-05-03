@@ -100,15 +100,17 @@ $user = new Administrador();
 $login = isset($_POST["novousuario"]) ? $_POST["novousuario"] : "";
 $senha1 = isset($_POST["novasenha"]) ? $_POST["novasenha"] : "";
 $conrfimarSenha=isset($_POST["confirmarsenha"]) ? $_POST["confirmarsenha"] : "";
-if (isset($_POST["cadastrarAdm"])) {
-	if($senha1==$confirmarSenha){
+
+if($senha1==$confirmarSenha){
+	if (isset($_POST["cadastrarAdm"])) {
+	
     	$user->AdicionarAdminstrador($login, $senha1);
 		unset($_POST["cadastrarAdm"]);	
-	}else{
-		
-		echo "<script> alert('As senhas nao correspondem'); 
-		self.location.href='cadastrar-administrador';
-			</script>";
-		
+	
 	}
+}
+else{
+	echo "<script> alert('As senhas nao correspondem'); 
+			self.location.href='cadastrar-administrador';
+			</script>";
 }
