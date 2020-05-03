@@ -57,14 +57,14 @@ class Administrador {
 			$crud->inserirGenerico("login",$addAdministrador);
 			echo "<script>
 					alert('Cadastrado com sucesso');
-					self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';						
+					self.location.href='administrador/cadastrar-administrador';						
 				</script>";
 				
 			//header('Location: /lista-geral');
 		}else{
 			echo "<script>
 					alert('email ja cadastrado');	
-					self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
+					self.location.href='administrador/cadastrar-administrador';
 				</script>";
 			
 		}
