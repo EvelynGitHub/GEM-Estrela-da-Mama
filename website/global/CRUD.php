@@ -141,7 +141,7 @@ class CRUD extends Conexao
             if ($instrucao->execute()) {
                 return "<script>
                             alert('Cadastro realizado com sucesso!');
-                            //self.location.href='/afiliado/cadastrar';
+                           
                         </script>";
             } else {
                 return "<script>
@@ -154,7 +154,7 @@ class CRUD extends Conexao
             exit;
         }
     }
-
+ //self.location.href='/afiliado/cadastrar';
     public function updateGenerico($tabela, $valores, $condicaoArray)
     {
         try {
