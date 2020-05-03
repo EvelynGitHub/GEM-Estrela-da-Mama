@@ -82,7 +82,7 @@ class Administrador {
 	
 	}else{
 		echo "<script> alert('as senhas não correspondem');
-					   self.location.href='administrador';
+					   self.location.href='cadastrar-administrador';
 		</script>";
 	}
 	}
