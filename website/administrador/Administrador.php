@@ -44,10 +44,12 @@ class Administrador {
 				WHERE  nm_login = :usuario";
 			
 		$preparaSql = array(":usuario" => $usuario);
-
+		var_dump($preparaSql);
 		$matriz = $crud->obterRegistros($sql, $preparaSql);
-		//var_dump($matriz);
-		if(empty($matriz)){	
+		
+		var_dump($matriz);
+		
+		/*if(empty($matriz)){	
 
 			$addAdministrador = array(
 				'nm_login' => $usuario,
@@ -68,7 +70,7 @@ class Administrador {
 				</script>";
 				die();
 		}
-	
+	*/
 		
 	}
 	public function editarAdminstrador($administrador){
