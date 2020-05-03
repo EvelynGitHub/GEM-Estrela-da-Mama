@@ -56,10 +56,11 @@ class Administrador {
 				'nm_login' => $usuario,
 				'nm_senha'=> $senha 
 			);
-			var_dump($addAdministrador);
+			//var_dump($addAdministrador);
 
-			//$crud->inserirGenerico("login",$addAdministrador);
-			
+			$retorno = $crud->inserirGenerico("login",$addAdministrador);
+			var_dump($retorno);
+
 			/*
 			echo "<script>
 					alert('Cadastrado com sucesso');
