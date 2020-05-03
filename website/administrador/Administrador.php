@@ -50,23 +50,23 @@ class Administrador {
 		//var_dump($matriz);
 		
 		if(empty($matriz)){	
-			echo "entrou";
+			//echo "entrou";
 
 			$addAdministrador = array(
 				'nm_login' => $usuario,
 				'nm_senha'=> $senha 
 			);
-			var_dump($addAdministrador);
-/*
+			//var_dump($addAdministrador);
+
 			$crud->inserirGenerico("login",$addAdministrador);
 			
 			echo "<script>
 					alert('Cadastrado com sucesso');
-					self.location.href='/lista-geral';					
+									
 				</script>";
 				die();	
 			//header('Location: /lista-geral');
-			*/
+			
 		}else{
 			echo "<script>
 					alert('email ja cadastrado');	
