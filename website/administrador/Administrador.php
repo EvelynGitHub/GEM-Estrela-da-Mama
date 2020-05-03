@@ -37,7 +37,8 @@ class Administrador {
         $this->{$atributo} = $valor;
     }
     
-    public function AdicionarAdminstrador($usuario,$senha){
+    public function AdicionarAdminstrador($usuario,$senha,$conrfimarSenha){
+		if($senha == $conrfimarSenha){
 		$crud = new Crud();            
 
 		$sql = "SELECT nm_login FROM  login
@@ -79,7 +80,11 @@ class Administrador {
 				die();
 		}
 	
-		
+	}else{
+		echo "<script> alert('as senhas não correspondem');
+					   self.location.href='administrador';
+		</script>";
+	}
 	}
 	public function editarAdminstrador($administrador){
 
@@ -101,16 +106,7 @@ $login = isset($_POST["novousuario"]) ? $_POST["novousuario"] : "";
 $senha1 = isset($_POST["novasenha"]) ? $_POST["novasenha"] : "";
 $conrfimarSenha=isset($_POST["confirmarsenha"]) ? $_POST["confirmarsenha"] : "";
 
-if($senha1==$confirmarSenha){
-	if (isset($_POST["cadastrarAdm"])) {
-	
-    	$user->AdicionarAdminstrador($login, $senha1);
-		unset($_POST["cadastrarAdm"]);	
-	
-	}
-}
-else{
-	echo "<script> alert('As senhas nao correspondem'); 
-			self.location.href='cadastrar-administrador';
-			</script>";
+if (isset($_POST["cadastrarAdm"])) {
+    $user->AdicionarAdminstrador($login, $senha1,$conrfimarSenha);
+    unset($_POST["cadastrarAdm"]);
 }
