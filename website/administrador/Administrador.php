@@ -44,12 +44,12 @@ class Administrador {
 				WHERE  nm_login = :usuario";
 			
 		$preparaSql = array(":usuario" => $usuario);
-		var_dump($preparaSql);
+		//var_dump($preparaSql);
 		$matriz = $crud->obterRegistros($sql, $preparaSql);
 		
-		var_dump($matriz);
+		//var_dump($matriz);
 		
-		/*if(empty($matriz)){	
+		if(empty($matriz)){	
 
 			$addAdministrador = array(
 				'nm_login' => $usuario,
@@ -57,6 +57,7 @@ class Administrador {
 			);
 
 			$crud->inserirGenerico("login",$addAdministrador);
+			
 			echo "<script>
 					alert('Cadastrado com sucesso');
 					self.location.href='/lista-geral';					
@@ -66,11 +67,11 @@ class Administrador {
 		}else{
 			echo "<script>
 					alert('email ja cadastrado');	
-					self.location.href='administrador/cadastrar-administrador';
+					self.location.href='/lista-geral';	
 				</script>";
 				die();
 		}
-	*/
+	
 		
 	}
 	public function editarAdminstrador($administrador){
