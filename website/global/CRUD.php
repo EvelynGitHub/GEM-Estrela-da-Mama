@@ -56,7 +56,7 @@ class CRUD extends Conexao
                 }
                 else {
                     $retorno = $instrucao->fetchAll(PDO::FETCH_ASSOC);
-                    $this->fecharConexao();
+                    // $this->fecharConexao();
                     return $retorno;
                 }
             }
