@@ -46,8 +46,8 @@ class Administrador {
 		$preparaSql = array(":usuario" => $this->usuario);
 
 		$matriz = $crud->obterRegistros($sql, $preparaSql);
-		var_dump($matriz);
-		/*if(empty($matriz)){	
+		//var_dump($matriz);
+		if(empty($matriz)){	
 
 			$addAdministrador = array(
 				'nm_login' => $this->usuario,
@@ -67,7 +67,7 @@ class Administrador {
 					self.location.href='administrador/cadastrar-administrador';
 				</script>";
 				die();
-		}*/
+		}
 	
 		
 	}
