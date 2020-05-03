@@ -59,14 +59,15 @@ class Administrador {
 			//var_dump($addAdministrador);
 
 			$crud->inserirGenerico("login",$addAdministrador);
-			
+			var_dump($crud);
+			/*
 			echo "<script>
 					alert('Cadastrado com sucesso');
-									
+					self.location.href='/lista-geral';					
 				</script>";
 				die();	
 			//header('Location: /lista-geral');
-			
+			*/
 		}else{
 			echo "<script>
 					alert('email ja cadastrado');	
