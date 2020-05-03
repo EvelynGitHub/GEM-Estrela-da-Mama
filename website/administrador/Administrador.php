@@ -40,34 +40,35 @@ class Administrador {
     public function AdicionarAdminstrador($usuario,$senha){
 		$crud = new Crud();            
 
-		$sql = "SELECT nm_usuario FROM  login
-							WHERE  nm_usuario = :usuario";
+		$sql = "SELECT nm_login FROM  login
+				WHERE  nm_login = :usuario";
 			
-				$preparaSql = array(":usuario" => $this->usuario);
+		$preparaSql = array(":usuario" => $this->usuario);
 
-				$matriz = $crud->obterRegistros($sql, $preparaSql);
-				var_dump($matriz);
-				if(empty($matriz)){	
+		$matriz = $crud->obterRegistros($sql, $preparaSql);
+		var_dump($matriz);
+		if(empty($matriz)){	
 
-					$addAdministrador = array(
-				 	'nm_usuario' => $this->usuario,
-				 	'nm_senha'=> $this ->senha 
-				);
+			$addAdministrador = array(
+				'nm_login' => $this->usuario,
+				'nm_senha'=> $this ->senha 
+			);
 
-				$crud->inserirGenerico("login",$addAdministrador);
-				echo "<script>
-						alert('Cadastrado com sucesso');						
-					</script>";
-					//self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
-					header('Location: /lista-geral');
-			}else{
-				echo "<script>
-						alert('email ja cadastrado');
-						
-					</script>";
-					//self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
-			}
-			die();
+			$crud->inserirGenerico("login",$addAdministrador);
+			echo "<script>
+					alert('Cadastrado com sucesso');
+					self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';						
+				</script>";
+				
+			//header('Location: /lista-geral');
+		}else{
+			echo "<script>
+					alert('email ja cadastrado');	
+					self.location.href='http://estreladamama.tk/administrador/cadastrar-administrador';
+				</script>";
+			
+		}
+		die();
 		
 	}
 	public function editarAdminstrador($administrador){
