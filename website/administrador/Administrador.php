@@ -105,7 +105,9 @@ if (isset($_POST["cadastrarAdm"])) {
     	$user->AdicionarAdminstrador($login, $senha1);
 		unset($_POST["cadastrarAdm"]);	
 	}else{
-		echo "<script> alert('As senhas nao correspondem'); </script>";
-		return false;
+		echo "<script> alert('As senhas nao correspondem'); 
+				location.reload();
+			</script>";
+		
 	}
 }
