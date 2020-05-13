@@ -47,12 +47,14 @@ class Rota
     public function executar($url = null)
     {
         try {
-            if (!isset($_SESSION['usuario'])) {
+            if (!isset($_SESSION['usuario']) && $url != "/") {
                 // echo "Não tem SESSION ".session_status();
                 header("Location: /");
             }
 
-            $url = ($url == "/") ? "/lista-geral": $url;
+            if(isset($_SESSION['usuario']) && $url == "/"){
+                $url = "/lista-geral";
+            }
     
             if (array_key_exists($url, $this->rotas)) {
 
