@@ -33,7 +33,7 @@ class Rota
         $this->rotas['/chamada/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/chamada/editar-afiliado'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'editar-chamada.html'));
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
-        $this->rotas['/administrador/cadastrar-administrador'] = array('classe' => 'Administrador', 'metodo' => "renderizarHTML", 'parametro' => array('administrador', 'cadastrar-administrador.html'));
+        $this->rotas['/administrador/cadastrar-administrador'] = array('classe' => 'Administrador', 'metodo' =>"renderizarHTML",'parametro' => array('administrador', 'cadastrar-administrador.html')); 
         //Rotas do localhost (desenvolvimento)/Projetos/GEM/GEM-Estrela-da-Mama-2/
         // $this->rotas['/GEM-Estrela-da-mama/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
         // $this->rotas['/GEM-Estrela-da-mama/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'lista-geral.html'));
@@ -47,29 +47,25 @@ class Rota
     public function executar($url = null)
     {
         try {
-            if (isset($_SESSION['usuario'])) {
-                // echo "tem SESSION ".session_status();
-                //
-                $url = ($url == "/") ? "/lista-geral": $url;
+            if (!isset($_SESSION['usuario'])) {
+                // echo "Não tem SESSION ".session_status();
+                header("Location: /");
+            }
 
-                if (array_key_exists($url, $this->rotas)) {
+            $url = ($url == "/") ? "/lista-geral": $url;
+    
+            if (array_key_exists($url, $this->rotas)) {
 
-                    $classe = "\\website\\classe\\" . $this->rotas[$url]['classe'];
-                    $metodo = $this->rotas[$url]['metodo'];
-                    $parametro = $this->rotas[$url]['parametro'];
+                $classe = "\\website\\classe\\" . $this->rotas[$url]['classe'];
+                $metodo = $this->rotas[$url]['metodo'];
+                $parametro = $this->rotas[$url]['parametro'];
 
-                    $obj = new $classe;
-                    call_user_func_array(array($obj, $metodo), $parametro);
+                $obj = new $classe;
+                call_user_func_array(array($obj, $metodo), $parametro);
 
-                    $obj = null;
-                } else {
-                    echo "<br>A url Está correta?";
-                }
-
-            } else{
-                // Não tem sessão
-                 header("Location: /");
-
+                $obj = null;
+            } else {
+                echo "<br>A url Está correta?";
             }
         } catch (Exception $e) {
             echo "Não foi possível acessar está rota.<br> <b>Erro retornado:</b> $e->getMessage()";
