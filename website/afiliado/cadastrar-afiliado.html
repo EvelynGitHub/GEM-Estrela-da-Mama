@@ -249,13 +249,21 @@
             <button type="submit" class="btn btn-success btn-lg m-4" name="btn-enviar" id="btnCadastrar">
                 Cadastrar
             </button>
-            <button type="button" class="btn btn-danger btn-lg" name="btn-cancelar" id="btn-cancelar">
-                Voltar
+            <button type="button" class="btn btn-danger btn-lg" name="btn-cancelar" id="btn-cancelar" onclick="cancelar()">
+                Cancelar
             </button>
         </div>
     </form>
 
     <script src="http://localhost/GEM-Estrela-da-mama/website/afiliado/js/cadastrar-afiliado.js"></script>
+    <script>
+        function cancelar() {
+            let cancelaOuConfirma = confirm("Deseja realmente Cancelar? Todas as alterações serão descartadas.")
+            if(cancelaOuConfirma){
+                window.location.replace("/lista-geral")
+            }
+        }
+    </script>
 </body>
 
 </html>
