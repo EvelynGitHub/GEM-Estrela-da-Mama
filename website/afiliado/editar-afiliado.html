@@ -107,7 +107,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <h4>Voluntário</h4>
                     <input type="text" class="form-control mb-3" name="interesse" id="interesse"
-                        placeholder="Área de interesse" value="<?=$a['nm_area_interesse']?>" >
+                        placeholder="Área de interesse" value="<?=$a['nm_area_interesse']?>" title="Área de interesse">
                 </div>
             </div>
             <h6>Disponibilidade</h6>
@@ -168,7 +168,7 @@
             <div class="row">
                 <div class="col-3 col-md-6 col-sm-12">
                     <label class="" for="alta">Auta Hospitalar: </label>
-                    <input type="date" class="form-control" value="<?=$a['nm_status_assistida']?>" name="alta" >                    
+                    <input type="date" class="form-control" value="<?=$a['nm_status_assistida']?>" name="alta" title="Auta Hospitalar" >                    
                 </div>
             </div>
             <div class="row">
@@ -215,7 +215,7 @@
             <button type="submit" class="btn btn-success btn-lg m-4" name="btn-editar" id="btn-editar">
                 Salvar Edição
             </button>
-            <button type="submit" class="btn btn-danger btn-lg" name="btn-cancelar-editar">
+            <button type="submit" class="btn btn-danger btn-lg" name="btn-cancelar-editar" onclick="cancelar()">
                 Cancelar
             </button>
         </div>
@@ -233,6 +233,13 @@
         }else{
             divAss.setAttribute("hidden", "hidden");
             divVol.removeAttribute("hidden");
+        }
+
+        function cancelar() {
+            let cancelaOuConfirma = confirm("Deseja realmente Cancelar? Todas as alterações neste afiliado serão descartadas.")
+            if(cancelaOuConfirma){
+                history.go(-1)
+            }
         }
         
 
