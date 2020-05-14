@@ -13,9 +13,13 @@
 <body>
 
     <!-- Div para o Botão Voltar juntamento com o Titulo -->
-    <div class="row">
-        <div class="col-md-12 col-sm-12 center-title">
-            <h2>Editar dados do Afiliado</h2>
+    <div class="row mt-3">
+        
+        <div class="col-12 col-sm-1 col-md-1">
+            <p class="text-rem-1"> <a onClick="history.go(-1)">Voltar</a></p> 
+        </div>
+        <div class="col">
+            <p class="text-rem-2 text-center font-weight-bold"> Editar dados do Afiliado</p>
         </div>
     </div>
     <!--  FIM da Div do Botão Volta e do Titulo -->
@@ -23,11 +27,12 @@
     <hr>
     <!-- Dados vindo do PHP -->
     <?php 
-        $a = $this->retornarAfiliado($_GET['id'], 'afiliado');                  
+    
+        $a = $this->retornarAfiliado($_GET['id'], 'afiliado');                
     ?>
     <!--  -->
-
-    <form action="" method="POST" id="formulario-afiliado">
+<div class="container">
+     <form action="" method="POST" id="formulario-afiliado">
         <input type="hidden" name="formulario-afiliado" value="true">
         <div class="container">
             <div class="row">
@@ -168,7 +173,7 @@
             <div class="row">
                 <div class="col-3 col-md-6 col-sm-12">
                     <label class="" for="alta">Auta Hospitalar: </label>
-                    <input type="date" class="form-control" value="<?php echo($a['nm_status_assistida'])?$a['nm_status_assistida']:''; ?>" name="alta" title="Auta Hospitalar" >                    
+                    <input type="date" class="form-control" value="<?php echo($a['nm_status_assistida']!='0000-00-00')?$a['nm_status_assistida']:''; ?>" name="alta" title="Auta Hospitalar" >                    
                 </div>
             </div>
             <div class="row">
@@ -188,7 +193,7 @@
                         </div>
                         <div class="col-6 custom-control custom-checkbox">
                             <input type="date" class="form-control col-12 ml-3" name="anoDireita" id="anoDireita"
-                                placeholder="Ano" value="<?php echo ($a['dt_cirugia_mama_direita'])?$a['dt_cirugia_mama_direita']:''; ?>">
+                                placeholder="Ano" value="<?php echo ($a['dt_cirugia_mama_direita']!='0000-00-00')?$a['dt_cirugia_mama_direita']:''; ?>">
                         </div>
                     </div>
                     <div class="row mt-4">
@@ -199,7 +204,7 @@
                         </div>
                         <div class="col-6 custom-control custom-checkbox">
                             <input type="date" class="form-control col-12 ml-3" name="anoEsquerda" id="anoEsquerda"
-                                placeholder="Ano" value="<?php echo ($a['dt_cirugia_mama_esquerda'])?$a['dt_cirugia_mama_esquerda']:''; ?>">
+                                placeholder="Ano" value="<?php echo ($a['dt_cirugia_mama_esquerda']!='0000-00-00')?$a['dt_cirugia_mama_esquerda']:''; ?>">
                         </div>
                     </div>
                 </div>
@@ -215,11 +220,14 @@
             <button type="submit" class="btn btn-success btn-lg m-4" name="btn-editar" id="btn-editar">
                 Salvar Edição
             </button>
-            <button type="submit" class="btn btn-danger btn-lg" name="btn-cancelar-editar" onclick="cancelar()">
+            <button type="" class="btn btn-danger btn-lg" name="btn-cancelar-editar" id="" onclick="cancelar()">
                 Cancelar
             </button>
         </div>
     </form>
+</div>
+   
+
 
     <script src="/website/afiliado/js/cadastrar-afiliado.js"></script>
     <script>
@@ -238,13 +246,16 @@
         function cancelar() {
             let cancelaOuConfirma = confirm("Deseja realmente Cancelar? Todas as alterações neste afiliado serão descartadas.")
             if(cancelaOuConfirma){
-                //history.go(-1)
-                window.location.replace("estreladamama.tk/lista-geral")
+                // window.history.go(-1)
+                window.location.replace("/lista-geral")
+               
             }
         }
         
 
     </script>
+    <?php exit(); ?>
+
 </body>
 
 </html>

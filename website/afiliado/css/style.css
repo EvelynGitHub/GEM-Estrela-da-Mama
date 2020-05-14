@@ -43,3 +43,17 @@ button {
     text-align: center;
     margin-right: 7%;
 }
+
+.text-rem-1{
+    font-size: 1.5rem;
+    margin: 8px 15px 0px 15px ;
+    cursor: pointer;
+    width: 1fr;
+}
+.text-rem-2{
+    font-size: 2.5rem;
+    cursor: default;
+}
+hr{
+    margin-top: 0px;
+}

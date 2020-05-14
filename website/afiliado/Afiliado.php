@@ -166,7 +166,7 @@ class Afiliado
 		$editarCondicao = array('cd_afiliado' => $codigoAfiliado);
 
 		echo $crud->updateGenerico("afiliado", $editarAfiliado, $editarCondicao);
-		die();
+		exit();
 	}
 
 	public function excluirAfiliado($afiliado)
@@ -320,8 +320,15 @@ if (isset($_POST['formulario-afiliado'])) {
 		
 		$cadAfiliado->editarAfiliado($_GET['id'], $_POST['alta']);
 	}
+	
+	if (isset($_POST['btn-cancelar-editar'])) {
+		// echo "<h2>entro:$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] </h2>";
 
-	if (isset($_POST['btn-cancelar'])) {
-		header("Location: http://estreladamama.tk/lista-geral");
+		// header("Location: http://estreladamama.tk/lista-geral");
+		// $urlAtual = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+		// header_remove($urlAtual);
+		header("Location: /lista-geral");		
+		
+		exit();
 	}
 }
