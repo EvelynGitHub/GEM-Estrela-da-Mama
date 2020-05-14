@@ -238,7 +238,7 @@
         function cancelar() {
             let cancelaOuConfirma = confirm("Deseja realmente Cancelar? Todas as alterações neste afiliado serão descartadas.")
             if(cancelaOuConfirma){
-                window.location.href("/lista-geral")
+                history.go(-1)
                 window.location.replace("/lista-geral")
             }
         }
