@@ -5,37 +5,61 @@ let celular = document.getElementById("celular")
 
 // Deste modo os valores são obtidos enquanto digitados
 cpf.addEventListener("input", ({ target }) => {
-    removeLetras(target)
-    removePontuacao(target)
+    let valorCpf = removeLetras(target)
+    valorCpf = removePontuacao(valorCpf)
+
     if (validarCPF(target)) {
-        mascaraInput(target, "000.000.000-00")
+        if (window.location.pathname == "/afiliado/cadastrar") {
+            document.getElementById("btnCadastrar").disabled = false;
+        }
+        if (window.location.pathname == "/afiliado/editar") {
+            document.getElementById("btn-editar").disabled = false;
+        }
+        cpf.classList.remove('erro')
+    } else {
+        if (window.location.pathname == "/afiliado/cadastrar") {
+            document.getElementById("btnCadastrar").disabled = true;
+        }
+        if (window.location.pathname == "/afiliado/editar") {
+            document.getElementById("btn-editar").disabled = true;
+        }
+        cpf.classList.add('erro')
     }
-    // habilitar e desabilitar botão  cadastrar e editar dependendo do if
-    // Colocar a cor do input vermelha ou verde ???
+
+    valorCpf = mascaraInput(valorCpf, "000.000.000-00")
+    target.value = valorCpf
 })
 
 telefone.addEventListener("input", ({ target }) => {
-    removeLetras(target)
-    removePontuacao(target)
-    mascaraInput(target, "(00)0000-0000")
+    let valorTelefone = removeLetras(target)
+    valorTelefone = removePontuacao(valorTelefone)
+    valorTelefone = mascaraInput(valorTelefone, "(00)0000-0000")
+    target.value = valorTelefone
 })
 
 celular.addEventListener("input", ({ target }) => {
-    removeLetras(target)
-    removePontuacao(target)
-    mascaraInput(target, "(00)00000-0000")
+    let valorCelular = removeLetras(target)
+    valorCelular = removePontuacao(valorCelular)
+    valorCelular = mascaraInput(valorCelular, "(00)00000-0000")
+
+    target.value = valorCelular
 })
 
-cep.addEventListener("input", ({ target }) => {
-    removeLetras(target)
-    removePontuacao(target)
-    mascaraInput(target, "00000-000")
-})
+if (window.location.pathname == "/afiliado/cadastrar") {
+    cep.addEventListener("input", ({ target }) => {
+        let valorCep = removeLetras(target)
+        valorCep = removePontuacao(valorCep)
+        valorCep = mascaraInput(valorCep, "00000-000")
+
+        target.value = valorCep
+    })
+}
 
 
 function mascaraInput(valorAny, mascaraAny) {
+    // let valor = valorAny.value.split('')
+    let valor = valorAny.split('')
     let mascara = mascaraAny.split('')
-    let valor = valorAny.value.split('')
     let auxiliar = Array();
     let cont = 0;
 
@@ -48,29 +72,37 @@ function mascaraInput(valorAny, mascaraAny) {
         }
     })
 
-    valorAny.value = auxiliar.join('')
+    if (removePontuacao(mascaraAny).length <= valor.length) {
+        return auxiliar.join('')
+    }
+
+    // valorAny.value = auxiliar.join('')
+    return valorAny
 }
 
 function removePontuacao(input) {
-    const texto = input.value;
+    // const texto = input.value;
+    const texto = input;
     const textoSemHifem = texto.replace(/\-/g, '');
     const textoSemHifemPonto = textoSemHifem.replace(/\./g, '');
     let textoSemParenteses = textoSemHifemPonto.replace(/\(/g, '')
     textoSemParenteses = textoSemParenteses.replace(/\)/g, '')
 
-    input.value = textoSemParenteses;
+    // input.value = textoSemParenteses;
+    return textoSemParenteses;
 }
 
 function removeLetras(input) {
     let texto = input.value
-    input.value = texto.replace(/[^\d]+/g, '')
+    // input.value = texto.replace(/[^\d]+/g, '')
+    return texto.replace(/[^\d]+/g, '')
 }
 
 function validarCPF(input) {
     let valor = input.value.split('')
     let soma = 0
     let cont = 10
-    
+
     for (let index = 0; index < valor.length - 2; index++) {
         soma = soma + (valor[index] * cont--);
     }
@@ -84,18 +116,19 @@ function validarCPF(input) {
     }
 
     let digito2 = ((11 - (soma % 11)) >= 10) ? 0 : (11 - (soma % 11))
-    
+
     if (valor[9] == digito1 && valor[10] == digito2) {
-        // console.log("Este CPF é válido")
+        console.log("Este CPF é válido")
         return true
     } else {
-        // console.log("Este CPF NÃO é válido")
+        console.log("Este CPF NÃO é válido")
         return false
     }
 }
 
 function inicializarEditar() {
-    mascaraInput(cpf, "000.000.000-00")
-    mascaraInput(telefone, "(00)0000-0000")
-    mascaraInput(celular, "(00)00000-0000")
+    console.log("Valor CPF: " + cpf.value)
+    cpf.value = mascaraInput(cpf.value, "000.000.000-00")
+    telefone.value= mascaraInput(telefone.value, "(00)0000-0000")
+    celular.value = mascaraInput(celular.value, "(00)00000-0000")
 }

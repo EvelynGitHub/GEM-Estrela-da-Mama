@@ -57,3 +57,7 @@ button {
 hr{
     margin-top: 0px;
 }
+
+.erro{
+    border: red solid 1px;
+}
