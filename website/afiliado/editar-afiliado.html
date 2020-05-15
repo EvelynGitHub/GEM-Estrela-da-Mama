@@ -41,8 +41,8 @@
                         placeholder="Nome Completo" value="<?=$a['nm_afiliado']?>" title="Nome Completo">
                     <input type="text" class="form-control mb-3" name="rg" id="rg" required placeholder="RG"
                         value="<?=$a['cd_rg']?>" title="RG">
-                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" required placeholder="CPF"
-                        value="<?=$a['cd_cpf']?>" title="CPF">
+                    <input type="text" class="form-control mb-3 " name="cpf" id="cpf" required placeholder="CPF"
+                        value="<?=$a['cd_cpf']?>" title="CPF" >
                     <input type="text" class="form-control mb-3" name="nacionalidade" id="nacionalidade" required
                         placeholder="Nacionalidade" value="<?=$a['nm_nacionalidade']?>" title="Nacionalidade">
                     <input type="date" class="form-control mb-3" name="data" id="data" value="<?=$a['dt_nascimento']?>" title="Data de Nascimento">
@@ -230,6 +230,8 @@
 
 
     <script src="/website/afiliado/js/cadastrar-afiliado.js"></script>
+    <script src="/website/afiliado/js/afiliado.js"></script>
+
     <script>
         let radio = document.getElementsByName('tipo');
         let divAss = document.getElementById('assistida');
@@ -243,6 +245,8 @@
             divVol.removeAttribute("hidden");
         }
 
+
+
         function cancelar() {
             let cancelaOuConfirma = confirm("Deseja realmente Cancelar? Todas as alterações neste afiliado serão descartadas.")
             if(cancelaOuConfirma){
@@ -252,7 +256,8 @@
             }
         }
         
-
+        inicializarEditar()
+        
     </script>
     <?php exit(); ?>
 

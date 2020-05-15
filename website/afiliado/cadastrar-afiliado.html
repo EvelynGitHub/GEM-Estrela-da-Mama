@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html  lang="pt-br">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Usado para as Mascaras -->
+
     <link rel="stylesheet" href="/website/afiliado/css/style.css">
     <title>Cadastro de Afiliado</title>
 </head>
@@ -17,9 +19,9 @@
         <div class="col-md-12 col-sm-12 center-title">
             <h2></h2>
         </div>
-         
+
         <div class="col-12 col-sm-1 col-md-1">
-            <p class="text-rem-1"> <a onClick="history.go(-1)">Voltar</a></p> 
+            <p class="text-rem-1"> <a onClick="history.go(-1)">Voltar</a></p>
         </div>
         <div class="col">
             <p class="text-rem-2 text-center font-weight-bold"> Ficha de Cadastro de Afiliado</p>
@@ -33,11 +35,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <input type="text" class="form-control mb-3" name="nome" id="nome" required placeholder="Nome Completo" title="Nome Completo">
-                    <input type="text" class="form-control mb-3" name="rg" id="rg" required placeholder="RG" title="RG">
-                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" required placeholder="CPF" title="CPF">
-                    <input type="text" class="form-control mb-3" name="nacionalidade" id="nacionalidade" title="Nacionalidade" required
-                        placeholder="Nacionalidade">
+                    <input type="text" class="form-control mb-3" name="nome" id="nome" placeholder="Nome Completo"
+                        title="Nome Completo" required>
+                    <input type="text" class="form-control mb-3" name="rg" id="rg" placeholder="RG" title="RG" required>
+                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" placeholder="CPF" title="CPF"
+                        required>
+                    <input type="text" class="form-control mb-3" name="nacionalidade" id="nacionalidade"
+                        title="Nacionalidade" required placeholder="Nacionalidade">
                     <input type="date" class="form-control mb-3" name="data" id="data" title="Data de Nascimento">
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
@@ -131,10 +135,12 @@
                             </select>
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" title="Cidade">
+                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade"
+                                title="Cidade">
                         </div>
                     </div>
-                    <input type="text" class="form-control mb-3" name="bairro" id="bairro" placeholder="Bairro" title="Bairro">
+                    <input type="text" class="form-control mb-3" name="bairro" id="bairro" placeholder="Bairro"
+                        title="Bairro">
                     <input type="text" class="form-control mb-3" name="cep" id="cep" placeholder="CEP" title="CEP">
                     <input type="text" class="form-control mb-3" name="telefone" id="telefone"
                         placeholder="(00)0000-0000" title="Telefone Princial">
@@ -142,7 +148,8 @@
                         placeholder="(00)00000-0000" title="Telefone para contato">
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email" title="E-mail">
+                    <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email"
+                        title="E-mail">
                     <input type="text" class="form-control mb-3" name="escolaridade" id="escolaridade" required
                         placeholder="Escolaridade" title="Escolaridade">
                     <input type="text" class="form-control mb-3" name="sitProfissional" id="sitProfissional" required
@@ -152,7 +159,8 @@
                             Sexo:
                         </label>
                         <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" name="sexo" id="sexoM" value="Masculino" required>
+                            <input type="radio" class="custom-control-input" name="sexo" id="sexoM" value="Masculino"
+                                required>
                             <label class="custom-control-label" for="sexoM">Masculino</label>
                         </div>
                         <div class="custom-control custom-radio ml-2">
@@ -256,20 +264,25 @@
             <button type="submit" class="btn btn-success btn-lg m-4" name="btn-enviar" id="btnCadastrar">
                 Cadastrar
             </button>
-            <button type="button" class="btn btn-danger btn-lg" name="btn-cancelar" id="btn-cancelar" onclick="cancelar()">
+            <button type="button" class="btn btn-danger btn-lg" name="btn-cancelar" id="btn-cancelar"
+                onclick="cancelar()">
                 Cancelar
             </button>
         </div>
     </form>
 
     <script src="/website/afiliado/js/cadastrar-afiliado.js"></script>
-    <script>
+    <!-- Usado para as mascaras -->
+    <script src="/website/afiliado/js/afiliado.js"></script>
+    <!-- ====================== -->
+    <script>        
+
         function cancelar() {
             let cancelaOuConfirma = confirm("Deseja realmente Cancelar? Todas as alterações serão descartadas.")
-            if(cancelaOuConfirma){
+            if (cancelaOuConfirma) {
                 window.location.replace("/lista-geral")
             }
-            
+
         }
     </script>
 </body>
