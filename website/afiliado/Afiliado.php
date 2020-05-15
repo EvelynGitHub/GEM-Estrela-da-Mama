@@ -47,37 +47,6 @@ class Afiliado
 	// private $assistida;
 	// private $voluntaria;
 
-
-
-	// public function __construct($nomeCompleto = "", $rg = "", $cpf = "", $nacionalidade = "", $sexo = "", $dataNascimento = "", $estado = "", $cidade = "", $bairro = "", $cep = "", $telefone = "", $celular = "", $email = "", $escolaridade = "", $situacaoProfissional = "", $setorVoluntario = "", $disponibilidade = "", $diagnostico = "", $convenioMedico = ""/*, $itens = ""*/)
-	// {
-	// 	$this->nomeCompleto = $nomeCompleto;
-	// 	$this->rg = $rg;
-	// 	$this->cpf = $cpf;
-	// 	$this->nacionalidade = $nacionalidade;
-	// 	$this->sexo = $sexo;
-	// 	$this->dataNascimento = $dataNascimento;
-	// 	$this->estado = $estado;
-	// 	$this->cidade = $cidade;
-	// 	$this->bairro = $bairro;
-	// 	// $this->rua = $rua;
-	// 	// $this->numeroResidencial = $numeroResidencial;
-	// 	// $this->complemento = $complemento;
-	// 	$this->cep = $cep;
-	// 	$this->telefone = $telefone;
-	// 	$this->celular = $celular;
-	// 	$this->email = $email;
-	// 	$this->escolaridade = $escolaridade;
-	// 	$this->situacaoProfissional = $situacaoProfissional;
-	// 	$this->setorVoluntario = $setorVoluntario;
-	// 	$this->disponibilidade = $disponibilidade;
-	// 	$this->diagnostico = $diagnostico;
-	// 	$this->convenioMedico = $convenioMedico;
-	// 	// $this->assistida = $assistida;
-	// 	// $this->voluntario = $voluntario;
-	// 	// $this->itens = $itens;
-	// }
-
 	public function __get($atributo)
 	{
 		if (!property_exists($this, $atributo)) {
@@ -109,11 +78,11 @@ class Afiliado
 			'nm_nacionalidade' => $this->nacionalidade,
 			'ic_sexo' => $this->sexo,
 			'dt_nascimento' => $this->dataNascimento,
-			// 'nm_estado' => $this->estado,
-			// 'nm_cidade' => $this->cidade,
-			// 'nm_bairro' => $this->bairro,
+			'nm_estado' => $this->estado,
+			'nm_cidade' => $this->cidade,
+			'nm_bairro' => $this->bairro,
 			'nm_endereco' => $this->endereco,
-			// 'cd_cep' => $this->cep,
+			'cd_cep' => $this->cep,
 			'cd_telefone' => $this->telefone,
 			'cd_contato' => $this->celular,
 			'nm_email' => $this->email,
@@ -252,6 +221,32 @@ class Afiliado
 
 		return $matriz[0];
 	}
+
+	public function buscaAfiliadoNome($nome, $tabela = 'vw_dados_afiliado'){
+
+		$sql = "SELECT * FROM $tabela WHERE `Nome:` = :nome";
+
+		$preparaSql = array(':nome' => $nome);
+
+		$banco = new CRUD();
+
+		$matriz = $banco->obterRegistros($sql, $preparaSql);
+
+		foreach($matriz as $afiliado){
+
+			var_dump($afiliado);
+
+		}
+
+	}
+}
+
+if($_POST['buscarAfiliadoNome']){
+
+	$afiliado = new Afiliado();
+
+	$afiliado->buscaAfiliadoNome($_POST['nome']);
+
 }
 
 // if (isset($_POST['btn-enviar'])) {
@@ -322,11 +317,7 @@ if (isset($_POST['formulario-afiliado'])) {
 	}
 	
 	if (isset($_POST['btn-cancelar-editar'])) {
-		// echo "<h2>entro:$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] </h2>";
 
-		// header("Location: http://estreladamama.tk/lista-geral");
-		// $urlAtual = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-		// header_remove($urlAtual);
 		header("Location: /lista-geral");		
 		
 		exit();
