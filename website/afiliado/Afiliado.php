@@ -257,7 +257,7 @@ if (isset($_POST['formulario-afiliado'])) {
 		// CAMPOS OBRIGATÓRIOS 
 		$cadAfiliado->nomeCompleto = $_POST['nome'];
 		$cadAfiliado->rg = $_POST['rg'];
-		$cadAfiliado->cpf = $_POST['cpf'];
+		$cadAfiliado->cpf = removeCaracter($_POST['cpf']);
 		$cadAfiliado->nacionalidade = $_POST['nacionalidade'];
 		$cadAfiliado->dataNascimento = $_POST['data'];
 		if (isset($_POST['bairro']) && isset($_POST['cidade'])) {
@@ -265,8 +265,8 @@ if (isset($_POST['formulario-afiliado'])) {
 		} else {
 			$cadAfiliado->endereco = isset($_POST['endereco']) ? $_POST['endereco'] : "";
 		}
-		$cadAfiliado->telefone = $_POST['telefone'];
-		$cadAfiliado->celular = $_POST['celular'];
+		$cadAfiliado->telefone = removeCaracter($_POST['telefone']);
+		$cadAfiliado->celular = removeCaracter($_POST['celular']);
 		$cadAfiliado->email = $_POST['email'];
 		$cadAfiliado->escolaridade = $_POST['escolaridade'];
 		$cadAfiliado->situacaoProfissional = $_POST['sitProfissional'];
@@ -322,4 +322,16 @@ if (isset($_POST['formulario-afiliado'])) {
 		
 		exit();
 	}
+}
+
+function removeCaracter ($string = "") {
+	
+	$arrayCaracter = ['(', ')', '.', '-'];
+
+	for($i = 0; $i < count($arrayCaracter); $i++) 
+	{
+		$string = str_replace($arrayCaracter[$i], "", $string);
+	}
+
+	return $string;
 }
