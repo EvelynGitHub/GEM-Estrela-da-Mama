@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/website/global/bootstrap.min.css">
-    <link rel="stylesheet" href="/website/global/font-awesome/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lista-chamada.css">
 
     <title>Lista de chamada</title>
 </head>
 
+<!--
 <style>
     .btn-chamada {
         background: #FF1493;
@@ -21,8 +23,7 @@
 </style>
 
 <body>
-    <!-- INICIO: Cabeçalho -->
-    <header class="border-size-b">
+     INICIO: Cabeçalho     <header class="border-size-b">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" onClick="history.go(-1)">
@@ -33,7 +34,7 @@
     <!-- FIM: Cabeçalho -->
 
 
-    <!-- INICIO: Informações da atividade e tabela de chamada -->
+    <!-- INICIO: Informações da atividade e tabela de chamada 
     <div class="container">
         <div class="row mt-3">
             <div class="col">
@@ -46,17 +47,116 @@
         </div>
 
 
-        <!-- Tabela de chamada -->
+        <!-- Tabela de chamada 
         <div class="table-responsive overflow">
             <table class="table table-bordered table-striped">
                 <?php $this->listarChamada($_GET['idAtividade']);?>
             </table>
         </div>
     </div>
-    <!-- FIM: Informações da atividade e tabela de chamada -->
+    <!-- FIM: Informações da atividade e tabela de chamada 
 
 
     <?php $this->renderizarHTML('global', 'footer.html');?>
+
+-->
+
+<body>
+    
+    <header>
+        <nav class="nav">
+            <img class="logo"src="../global/img/laco.png"alt="">                     
+              <a  href="#">Sair</a>                  
+          </nav>
+    </header>
+
+    <div class="barraPesquisa"> 
+    <input class="form-control" type="text" placeholder="Pesquisar" aria-label="Pesquisar">
+    </div>
+
+    <div class="tabela">
+        <table class="table table-hover ">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Telefone</th>
+                    <th>Frequencia</th>
+                    <th>Presença</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lais oliveira</td>
+                    <td>Voluntaria</td>
+                    <td>118888-88</td>
+                    <td>60%</td>
+                    <td><input class="chk" type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Beatriz</td>
+                    <td>Voluntaria</td>
+                    <td>139999-9999</td>
+                    <td>80%</td>
+                    <td><input class="chk" type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Luiza</td>
+                    <td>Assistida</td>
+                    <td>138888888</td>
+                    <td>90%</td>
+                    <td><input class="chk" type="checkbox"></td>
+                    
+                </tr>     
+                <tr>
+                    <td>Luiza</td>
+                    <td>Voluntaria</td>
+                    <td>138888888</td>
+                    <td>90%</td>
+                    <td><input class="chk" type="checkbox"></td>                   
+                </tr>      
+                <tr>
+                    <td>Luiza</td>
+                    <td>Voluntaria</td>
+                    <td>138888888</td>
+                    <td>90%</td>
+                    <td><input class="chk" type="checkbox"></td>                   
+                </tr> 
+                <tr>
+                    <td>Luiza</td>
+                    <td>Voluntaria</td>
+                    <td>138888888</td>
+                    <td>90%</td>
+                    <td><input class="chk" type="checkbox"></td>                   
+                </tr> 
+                <tr>
+                    <td>Luiza</td>
+                    <td>Voluntaria</td>
+                    <td>138888888</td>
+                    <td>90%</td>
+                    <td><input class="chk" type="checkbox"></td>                   
+                </tr>  
+                <tr>
+                    <td>Luiza</td>
+                    <td>Voluntaria</td>
+                    <td>138888888</td>
+                    <td>90%</td>
+                    <td><input class="chk" type="checkbox"></td>                   
+                </tr>  
+                
+            </tbody>
+        </table>
+
+        <button type="button" class="btn ">Encerrar chamada</button>
+    </div>
+ 
+    
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    
 </body>
 
 </html>
