@@ -241,7 +241,7 @@ class Afiliado
 	}
 }
 
-if($_POST['buscarAfiliadoNome']){
+if(isset($_POST['buscarAfiliadoNome'])){
 
 	$afiliado = new Afiliado();
 
