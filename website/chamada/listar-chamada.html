@@ -9,62 +9,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  
 
-    <link rel="stylesheet" href="/website/chamada/lista-chamada.css">
+    <link rel="stylesheet" href="http://localhost/GEM-Estrela-da-mama/website/chamada/lista-chamada.css">
     
 
     
 
     <title>Lista de chamada</title>
 </head>
-
-<!--
-<style>
-    .btn-chamada {
-        background: #FF1493;
-        font-size: 1.2rem;
-        color: white;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-</style>
-
-<body>
-     INICIO: Cabeçalho     <header class="border-size-b">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" onClick="history.go(-1)">
-                <i class="fas fa-arrow-left"> Voltar</i>
-            </a>
-        </nav>
-    </header>
-    <!-- FIM: Cabeçalho -->
-
-
-    <!-- INICIO: Informações da atividade e tabela de chamada 
-    <div class="container">
-        <div class="row mt-3">
-            <div class="col">
-                <h3>Nome da atividade:</h3>
-            </div>
-            <div class="col-3">
-                <a href="editar-afiliado?idAtividade=<?=$_GET['idAtividade']?>" class="btn btn-chamada">Editar</a>
-                <button class="btn btn-chamada">Iniciar Chamada</button>
-            </div>
-        </div>
-
-
-        <!-- Tabela de chamada 
-        <div class="table-responsive overflow">
-            <table class="table table-bordered table-striped">
-                <?php $this->listarChamada($_GET['idAtividade']);?>
-            </table>
-        </div>
-    </div>
-    <!-- FIM: Informações da atividade e tabela de chamada 
-
-
-    <?php $this->renderizarHTML('global', 'footer.html');?>
-
--->
 
 <body>
     
@@ -81,7 +32,7 @@
 
     <div class="tabela">
         <table class="table table-hover ">
-            <thead>
+            <!--<thead>
                 <tr>
                     <th>Nome</th>
                     <th>Tipo</th>
@@ -140,7 +91,9 @@
                     <td><input class="chk" type="checkbox"></td>                   
                 </tr>  
                 
-            </tbody>
+            </tbody> -->
+
+            <?php $this->listarAfiliadoChamada();?>
         </table>
 
         <button type="button" class="btn ">Encerrar chamada</button>

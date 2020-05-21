@@ -58,32 +58,25 @@ class Chamada
     }
 
 
-    public function listarChamada($idAtividade)
+    public function listarAfiliadoChamada()
     {
         try {
 
-            $sql = "SELECT
-                    cd_afiliado,
-                    a.nm_afiliado as 'Nome',
-                    c.qt_total_aulas as 'Aulas',
-                    c.qt_total_presenca as 'Presenças',
-                    'x' as 'Porcentagem',
-                    '' as 'Presente'
-                FROM
-                    afiliado a
-                JOIN chamada c ON (c.id_afiliado = a.cd_afiliado )
-                JOIN atividade at ON (at.cd_atividade = c.id_atividade )
-                WHERE at.cd_atividade  = :codigo ";
+            $sql = "SELECT a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', null 'Frequencia' ,null 'Presença' 
+                    FROM afiliado a, chamada c 
+                    WHERE c.id_afiliado = a.cd_afiliado
+                    ORDER BY ':order'";
 
-            $sqlPrepara = array(':codigo' => $idAtividade);
+
+            $preparaSQL = array(':order' => "a.nm_afiliado");
 
             $banco = new CRUD();
 
-            $matriz = $banco->obterRegistros($sql, $sqlPrepara);
+            $matriz = $banco->obterRegistros($sql, $preparaSQL);
 
-            $htmlPresente['cd_afiliado'] = array('Presente' => "<input type='checkbox' name='afiliado[]' id='' value='@codigoafiliado@'>");
+            $htmlPresente['Nome'] = array('Presença' => "<input class='chk' type='checkbox' name='afiliado' value='@codigo@'>");
 
-            echo $this->rederizarTabela($matriz, $htmlPresente, '@codigoafiliado@');
+            echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
         } catch (Exception $e) {
             echo "$e";
         }
