@@ -56,7 +56,29 @@ class Chamada
     public function editarListaChamada($chamada)
     {
     }
+    public function visualizarFrequencia()
+    {
 
+        try {
+            //faço um select da tabela chamada
+            $sql = "SELECT a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', c.((sum(qt_presencas)/sum(qt_presencas + qt_faltas)) * 100 ) AS porcentagem 'Frequencia'
+                    FROM afiliado a, chamada c
+                    WHERE c.id_afiliado = a.cd_afiliado
+                    ORDER BY ':order'";
+
+            $preparaSql = array(':order' => "a.nm_afiliado");
+
+            $banco = new CRUD();
+            $matriz = $banco->obterRegistros($sql, $preparaSql);
+
+            //$banco = new CRUD();
+            //$matriz = $banco->obterRegistros($sql);
+
+            echo $this->rederizarTabela($matriz);
+        } catch (Exception $e) {
+            echo "Erro ao listar a presença dos afiliados: $e";
+        }
+    }
 
     public function listarAfiliadoChamada()
     {
@@ -80,7 +102,6 @@ class Chamada
         } catch (Exception $e) {
             echo "$e";
         }
-        
     }
 
     public function listarAfiliado($idAtividade)
@@ -94,7 +115,7 @@ class Chamada
             $banco = new CRUD();
 
             $matriz = $banco->obterRegistros($sql);
-            
+
             // unset($matriz['cd']);    
 
             $htmlPresente['cd'] = array('Opção' => "<input class='option-input radio' type='radio' name='adicionar' id='' value='@codigoafiliado@'>");
@@ -103,6 +124,5 @@ class Chamada
         } catch (Exception $e) {
             echo "$e";
         }
-        
     }
 }
