@@ -61,7 +61,7 @@ class Chamada
 
         try {
             //faço um select da tabela chamada
-            $sql = "SELECT a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', c.((sum(qt_presencas)/sum(qt_presencas + qt_faltas)) * 100 ) AS porcentagem 'Frequencia'
+            $sql = "SELECT a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', c.qt_presencas 'Presença', c.qt_faltas 'Faltas'
                     FROM afiliado a, chamada c
                     WHERE c.id_afiliado = a.cd_afiliado
                     ORDER BY ':order'";
@@ -76,7 +76,7 @@ class Chamada
 
             echo $this->rederizarTabela($matriz);
         } catch (Exception $e) {
-            echo "Erro ao listar a presença dos afiliados: $e";
+            echo "Erro ao listar a presença dos afiliados:".$e;
         }
     }
 
