@@ -2,7 +2,19 @@
  body{
     background-color: #fff;
 }
-    
+
+.nav a{
+    cursor: pointer;
+ 
+}
+.nav a:hover ,i:hover {
+    color: #FF5F98;
+}
+
+.btn-pesquisar {
+    cursor: pointer;
+}
+
 .tabela{
     padding: 100px;
     text-align: center;       
