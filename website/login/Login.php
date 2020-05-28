@@ -29,6 +29,14 @@ class Login
     public function Login()
     {
 
+        $sql1 = "SELECT * FROM login WHERE nm_login = :usuario AND nm_senha = :senha ";
+        $preparaSql = array(":usuario" => $this->usuario, ":senha" => $this->senha);
+        
+        $banco = new CRUD();
+        
+        $matriz = $banco->obterRegistros($sql, $preparaSql);
+
+
 
         $sql = "SELECT * FROM login WHERE nm_login = :usuario AND nm_senha = :senha ";
 
@@ -38,9 +46,16 @@ class Login
         $matriz = $banco->obterRegistros($sql, $preparaSql);
 
         if (!empty($matriz)) {
-            $_SESSION['usuario'] = $this->usuario;
-            header('Location: /lista-geral');
-            die();
+            if($matriz['nm_tipo_usuario']== true){
+ 
+                $_SESSION['usuario'] = $this->usuario;
+                header('Location: /lista-geral');
+                die();
+            } else{
+                $_SESSION['usuario'] = $this->usuario;
+                header('Location: /lista-chamada');
+                die();
+            }
         } else {
             echo "<script>
                         alert('Nome de usuário ou senha invalidos');
