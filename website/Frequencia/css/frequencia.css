@@ -1,0 +1,86 @@
+
+ body{
+    background-color: #fff;
+}
+.float-left h3{
+    margin: 30px 110PX;
+}
+.nav a{
+    cursor: pointer;
+ 
+}
+.nav a:hover ,i:hover {
+    color: #FF5F98;
+}
+
+.btn-pesquisar {
+    cursor: pointer;
+}
+
+.tabela{
+    padding: 100px;
+    text-align: center;       
+}
+
+.tabela .table{
+    border: solid 1px #cccc;
+    margin-bottom: 2.5rem;
+}
+
+.tabela thead{
+    background-color: #FF5F98;
+}
+
+.tabela tbody tr:nth-child(odd){
+    background-color: #fff;
+}
+
+.tabela tbody tr:nth-child(even){
+    background-color: #F8C0CD;
+}
+
+header{
+    width: 100%;
+    margin-bottom: 3%;
+    border-bottom: solid 1px #CCC;
+   }
+
+.logo{
+    width: 63px;
+}
+
+header .nav{
+    display: flex;
+    justify-content: space-between;
+    padding:.8rem 2rem;
+    align-items: center;
+}
+header .nav a{
+   color: black;
+   text-decoration: none;
+   font-size: 20px;
+
+}
+
+.barraPesquisa{
+    width: 40%;
+    padding: 1rem 0 ;
+    right: 6.25rem;
+    position: absolute;  
+
+}
+
+
+@media (max-width: 676px){
+   .barraPesquisa{
+    width: 85%;
+    right: 2rem;
+}
+    
+.tabela{   
+    margin: 0 30px;
+    padding: 80px 0px;
+    overflow:auto; 
+}
+
+}

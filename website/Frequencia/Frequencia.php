@@ -8,10 +8,30 @@ require_once __DIR__ . '/../global/CRUD.php';
 use Exception;
 use CRUD;
 
-class Frequencia{
+class Frequencia
+{
 
     use IGlobal;
-    
+
+    public function __get($atributo)
+    {
+        if (!property_exists($this, $atributo)) {
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+        }
+
+        return $this->{$atributo};
+    }
+
+    public function __set($atributo, $valor)
+    {
+
+        if (!property_exists($this, $atributo)) {
+            throw new Exception("Atributo {$atributo} não existe nessa classe");
+        }
+
+        $this->{$atributo} = $valor;
+    }
+
     public function visualizarFrequencia()
     {
 
@@ -33,7 +53,7 @@ class Frequencia{
 
             echo $this->rederizarTabela($matriz);
         } catch (Exception $e) {
-            echo "Erro ao listar a presença dos afiliados:".$e;
+            echo "Erro ao listar a presença dos afiliados:" . $e;
         }
     }
 }
