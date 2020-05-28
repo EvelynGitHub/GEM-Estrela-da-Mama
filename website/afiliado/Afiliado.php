@@ -224,28 +224,31 @@ class Afiliado
 
 	public function buscaAfiliadoNome($nome, $tabela = 'vw_dados_afiliado'){
 
-		$sql = "SELECT * FROM $tabela WHERE `Nome:` = :nome";
+		$sql = "SELECT * FROM $tabela WHERE `Nome:` LIKE :nome ";
 
-		$preparaSql = array(':nome' => $nome);
+		$preparaSql = array(':nome' => "%$nome%");
+
+		$array['cd'] = array('Opção' => "<a href='?id=@codigo@' class=''>
+												<i class='far fa-id-card' style='font-size: 1.5rem;'></i>
+											</a>
+											<a href='/afiliado/editar?id=@codigo@' class=''>
+												<i class='far fa-edit' style='font-size: 1.5rem;'></i>
+											</a>");
 
 		$banco = new CRUD();
 
 		$matriz = $banco->obterRegistros($sql, $preparaSql);
 
-		foreach($matriz as $afiliado){
-
-			var_dump($afiliado);
-
-		}
+		echo $this->rederizarTabela($matriz, $array, "@codigo@");
 
 	}
 }
 
-if(isset($_POST['buscarAfiliadoNome'])){
+if(isset($_GET['buscarAfiliadoNome'])){
 
 	$afiliado = new Afiliado();
 
-	$afiliado->buscaAfiliadoNome($_POST['nome']);
+	$afiliado->buscaAfiliadoNome($_GET['nome']);
 
 }
 
