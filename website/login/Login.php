@@ -46,13 +46,15 @@ class Login
         $matriz = $banco->obterRegistros($sql, $preparaSql);
 
         if (!empty($matriz)) {
-            if($matriz['nm_tipo_usuario']  != true){
+            var_dump($matriz['nm_tipo_usuario']);
+            if($matriz['nm_tipo_usuario']  = true){
+                
                 $_SESSION['usuario'] = $this->usuario;
-                header('Location: /lista-chamada');
+                //header('Location: /lista-geral');
                 die();
             } else{
                 $_SESSION['usuario'] = $this->usuario;
-                header('Location: /lista-geral');
+               // header('Location: /lista-chamada');
                 die();
             }
         } else {
