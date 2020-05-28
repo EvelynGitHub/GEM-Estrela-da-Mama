@@ -61,7 +61,8 @@ class Chamada
     {
         try {
 
-            $sql = "SELECT a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', null 'Frequencia' ,null 'Presença' 
+            $sql = "SELECT a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo',
+                    CONCAT(FORMAT((((c.qt_presencas)/(c.qt_presencas + c.qt_faltas))*100), 2), '%') 'Frequência' ,null 'Presença' 
                     FROM afiliado a, chamada c 
                     WHERE c.id_afiliado = a.cd_afiliado
                     ORDER BY ':order'";
