@@ -6,6 +6,8 @@ include 'website//chamada//Chamada.php';
 include 'website//login//Login.php';
 // include 'website//lista-geral//.php';
 include 'website//administrador//Administrador.php';
+// Include de Frequencia para funcionar as Rotas
+include 'website//Frequencia//Frequencia.php';
 
 
 $rota = new Rota;
@@ -34,8 +36,9 @@ class Rota
         $this->rotas['/chamada/editar-afiliado'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'editar-chamada.html'));
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
         $this->rotas['/administrador/cadastrar-administrador'] = array('classe' => 'Administrador', 'metodo' =>"renderizarHTML",'parametro' => array('administrador', 'cadastrar-administrador.html'));
-        
-        $this->rotas['/chamada/vizualizar-frequencia'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'vizualizar-frequencia.html'));
+        $this->rotas['/frequencia/vizualizar-frequencia'] = array('classe' => 'Frequencia', 'metodo' => "renderizarHTML", 'parametro' => array('Frequencia', 'vizualizar-frequencia.html'));
+
+
         //Rotas do localhost (desenvolvimento)/Projetos/GEM/GEM-Estrela-da-Mama-2/
         /*$this->rotas['/GEM-Estrela-da-mama/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
         $this->rotas['/GEM-Estrela-da-mama/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'lista-geral.html'));
