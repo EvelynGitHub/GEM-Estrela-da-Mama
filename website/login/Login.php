@@ -46,7 +46,7 @@ class Login
         $matriz = $banco->obterRegistros($sql, $preparaSql);
 
         if (!empty($matriz)) {
-            var_dump($matriz['nm_tipo_usuario']);
+            var_dump($matriz);
             if($matriz['nm_tipo_usuario']  = true){
                 
                 $_SESSION['usuario'] = $this->usuario;
