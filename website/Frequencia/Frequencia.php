@@ -71,6 +71,6 @@ class Frequencia
     }
 }
 if(isset($_POST['buscarPorNome'])){
-	$afiliado = new Afiliado();
-	$afiliado->buscaAfiliadoNome($_POST['pesquisa']);
+	$afiliado = new Frequencia();
+	$afiliado->buscarPorNome($_POST['pesquisa']);
 }
