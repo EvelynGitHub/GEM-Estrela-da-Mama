@@ -28,10 +28,6 @@ class Login
 
     public function Login()
     {
-
-    
-
-
         $sql = "SELECT * FROM login WHERE nm_login = :usuario AND nm_senha = :senha ";
 
         $preparaSql = array(":usuario" => $this->usuario, ":senha" => $this->senha);
@@ -41,7 +37,7 @@ class Login
 
         if (!empty($matriz)) {
   //          var_dump($matriz);
-            if($matriz['nm_tipo_usuario']  = true){
+            if($matriz['nm_tipo_usuario']  == true){
                 
                 $_SESSION['usuario'] = $this->usuario;
                 header('Location: /lista-geral');
