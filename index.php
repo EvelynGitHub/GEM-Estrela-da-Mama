@@ -6,6 +6,7 @@ include 'website//chamada//Chamada.php';
 include 'website//login//Login.php';
 // include 'website//lista-geral//.php';
 include 'website//administrador//Administrador.php';
+// Include de Frequencia para funcionar as Rotas
 include 'website//frequencia//Frequencia.php';
 
 
