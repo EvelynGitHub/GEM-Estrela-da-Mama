@@ -1,5 +1,5 @@
 
- body{
+body{
     background-color: #fff;
 }
 .float-left h3{
@@ -75,12 +75,12 @@ header .nav a{
    .barraPesquisa{
     width: 85%;
     right: 2rem;
-}
+    }
     
-.tabela{   
+    .tabela{   
     margin: 0 30px;
     padding: 80px 0px;
     overflow:auto; 
-}
+    }
 
 }

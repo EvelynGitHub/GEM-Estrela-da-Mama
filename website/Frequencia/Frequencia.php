@@ -56,4 +56,21 @@ class Frequencia
             echo "Erro ao listar a presença dos afiliados:" . $e;
         }
     }
+    public function buscarPorNome($nome){
+
+        $sql = "SELECT * FROM chamada WHERE `Nome:` = :nome";
+        $preparaSql = array(':nome' => $nome);
+        $banco = new CRUD();
+        $matriz = $banco->obterRegistros($sql, $preparaSql);
+
+		foreach($matriz as $afiliado){
+
+			var_dump($afiliado);
+
+		}
+    }
+}
+if(isset($_POST['buscarPorNome'])){
+	$afiliado = new Afiliado();
+	$afiliado->buscaAfiliadoNome($_POST['pesquisa']);
 }
