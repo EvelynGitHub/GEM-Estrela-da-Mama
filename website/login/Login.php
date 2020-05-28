@@ -37,7 +37,7 @@ class Login
 
         if (!empty($matriz)) {
   //          var_dump($matriz);
-            if($matriz['nm_tipo_usuario']  == true){
+            if($matriz['nm_tipo_usuario']  = true){
                 
                 $_SESSION['usuario'] = $this->usuario;
                 header('Location: /lista-geral');
