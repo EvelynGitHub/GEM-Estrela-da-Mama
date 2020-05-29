@@ -34,15 +34,20 @@ class Login
 
         $banco = new CRUD();
         $matriz = $banco->obterRegistros($sql, $preparaSql);
-
+        
         if (!empty($matriz)) {
-  //          var_dump($matriz);
-            if($matriz['nm_tipo_usuario']  = true){
+            $pegaTipoUsuario = $matriz[0]['nm_tipo_usuario'];
+            //var_dump($matriz[0]['nm_tipo_usuario']);
+            //var_dump($pegaTipoUsuario);
+            
+            if($pegaTipoUsuario == 1){
                 
+                //echo "entrou";
                 $_SESSION['usuario'] = $this->usuario;
                 header('Location: /lista-geral');
                 die();
             } else{
+                //echo "nao entrou";
                 $_SESSION['usuario'] = $this->usuario;
                 header('Location: /lista-chamada');
                 die();
