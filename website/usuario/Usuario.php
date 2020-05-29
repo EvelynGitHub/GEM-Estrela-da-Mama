@@ -7,7 +7,7 @@ require_once __DIR__ . '/../global/CRUD.php';
 
 use Exception;
 use CRUD;
-class Administrador {
+class Usuario{
 	use IGlobal;
 
     private $usuario;
@@ -100,7 +100,7 @@ class Administrador {
     }
 }
 
-$user = new Administrador();
+$user = new Usuario();
 
 $login = isset($_POST["novousuario"]) ? $_POST["novousuario"] : "";
 $senha1 = isset($_POST["novasenha"]) ? $_POST["novasenha"] : "";
