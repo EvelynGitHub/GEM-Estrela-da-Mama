@@ -35,7 +35,7 @@ class Rota
         $this->rotas['/chamada/listar-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/chamada/editar-afiliado'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'editar-chamada.html'));
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
-        $this->rotas['/usuario/cadastrar-usuario'] = array('classe' => 'Usuario', 'metodo' =>"renderizarHTML",'parametro' => array('usuario', 'cadastrar-usuario.html'));
+        $this->rotas['/usuario/cadastrar-usuario'] = array('classe' => 'Administrador', 'metodo' =>"renderizarHTML",'parametro' => array('usuario', 'cadastrar-usuario.html'));
         $this->rotas['/frequencia/vizualizar-frequencia'] = array('classe' => 'Frequencia', 'metodo' => "renderizarHTML", 'parametro' => array('Frequencia', 'vizualizar-frequencia.html'));
 
 
