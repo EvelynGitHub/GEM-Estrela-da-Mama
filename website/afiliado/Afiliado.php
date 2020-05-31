@@ -78,11 +78,7 @@ class Afiliado
 			'nm_nacionalidade' => $this->nacionalidade,
 			'ic_sexo' => $this->sexo,
 			'dt_nascimento' => $this->dataNascimento,
-			//'nm_estado' => $this->estado,
-			//'nm_cidade' => $this->cidade,
-			//'nm_bairro' => $this->bairro,
 			'nm_endereco' => $this->endereco,
-			//'cd_cep' => $this->cep,
 			'cd_telefone' => $this->telefone,
 			'cd_contato' => $this->celular,
 			'nm_email' => $this->email,
@@ -311,12 +307,27 @@ if (isset($_POST['formulario-afiliado'])) {
 	}
 
 	if (isset($_POST['btn-enviar'])) {
-		$cadAfiliado->cadastrarAfiliado($cadAfiliado);
+		if(!verificarCpfExistente()){
+			$cadAfiliado->cadastrarAfiliado($cadAfiliado);
+		}else {
+			echo '<script>
+						alert("CPF JÁ CADASTRADO NA BASE DE DADOS");
+						history.go(-1);
+				  </script>';
+		}
+		
 	}
 
-	if (isset($_POST['btn-editar'])) {
+	if (isset($_POST['btn-editar'])) {		
 		
-		$cadAfiliado->editarAfiliado($_GET['id'], $_POST['alta']);
+		if(!verificarCpfExistente()){
+			$cadAfiliado->editarAfiliado($_GET['id'], $_POST['alta']);
+		}else {
+			echo '<script>
+						alert("CPF JÁ CADASTRADO NA BASE DE DADOS");
+						history.go(-1);
+				  </script>';
+		}
 	}
 	
 	if (isset($_POST['btn-cancelar-editar'])) {
@@ -337,4 +348,21 @@ function removeCaracter ($string = "") {
 	}
 
 	return $string;
+}
+
+function verificarCpfExistente () {
+
+	$crud = new CRUD();
+
+	$selectCpf = "SELECT cd_afiliado FROM afiliado WHERE cd_cpf = :cpf";
+
+	$condicaoSelect = array('cpf' => ':cpf');
+
+	$cpfAfiliado = $crud->obterRegistros($selectCpf, $condicaoSelect);
+
+	if(isset($cpfAfiliado)){
+		return true;
+	}else {
+		return false;
+	}
 }
