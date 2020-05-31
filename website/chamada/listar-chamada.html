@@ -44,15 +44,17 @@
         </div>
     </div>
 
-    <div class="tabela">
-        <table class="table table-hover ">
+    <form method="GET">
+        <div class="tabela">
+            <table class="table table-hover ">
 
-            <?php $this->listarAfiliadoChamada();?>
-        
-        </table>
+                <?php $this->listarAfiliadoChamada();?>
 
-        <button type="button" class="btn ">Encerrar chamada</button>
-    </div>
+            </table>
+
+            <button type="submit" name="chamada" class="btn ">Encerrar chamada</button>
+        </div>
+    </form>
 
 
 

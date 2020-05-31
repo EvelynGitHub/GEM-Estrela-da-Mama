@@ -155,7 +155,7 @@ class CRUD extends Conexao
         }
     }
  
-    public function updateGenerico($tabela, $valores, $condicaoArray)
+    public function updateGenerico($tabela, $valores, $condicaoArray, $operador = "=", $mensagem = "Dados atualizados com sucesso!")
     {
         try {
             $sql = "";
@@ -163,7 +163,7 @@ class CRUD extends Conexao
             $condicao = "";
 
             foreach ($valores as $key => $value) {
-                $colunas .= "$key = :$key , ";
+                $colunas .= "$key $operador :$key , ";
             }
 
             foreach ($condicaoArray as $key => $value) {
@@ -188,10 +188,21 @@ class CRUD extends Conexao
 
 
             if ($instrucao->execute()) {
+
                 return "<script>
-                            alert('Dados atualizados com sucesso!');
+                        
+                        let exibirAlert = true;
+
+                        if(exibirAlert){
+
+                            alert('$mensagem');
                             history.go(-1);
-                        </script>";
+
+                            exibirAlert = false;
+                        }
+        
+                    </script>";
+    
             } else {
                 return "<script>
                             alert('Não foi possível efetuar a atualização dos dados!');
