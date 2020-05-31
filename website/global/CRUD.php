@@ -199,6 +199,7 @@ class CRUD extends Conexao
                             history.go(-1);
 
                             exibirAlert = false;
+                            
                         }
         
                     </script>";
