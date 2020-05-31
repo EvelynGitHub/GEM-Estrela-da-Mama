@@ -95,8 +95,8 @@ class Afiliado
 			'nm_convenio_medico' => $this->convenioMedico
 		);
 
-		//echo $crud->inserirGenerico("afiliado", $inserirAfiliado);
-		//die();
+		echo $crud->inserirGenerico("afiliado", $inserirAfiliado);
+		die();
 	}
 
 	public function editarAfiliado($codigoAfiliado = 0, $alta = '')
