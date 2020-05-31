@@ -4,9 +4,7 @@ include 'website//afiliado//Afiliado.php';
 include 'website//atividade//Atividade.php';
 include 'website//chamada//Chamada.php';
 include 'website//login//Login.php';
-// include 'website//lista-geral//.php';
-include 'website//administrador//Administrador.php';
-// Include de Frequencia para funcionar as Rotas
+include 'website//usuario//Usuario.php';
 include 'website//Frequencia//Frequencia.php';
 
 
