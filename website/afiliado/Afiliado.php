@@ -312,6 +312,7 @@ if (isset($_POST['formulario-afiliado'])) {
 		}else {
 			echo '<script>
 						alert("CPF JÁ CADASTRADO NA BASE DE DADOS");
+						history.go(-1);
 				  </script>';
 		}
 		
