@@ -5,7 +5,7 @@ include 'website//atividade//Atividade.php';
 include 'website//chamada//Chamada.php';
 include 'website//login//Login.php';
 // include 'website//lista-geral//.php';
-include 'website//administrador//Administrador.php';
+//include 'website//administrador//Administrador.php';
 // Include de Frequencia para funcionar as Rotas
 include 'website//Frequencia//Frequencia.php';
 
@@ -35,7 +35,7 @@ class Rota
         $this->rotas['/chamada/listar-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/chamada/editar-afiliado'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'editar-chamada.html'));
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
-        $this->rotas['/usuario/cadastrar-usuario'] = array('classe' => 'Usuario', 'metodo' =>"renderizarHTML",'parametro' => array('usuario', 'cadastrar-usuario.html'));
+        $this->rotas['/administrador/cadastrar-administrador'] = array('classe' => 'Administrador', 'metodo' =>"renderizarHTML",'parametro' => array('administrador', 'cadastrar-administrador.html'));
         $this->rotas['/frequencia/vizualizar-frequencia'] = array('classe' => 'Frequencia', 'metodo' => "renderizarHTML", 'parametro' => array('Frequencia', 'vizualizar-frequencia.html'));
 
 
@@ -62,9 +62,17 @@ class Rota
                 // echo "Não tem SESSION ".session_status();
                 header("Location: /");
             }
-
+            
             if(isset($_SESSION['usuario']) && $url == "/"){
-                $url = "/lista-geral";
+                if($_SESSION['usuario'] == 1){
+                    $url = "/lista-geral";
+                }
+            }
+            if(isset($_SESSION['usuario']) && $url == "/"){
+                if($_SESSION['usuario'] == 0){
+                    $url = "/lista-chamada";
+                    //echo $url;
+                }
             }
     
             if (array_key_exists($url, $this->rotas)) {

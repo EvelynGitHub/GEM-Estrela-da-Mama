@@ -43,13 +43,18 @@ class Login
             if($pegaTipoUsuario == 1){
                 
                 //echo "entrou";
-                $_SESSION['usuario'] = $this->usuario;
+                $_SESSION['usuario'] = $matriz[0]['nm_tipo_usuario'];
+                //var_dump($_SESSION['usuario']);
                 header('Location: /lista-geral');
+                //localhost
+                //header('Location: /GEM-Estrela-da-mama/lista-geral');
                 die();
             } else{
                 //echo "nao entrou";
-                $_SESSION['usuario'] = $this->usuario;
+                $_SESSION['usuario'] = $matriz[0]['nm_tipo_usuario'];
                 header('Location: /lista-chamada');
+                 //var_dump($_SESSION['usuario']);
+                //header('Location: /GEM-Estrela-da-mama/lista-chamada');
                 die();
             }
         } else {
@@ -64,7 +69,11 @@ class Login
     public function Lougout()
     {
         session_destroy();
+        
         header('Location: /');
+        
+        //LocalHost
+        //header('Location: /GEM-Estrela-da-mama/ ');
         die();
     }
 }
