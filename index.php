@@ -28,8 +28,6 @@ class Rota
         $this->rotas['/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
         $this->rotas['/afiliado/editar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'editar-afiliado.html'));
-        $this->rotas['/atividade/cadastrar'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'cadastrar-atividade.html'));
-        $this->rotas['/atividade/listar-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
         $this->rotas['/chamada/listar-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/chamada/editar-afiliado'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'editar-chamada.html'));
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
