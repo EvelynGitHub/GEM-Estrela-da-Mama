@@ -34,17 +34,27 @@ class Login
 
         $banco = new CRUD();
         $matriz = $banco->obterRegistros($sql, $preparaSql);
-
+        
         if (!empty($matriz)) {
-  //          var_dump($matriz);
-            if($matriz['nm_tipo_usuario']  = true){
+            $pegaTipoUsuario = $matriz[0]['nm_tipo_usuario'];
+            //var_dump($matriz[0]['nm_tipo_usuario']);
+            //var_dump($pegaTipoUsuario);
+            
+            if($pegaTipoUsuario == 1){
                 
-                $_SESSION['usuario'] = $this->usuario;
+                //echo "entrou";
+                $_SESSION['usuario'] = $matriz[0]['nm_tipo_usuario'];
+                //var_dump($_SESSION['usuario']);
                 header('Location: /lista-geral');
+                //localhost
+                //header('Location: /GEM-Estrela-da-mama/lista-geral');
                 die();
             } else{
-                $_SESSION['usuario'] = $this->usuario;
+                //echo "nao entrou";
+                $_SESSION['usuario'] = $matriz[0]['nm_tipo_usuario'];
                 header('Location: /lista-chamada');
+                 //var_dump($_SESSION['usuario']);
+                //header('Location: /GEM-Estrela-da-mama/lista-chamada');
                 die();
             }
         } else {
@@ -59,7 +69,11 @@ class Login
     public function Lougout()
     {
         session_destroy();
+        
         header('Location: /');
+        
+        //LocalHost
+        //header('Location: /GEM-Estrela-da-mama/ ');
         die();
     }
 }

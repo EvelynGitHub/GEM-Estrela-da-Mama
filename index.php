@@ -5,7 +5,7 @@ include 'website//atividade//Atividade.php';
 include 'website//chamada//Chamada.php';
 include 'website//login//Login.php';
 // include 'website//lista-geral//.php';
-include 'website//administrador//Administrador.php';
+//include 'website//administrador//Administrador.php';
 // Include de Frequencia para funcionar as Rotas
 include 'website//Frequencia//Frequencia.php';
 
@@ -30,8 +30,6 @@ class Rota
         $this->rotas['/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
         $this->rotas['/afiliado/editar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'editar-afiliado.html'));
-        $this->rotas['/atividade/cadastrar'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'cadastrar-atividade.html'));
-        $this->rotas['/atividade/listar-atividade'] = array('classe' => 'Atividade', 'metodo' => "renderizarHTML", 'parametro' => array('atividade', 'listar-atividade.html'));
         $this->rotas['/chamada/listar-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/chamada/editar-afiliado'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'editar-chamada.html'));
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
@@ -40,7 +38,7 @@ class Rota
 
 
         //Rotas do localhost (desenvolvimento)/Projetos/GEM/GEM-Estrela-da-Mama-2/
-        /*$this->rotas['/GEM-Estrela-da-mama/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
+       /* $this->rotas['/GEM-Estrela-da-mama/'] = array('classe' => 'Login', 'metodo' => "renderizarHTML", 'parametro' => array('login', 'login.html'));
         $this->rotas['/GEM-Estrela-da-mama/lista-geral'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'lista-geral.html'));
         $this->rotas['/GEM-Estrela-da-mama/lista-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/GEM-Estrela-da-mama/afiliado/cadastrar'] = array('classe' => 'Afiliado', 'metodo' => "renderizarHTML", 'parametro' => array('afiliado', 'cadastrar-afiliado.html'));
@@ -51,7 +49,8 @@ class Rota
         $this->rotas['/GEM-Estrela-da-mama/chamada/editar-afiliado'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'editar-chamada.html'));
         $this->rotas['/GEM-Estrela-da-mama/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
         $this->rotas['/GEM-Estrela-da-mama/administrador/cadastrar-administrador'] = array('classe' => 'Administrador', 'metodo' => "renderizarHTML", 'parametro' => array('administrador', 'cadastrar-administrador.html'));
-        $this->rotas['/GEM-Estrela-da-mama/chamada/vizualizar-frequencia'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'vizualizar-frequencia.html'));*/
+        $this->rotas['/GEM-Estrela-da-mama/chamada/vizualizar-frequencia'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'vizualizar-frequencia.html'));
+        */
     }
 
     public function executar($url = null)
@@ -61,9 +60,17 @@ class Rota
                 // echo "Não tem SESSION ".session_status();
                 header("Location: /");
             }
-
+            
             if(isset($_SESSION['usuario']) && $url == "/"){
-                $url = "/lista-geral";
+                if($_SESSION['usuario'] == 1){
+                    $url = "/lista-geral";
+                }
+            }
+            if(isset($_SESSION['usuario']) && $url == "/"){
+                if($_SESSION['usuario'] == 0){
+                    $url = "/lista-chamada";
+                    //echo $url;
+                }
             }
     
             if (array_key_exists($url, $this->rotas)) {
