@@ -318,9 +318,16 @@ if (isset($_POST['formulario-afiliado'])) {
 		
 	}
 
-	if (isset($_POST['btn-editar'])) {
+	if (isset($_POST['btn-editar'])) {		
 		
-		$cadAfiliado->editarAfiliado($_GET['id'], $_POST['alta']);
+		if(!verificarCpfExistente()){
+			$cadAfiliado->editarAfiliado($_GET['id'], $_POST['alta']);
+		}else {
+			echo '<script>
+						alert("CPF JÁ CADASTRADO NA BASE DE DADOS");
+						history.go(-1);
+				  </script>';
+		}
 	}
 	
 	if (isset($_POST['btn-cancelar-editar'])) {
