@@ -68,7 +68,7 @@ class Rota
             }
             if(isset($_SESSION['usuario']) && $url == "/"){
                 if($_SESSION['usuario'] == 0){
-                    $url = "/lista-chamada";
+                    $url = "/listar-chamada";
                     //echo $url;
                 }
             }
