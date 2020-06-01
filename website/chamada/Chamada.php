@@ -44,8 +44,19 @@ class Chamada
         $this->{$atributo} = $valor;
     }
 
-    public function adicionarPresenca(Afiliado $afiliado, Atividade $atividade)
+    public function adicionarPresenca($codigos)
     {
+
+        $banco = new CRUD;
+
+        $coluna = array('qt_presencas' => 1);
+
+        foreach($codigos as $codigo){
+
+            echo $banco->updateGenerico('chamada', $coluna, array('id_afiliado' => $codigo), '= qt_presencas +', 'Lista de Chamada Atualizada');
+
+        }
+
     }
     public function removerPresenca(Afiliado $afiliado, Atividade $atividade)
     {
@@ -61,8 +72,7 @@ class Chamada
     {
         try {
 
-            $sql = "SELECT a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo',
-                    CONCAT(FORMAT((((c.qt_presencas)/(c.qt_presencas + c.qt_faltas))*100), 2), '%') 'Frequência' ,null 'Presença' 
+            $sql = "SELECT a.cd_afiliado '#', a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', null 'Presença' 
                     FROM afiliado a, chamada c 
                     WHERE c.id_afiliado = a.cd_afiliado
                     ORDER BY ':order'";
@@ -74,7 +84,7 @@ class Chamada
 
             $matriz = $banco->obterRegistros($sql, $preparaSQL);
 
-            $htmlPresente['Nome'] = array('Presença' => "<input class='chk' type='checkbox' name='afiliado' value='@codigo@'>");
+            $htmlPresente['#'] = array('Presença' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
 
             echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
         } catch (Exception $e) {
@@ -103,4 +113,23 @@ class Chamada
             echo "$e";
         }
     }
+    
+}
+
+if(isset($_GET['chamada'])){
+
+    $chamada = new Chamada;
+    
+    $listaCodigos = $_GET['afiliado'];
+
+    $codigos = [];
+
+    foreach($listaCodigos as $codigo){
+
+        $codigos[] = intval($codigo);
+
+    }
+
+    $chamada->adicionarPresenca($codigos);
+
 }

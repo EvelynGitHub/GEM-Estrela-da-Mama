@@ -44,15 +44,17 @@
         </div>
     </div>
 
-    <div class="tabela">
-        <table class="table table-hover ">
+    <form id="chamada" method="GET">
+        <div class="tabela">
+            <table class="table table-hover ">
 
-            <?php $this->listarAfiliadoChamada();?>
-        
-        </table>
+                <?php $this->listarAfiliadoChamada();?>
 
-        <button type="button" class="btn ">Encerrar chamada</button>
-    </div>
+            </table>
+
+            <button type="submit" name="chamada" class="btn ">Encerrar chamada</button>
+        </div>
+    </form>
 
 
 
@@ -65,6 +67,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="/website/chamada/js/limparForm.js"></script>
 
 
 </body>
