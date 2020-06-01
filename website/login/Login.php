@@ -52,7 +52,7 @@ class Login
             } else{
                 //echo "nao entrou";
                 $_SESSION['usuario'] = $matriz[0]['nm_tipo_usuario'];
-                header('Location: /listar-chamada');
+                header('Location: /chamada/listar-chamada');
                  //var_dump($_SESSION['usuario']);
                 //header('Location: /GEM-Estrela-da-mama/lista-chamada');
                 die();
