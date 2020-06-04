@@ -52,7 +52,7 @@ class Frequencia
                 $nome = isset($_GET['pesquisa']) ? $_GET['pesquisa'] : "";
                 //var_dump("<h6>Verficando a varivael nome dentro do if</h6> ",$nome, "<br><br>");
 
-                if ($nome != "") {
+                if ($nome) {
 
                     $sql .= "WHERE a.nm_afiliado LIKE :nome";
                     //var_dump("<h6>Verficando o select dentro do if</h6> ",$sql, "<br><br>");
