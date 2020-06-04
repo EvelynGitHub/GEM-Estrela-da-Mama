@@ -74,3 +74,18 @@ class Frequencia
     }
     
 }
+if(isset($_GET['chamada'])){
+
+    $chamada = new Chamada;
+    
+    $listaCodigos = $_GET['afiliado'];
+
+    $codigos = [];
+
+    foreach($listaCodigos as $codigo){
+
+        $codigos[] = intval($codigo);
+
+    }
+    $chamada->adicionarPresenca($codigos);
+}
