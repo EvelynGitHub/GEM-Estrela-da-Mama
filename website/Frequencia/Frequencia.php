@@ -61,11 +61,14 @@ class Frequencia
                     //var_dump("<h6>Verficando o preparaSQL dentro do if</h6> ",$preparaSQL, "<br><br>");
                 }
             }
+            
 
             $matriz = $banco->obterRegistros($sql, $preparaSQL);
             //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
+            
+            $htmlPresente['#'] = array('Presença' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
+            echo $this->rederizarTabela($matriz,$htmlPresente,"@codigo@");
 
-            echo $this->rederizarTabela($matriz);
         } catch (Exception $e) {
             echo "Erro ao listar a presença dos afiliados:" . $e;
         }
