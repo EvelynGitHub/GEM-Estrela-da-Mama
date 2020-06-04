@@ -51,10 +51,12 @@ class Chamada
 
         $coluna = array('qt_presencas' => 1);
 
-        foreach ($codigos as $codigo) {
+        foreach($codigos as $codigo){
 
             echo $banco->updateGenerico('chamada', $coluna, array('id_afiliado' => $codigo), '= qt_presencas +', 'Lista de Chamada Atualizada');
+
         }
+
     }
     public function removerPresenca(Afiliado $afiliado, Atividade $atividade)
     {
@@ -71,28 +73,14 @@ class Chamada
         try {
 
             $sql = "SELECT a.cd_afiliado '#', a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', null 'Presença' 
-                    FROM afiliado a
-                    JOIN chamada c ON (a.cd_afiliado = c.id_afiliado)";
+                    FROM afiliado a, chamada c 
+                    WHERE c.id_afiliado = a.cd_afiliado
+                    ORDER BY ':order'";
 
 
-            $preparaSQL = "";
+            $preparaSQL = array(':order' => "a.nm_afiliado");
 
             $banco = new CRUD();
-
-            if (isset($_GET['busca'])) {
-
-                $nome = isset($_GET['pesquisa']) ? $_GET['pesquisa'] : "";
-                //var_dump("<h6>Verficando a varivael nome dentro do if</h6> ",$nome, "<br><br>");
-
-                if ($nome) {
-
-                    $sql .= "WHERE a.nm_afiliado LIKE :nome";
-                    //var_dump("<h6>Verficando o select dentro do if</h6> ",$sql, "<br><br>");
-
-                    $preparaSQL = array(':nome' => "%$nome%");
-                    //var_dump("<h6>Verficando o preparaSQL dentro do if</h6> ",$preparaSQL, "<br><br>");
-                }
-            }
 
             $matriz = $banco->obterRegistros($sql, $preparaSQL);
 
@@ -125,20 +113,23 @@ class Chamada
             echo "$e";
         }
     }
+    
 }
 
-if (isset($_GET['chamada'])) {
+if(isset($_GET['chamada'])){
 
     $chamada = new Chamada;
-
+    
     $listaCodigos = $_GET['afiliado'];
 
     $codigos = [];
 
-    foreach ($listaCodigos as $codigo) {
+    foreach($listaCodigos as $codigo){
 
         $codigos[] = intval($codigo);
+
     }
 
     $chamada->adicionarPresenca($codigos);
+
 }
