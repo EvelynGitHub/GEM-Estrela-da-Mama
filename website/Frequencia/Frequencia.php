@@ -74,7 +74,7 @@ class Frequencia
     }
     
 }
-if(isset($_GET['chamada'])){
+if(isset($_GET['finalizaChamada'])){
 
     $chamada = new Chamada;
     
