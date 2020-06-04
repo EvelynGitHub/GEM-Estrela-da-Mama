@@ -7,6 +7,11 @@
     cursor: pointer;
  
 }
+
+.float-left h3{
+    margin: 30px 110PX;
+}
+
 .nav a:hover ,i:hover {
     color: #FF5F98;
 }
