@@ -307,7 +307,7 @@ if (isset($_POST['formulario-afiliado'])) {
 	}
 
 	if (isset($_POST['btn-enviar'])) {
-		if(!verificarCpfExistente()){
+		if(!verificarCpfExistente($cadAfiliado->cpf)){
 			$cadAfiliado->cadastrarAfiliado($cadAfiliado);
 		}else {
 			echo '<script>
@@ -320,7 +320,7 @@ if (isset($_POST['formulario-afiliado'])) {
 
 	if (isset($_POST['btn-editar'])) {		
 		
-		if(!verificarCpfExistente()){
+		if(!verificarCpfExistente($cadAfiliado->cpf)){
 			$cadAfiliado->editarAfiliado($_GET['id'], $_POST['alta']);
 		}else {
 			echo '<script>
@@ -350,17 +350,17 @@ function removeCaracter ($string = "") {
 	return $string;
 }
 
-function verificarCpfExistente () {
+function verificarCpfExistente ($cpf = "") {
 
 	$crud = new CRUD();
 
 	$selectCpf = "SELECT cd_afiliado FROM afiliado WHERE cd_cpf = :cpf";
 
-	$condicaoSelect = array('cpf' => ':cpf');
+	$condicaoSelect = array(':cpf' => $cpf);
 
 	$cpfAfiliado = $crud->obterRegistros($selectCpf, $condicaoSelect);
 
-	if(isset($cpfAfiliado)){
+	if(!empty($cpfAfiliado)){
 		return true;
 	}else {
 		return false;
