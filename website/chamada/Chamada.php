@@ -73,14 +73,28 @@ class Chamada
         try {
 
             $sql = "SELECT a.cd_afiliado '#', a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', null 'Presença' 
-                    FROM afiliado a, chamada c 
-                    WHERE c.id_afiliado = a.cd_afiliado
-                    ORDER BY ':order'";
+                    FROM afiliado a
+                    JOIN chamada c ON (a.cd_afiliado = c.id_afiliado)";
 
 
-            $preparaSQL = array(':order' => "a.nm_afiliado");
+            $preparaSQL = "";
 
             $banco = new CRUD();
+
+            if (isset($_GET['busca'])) {
+
+                $nome = isset($_GET['pesquisa']) ? $_GET['pesquisa'] : "";
+                //var_dump("<h6>Verficando a varivael nome dentro do if</h6> ",$nome, "<br><br>");
+
+                if ($nome) {
+
+                    $sql .= "WHERE a.nm_afiliado LIKE :nome";
+                    //var_dump("<h6>Verficando o select dentro do if</h6> ",$sql, "<br><br>");
+
+                    $preparaSQL = array(':nome' => "%$nome%");
+                    //var_dump("<h6>Verficando o preparaSQL dentro do if</h6> ",$preparaSQL, "<br><br>");
+                }
+            }
 
             $matriz = $banco->obterRegistros($sql, $preparaSQL);
 
