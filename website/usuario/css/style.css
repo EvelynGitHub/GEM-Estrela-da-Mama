@@ -5,7 +5,20 @@ body {
     background: #f0f0f5;
     -webkit-font-smoothing: antialiased;
 }
-
+h1{
+    text-align: center;
+}
+.opcAdm{
+    padding: 0 10px 0 0;                           
+ }
+.radios{
+    display: flex;
+    justify-content: start;
+    padding: 10px 0;
+ }
+.radios label{
+     font-size: 20px;
+ }
 input, button, textarea, select, label {
     font: 400 2rem Roboto, sans-serif;
 }
