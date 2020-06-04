@@ -360,8 +360,6 @@ function verificarCpfExistente () {
 
 	$cpfAfiliado = $crud->obterRegistros($selectCpf, $condicaoSelect);
 
-	var_dump($cpfAfiliado);
-
 	if(isset($cpfAfiliado)){
 		return true;
 	}else {
