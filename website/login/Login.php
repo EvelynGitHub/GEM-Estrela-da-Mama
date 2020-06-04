@@ -60,7 +60,7 @@ class Login
         } else {
             echo "<script>
                         alert('Nome de usuário ou senha invalidos');
-                        self.location.href='http://estreladamama.tk/';
+                        self.location.href='/';
                     </script>";
             die();
         }
