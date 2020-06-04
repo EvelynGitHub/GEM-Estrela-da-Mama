@@ -38,6 +38,14 @@ body{
 .tabela tbody tr:nth-child(even){
     background-color: #F8C0CD;
 }
+.btn{
+    position: absolute;
+    right: 8rem;
+    background-color: #FF5F98;
+    color: #fff;
+    border: none;
+    padding: 12px;
+}
 
 header{
     width: 100%;
