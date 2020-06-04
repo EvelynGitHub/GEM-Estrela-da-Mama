@@ -4,6 +4,7 @@ include 'website//afiliado//Afiliado.php';
 include 'website//atividade//Atividade.php';
 include 'website//chamada//Chamada.php';
 include 'website//login//Login.php';
+include 'website//usuario//Usuario.php';
 // include 'website//lista-geral//.php';
 //include 'website//administrador//Administrador.php';
 // Include de Frequencia para funcionar as Rotas
@@ -35,6 +36,7 @@ class Rota
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
         $this->rotas['/administrador/cadastrar-administrador'] = array('classe' => 'Administrador', 'metodo' =>"renderizarHTML",'parametro' => array('administrador', 'cadastrar-administrador.html'));
         $this->rotas['/frequencia/vizualizar-frequencia'] = array('classe' => 'Frequencia', 'metodo' => "renderizarHTML", 'parametro' => array('Frequencia', 'vizualizar-frequencia.html'));
+        $this->rotas['/usuario/cadastrar-usuario'] = array('classe' => 'Usuario', 'metodo' => "renderizarHTML", 'parametro' => array('usuario', 'cadastrar-usuario.html'));
 
 
         //Rotas do localhost (desenvolvimento)/Projetos/GEM/GEM-Estrela-da-Mama-2/
