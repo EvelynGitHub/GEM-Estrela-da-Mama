@@ -38,43 +38,36 @@ class Frequencia
         try {
             $sql = "SELECT a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', c.qt_presencas 'Presença', c.qt_faltas 'Faltas',
                     CONCAT(FORMAT((((c.qt_presencas)/(c.qt_presencas + c.qt_faltas))*100), 2), '%') AS 'Frequência'
-                    FROM afiliado a, chamada c
-                    WHERE c.id_afiliado = a.cd_afiliado
-                    ORDER BY ':order'";
+                    FROM afiliado a
+                    JOIN chamada c ON (a.cd_afiliado = c.id_afiliado) ";
+            //var_dump("<h6>Verficando o select antes do if</h6> ",$sql, "<br><br>");
 
-            $preparaSql = array(':order' => "a.nm_afiliado");
+            $preparaSQL = "";
+            //var_dump("<h6>Verficando o preparaSQL antes do if</h6> ",$preparaSQL, "<br><br>");
 
             $banco = new CRUD();
-            $matriz = $banco->obterRegistros($sql, $preparaSql);
+
+            if (isset($_GET['busca'])) {
+
+                $nome = isset($_GET['pesquisa']) ? $_GET['pesquisa'] : "";
+                //var_dump("<h6>Verficando a varivael nome dentro do if</h6> ",$nome, "<br><br>");
+
+                if ($nome) {
+
+                    $sql .= "WHERE a.nm_afiliado LIKE :nome";
+                    //var_dump("<h6>Verficando o select dentro do if</h6> ",$sql, "<br><br>");
+
+                    $preparaSQL = array(':nome' => "%$nome%");
+                    //var_dump("<h6>Verficando o preparaSQL dentro do if</h6> ",$preparaSQL, "<br><br>");
+                }
+            }
+
+            $matriz = $banco->obterRegistros($sql, $preparaSQL);
+            //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
 
             echo $this->rederizarTabela($matriz);
         } catch (Exception $e) {
             echo "Erro ao listar a presença dos afiliados:" . $e;
         }
     }
-    public function buscarPorNome($nome)
-    {
-        try {
-            //var_dump($nome);
-            $sql = "SELECT a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', c.qt_presencas 'Presença', c.qt_faltas 'Faltas',
-                    CONCAT(FORMAT((((c.qt_presencas)/(c.qt_presencas + c.qt_faltas))*100), 2), '%') AS 'Frequência'
-                    FROM afiliado a, chamada c
-                    WHERE c.id_afiliado = a.cd_afiliado
-                    AND a.nm_afiliado LIKE '%" . $nome . "%'
-                    ORDER BY ':order'";
-
-            $preparaSql = array(':order' => "a.nm_afiliado");
-            $banco = new CRUD();
-            $matriz = $banco->obterRegistros($sql, $preparaSql);
-
-            //var_dump($matriz);
-            echo $this->rederizarTabela($matriz);
-        } catch (Exception $e) {
-            echo "Erro ao listar" . $e;
-        }
-    }
-}
-if (isset($_GET['busca'])) {
-    $freq = new Frequencia();
-    $freq->buscarPorNome($_GET['pesquisa']);
 }
