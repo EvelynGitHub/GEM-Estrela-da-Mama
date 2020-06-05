@@ -37,7 +37,7 @@ class Frequencia
 
         try {
             $sql = "SELECT a.cd_afiliado '#', a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', c.qt_presencas 'Presença',
-            CONCAT(FORMAT((((c.qt_presencas)/365)*100), 2), '%') AS 'Frequência', null 'Marcar'
+            CONCAT(FORMAT((((c.qt_presencas)/(DATEDIFF('2020-12-31', CURDATE())))*100), 2), '%') AS 'Frequência', null 'Marcar'
             FROM afiliado a
             JOIN chamada c ON (a.cd_afiliado = c.id_afiliado) ";
     //var_dump("<h6>Verficando o select antes do if</h6> ",$sql, "<br><br>");
