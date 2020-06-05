@@ -86,7 +86,7 @@ class Usuario
 			}
 		} else {
 			echo "<script> alert('as senhas não correspondem');
-					   self.location.href='cadastrar-administrador';
+					   self.location.href='cadastrar-usuario';
 		</script>";
 		}
 	}
