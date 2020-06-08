@@ -88,5 +88,5 @@ if(isset($_GET['finalizaChamada'])){
 
     }
     $chamada->adicionarPresenca($codigos);
-    
+    header('Refresh:0');
 }
