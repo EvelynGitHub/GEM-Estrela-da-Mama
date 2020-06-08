@@ -88,4 +88,5 @@ if(isset($_GET['finalizaChamada'])){
 
     }
     $chamada->adicionarPresenca($codigos);
+    
 }
