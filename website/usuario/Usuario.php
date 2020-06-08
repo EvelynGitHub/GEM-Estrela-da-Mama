@@ -80,13 +80,13 @@ class Usuario
 			} else {
 				echo "<script>
 					alert('email ja cadastrado');	
-					self.location.href='/lista-geral';	
+					self.location.href='/usuario/cadastrar-usuario';	
 				</script>";
 				die();
 			}
 		} else {
 			echo "<script> alert('as senhas não correspondem');
-					   self.location.href='cadastrar-administrador';
+					   self.location.href='cadastrar-usuario';
 		</script>";
 		}
 	}
