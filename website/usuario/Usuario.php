@@ -80,7 +80,7 @@ class Usuario
 			} else {
 				echo "<script>
 					alert('email ja cadastrado');	
-					self.location.href='/lista-geral';	
+					self.location.href='/usuario/cadastrar-usuario';	
 				</script>";
 				die();
 			}
