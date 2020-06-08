@@ -64,7 +64,7 @@ class Frequencia
 
     $matriz = $banco->obterRegistros($sql, $preparaSQL);
     //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
-    $htmlPresente = [];
+  
     $htmlPresente['#'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
     echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
 
@@ -89,5 +89,5 @@ if(isset($_GET['finalizaChamada'])){
     }
     $chamada->adicionarPresenca($codigos);
 
-    header('Refresh:0');
+    //header('Refresh:0');
 }
