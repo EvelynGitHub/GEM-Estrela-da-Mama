@@ -34,13 +34,6 @@ hr {
     border-radius: 10px;
 }
 
-a.esqueceu-senha{
-    padding:  19px 0;
-    display: block;
-    color: #212529;
-    text-decoration: none;
-}
-
 @media (min-width: 992px) {
     .form-signin {
         max-width: 330px;
