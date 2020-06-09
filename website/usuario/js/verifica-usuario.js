@@ -3,14 +3,24 @@ let confirmarSenha = document.querySelector("#confirmar-senha");
 let botaoCadastrar = document.querySelector("#botaoCadastrar");
 
 
-botaoCadastrar.addEventListener("click",verificarSenha());
+botaoCadastrar.addEventListener("change",verificarSenha);
 
 function verificarSenha(){
     if(senha.value != confirmarSenha){
-        alert("As senhas estao diferente");
-        return false;
+        senha.style.background = "lightcoral";
+        confirmarSenha.style.background = "lightcoral";
+        
+        senha.style.border = "1px solid red";
+        confirmarSenha.style.border = "1px solid red";
+        
     }
     else{
-        return true;
+        
+        senha.style.background = "greenyellow";
+        confirmarSenha.style.background = "greenyellow";    
+        senha.style.border = "1px solid";
+        confirmarSenha.style.border = "1px solid";
+        botaoCadastrar.disabled = false;    
+        
     }
 }
