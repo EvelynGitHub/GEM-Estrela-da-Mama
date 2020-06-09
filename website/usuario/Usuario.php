@@ -114,7 +114,7 @@ class Usuario
 
 $user = new Usuario();
 
-$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
+$senhaCriptografada = password_hash($senha1, PASSWORD_DEFAULT);
 
 $login = isset($_POST["novousuario"]) ? $_POST["novousuario"] : "";
 $senha1 = isset($_POST["novasenha"]) ? $_POST["novasenha"] : "";
