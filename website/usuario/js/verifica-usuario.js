@@ -1,5 +1,5 @@
 let senha = document.querySelector("#senha");
-let confirmarSenha = document.querySelector("#confirmar-senha");
+let confirmarSenha = document.querySelector("#confirmarSenha");
 let botaoCadastrar = document.querySelector("#botaoCadastrar");
 
 
