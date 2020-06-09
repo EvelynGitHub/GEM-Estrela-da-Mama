@@ -43,6 +43,13 @@ class Usuario
 
 	public function AdicionarAdminstrador($usuario, $senha, $conrfimarSenha)
 	{
+
+		if (isset($_POST['adm'])) {
+			$tipo = 1;
+		} elseif (isset($_POST['comum'])) {
+			$tipo = 0;
+		}
+
 		if ($senha == $conrfimarSenha) {
 			$crud = new Crud();
 
@@ -60,7 +67,8 @@ class Usuario
 
 				$addAdministrador = array(
 					'nm_login' => $usuario,
-					'nm_senha' => $senha
+					'nm_senha' => $senha,
+					'nm_tipo_usuario' => $tipo
 				);
 				//var_dump($addAdministrador);
 
