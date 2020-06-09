@@ -20,7 +20,6 @@ function verificarSenha(){
         confirmarSenha.style.background = "greenyellow";    
         senha.style.border = "1px solid";
         confirmarSenha.style.border = "1px solid";
-        botaoCadastrar.disabled = false;    
-        
+        botaoCadastrar.disabled = false;           
     }
 }
