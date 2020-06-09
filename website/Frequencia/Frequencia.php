@@ -57,16 +57,16 @@ class Frequencia
                     $sql .= "WHERE a.nm_afiliado LIKE :nome";
                     //var_dump("<h6>Verficando o select dentro do if</h6> ",$sql, "<br><br>");
 
-            $preparaSQL = array(':nome' => "%$nome%");
-            //var_dump("<h6>Verficando o preparaSQL dentro do if</h6> ",$preparaSQL, "<br><br>");
-        }
-    }
+                    $preparaSQL = array(':nome' => "%$nome%");
+                    //var_dump("<h6>Verficando o preparaSQL dentro do if</h6> ",$preparaSQL, "<br><br>");
+                }
+            }
 
-    $matriz = $banco->obterRegistros($sql, $preparaSQL);
-    //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
-  
-    $htmlPresente['#'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
-    echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
+            $matriz = $banco->obterRegistros($sql, $preparaSQL);
+            //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
+            $htmlPresente = [];
+            $htmlPresente['#'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
+            echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
 
             $matriz = $banco->obterRegistros($sql, $preparaSQL);
             //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
