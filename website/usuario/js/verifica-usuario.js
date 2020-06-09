@@ -3,10 +3,10 @@ let confirmarSenha = document.querySelector("#confirmarSenha");
 let botaoCadastrar = document.querySelector("#botaoCadastrar");
 
 
-botaoCadastrar.addEventListener("change",verificarSenha);
+confirmarSenha.addEventListener("change",verificarSenha);
 
 function verificarSenha(){
-    if(senha.value != confirmarSenha){
+    if(senha.value != confirmarSenha.value){
         senha.style.background = "lightcoral";
         confirmarSenha.style.background = "lightcoral";
     
