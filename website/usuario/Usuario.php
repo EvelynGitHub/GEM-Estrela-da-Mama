@@ -122,6 +122,6 @@ $conrfimarSenha = isset($_POST["confirmarsenha"]) ? $_POST["confirmarsenha"] : "
 
 if (isset($_POST["cadastrarAdm"])) {
 	
-	$user->AdicionarAdminstrador($login, $senha1, $conrfimarSenha);
+	$user->AdicionarAdminstrador($login, $senha1, $conrfimarSenha, $senhaCriptografada);
 	unset($_POST["cadastrarAdm"]);
 }
