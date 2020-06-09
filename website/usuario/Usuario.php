@@ -48,6 +48,12 @@ class Usuario
 			$tipo = 1;
 		} elseif (isset($_POST['comum'])) {
 			$tipo = 0;
+		}else{
+			echo "<script>
+				alert('Seleciona o tipo');
+				self.location.href='/usuario/cadastrar-usuario';
+			</script>";
+			die();
 		}
 
 		if ($senha == $conrfimarSenha) {
