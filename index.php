@@ -76,14 +76,7 @@ class Rota
                 }
             }
 
-            if (isset($_SESSION['usuario']) == 0 && $url != "/chamada/listar-chamada") {
-                if ($url == "/") {
-                    header('Location: /');
-                } else {
-                    header("/chamada/listar-chamada");
-                } //echo $url;
 
-            }
 
             if (array_key_exists($url, $this->rotas)) {
 
