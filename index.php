@@ -78,7 +78,7 @@ class Rota
 
             if($_SESSION['usuario'] == 0 && $url != "/chamada/listar-chamada"){
                 if($url=="/"){
-                    $url = "/";
+                    header("Location: /");
                 }else{
                 $url = "/chamada/listar-chamada";
                 //echo $url;
