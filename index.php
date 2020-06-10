@@ -75,6 +75,14 @@ class Rota
                     //echo $url;
                 }
             }
+
+            if($_SESSION['usuario'] == 0 && $url != "/chamada/listar-chamada"){
+                
+                $url = "/chamada/listar-chamada";
+                //echo $url;
+            
+        }
+
     
             if (array_key_exists($url, $this->rotas)) {
 
