@@ -360,15 +360,16 @@ function verificarCpfExistente ($cpf = "", $id = 0) {
 
 	$cpfAfiliado = $crud->obterRegistros($selectCpf, $condicaoSelect);
 
-	if($id != 0){
-		if($id == $cpfAfiliado[0]["cd_afiliado"]){
-			return true;
-		} else {
-			return false;
-		}
-	} else if ($cpfAfiliado[0]["cd_afiliado"] != 0){
-		return false;
+	if ($cpfAfiliado[0]["cd_afiliado"] != 0) {
+		if($id != 0) {
+			if($id == $cpfAfiliado[0]["cd_afiliado"]){
+				return true;
+			} else {
+				return false;
+			}
+		} 
+		return false;	
 	} else {
 		return true;
-	}
+	}	
 }
