@@ -44,17 +44,15 @@ class Usuario
 	public function AdicionarAdminstrador($usuario, $senha, $conrfimarSenha)
 	{
 
-		if (isset($_POST['adm'])) {
-			$tipo = 1;
-		} elseif (isset($_POST['comum'])) {
-			$tipo = 0;
-		}else{
+		if (!isset($_POST['tipo'])) {
 			echo "<script>
 				alert('Seleciona o tipo');
 				self.location.href='/usuario/cadastrar-usuario';
 			</script>";
 			die();
 		}
+		
+		$tipo = intval($_POST['tipo']);
 
 		if ($senha == $conrfimarSenha) {
 			$crud = new Crud();
@@ -120,7 +118,7 @@ class Usuario
 
 $user = new Usuario();
 
-$senhaCriptografada = password_hash($senha1, PASSWORD_DEFAULT);
+//$senhaCriptografada = password_hash($senha1, PASSWORD_DEFAULT);
 
 $login = isset($_POST["novousuario"]) ? $_POST["novousuario"] : "";
 $senha1 = isset($_POST["novasenha"]) ? $_POST["novasenha"] : "";
