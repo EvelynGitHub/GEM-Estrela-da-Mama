@@ -26,6 +26,8 @@ hr {
 .text-rem-2{
     font-size: 2.5rem;
     cursor: default;
+    text-align: center;
+    margin-right: 94px;
 }
 
 h1{
@@ -67,7 +69,7 @@ hr {
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) { 
-    .row .col{
+   .container .row .col{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -80,11 +82,14 @@ hr {
 }
 
 @media (max-width: 575.98px) {
-    .row .col{
+    .container .row .col{
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
+    }
+    .text-rem-2{
+        margin-right: 0px;
     }
     .form-signin {
         width: 75%;
