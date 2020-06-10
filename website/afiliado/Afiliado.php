@@ -307,7 +307,7 @@ if (isset($_POST['formulario-afiliado'])) {
 	}
 
 	if (isset($_POST['btn-enviar'])) {
-		if(!verificarCpfExistente($cadAfiliado->cpf)){
+		if(verificarCpfExistente($cadAfiliado->cpf)){
 			$cadAfiliado->cadastrarAfiliado($cadAfiliado);
 		}else {
 			echo '<script>
@@ -320,16 +320,14 @@ if (isset($_POST['formulario-afiliado'])) {
 
 	if (isset($_POST['btn-editar'])) {
 		
-		$cadAfiliado->editarAfiliado($_GET['id'], $_POST['alta']);
-		
-		// if(!verificarCpfExistente($cadAfiliado->cpf)){
-		// 	$cadAfiliado->editarAfiliado($_GET['id'], $_POST['alta']);
-		// }else {
-		// 	echo '<script>
-		// 				alert("CPF JÁ CADASTRADO NA BASE DE DADOS");
-		// 				history.go(-1);
-		// 		  </script>';
-		// }
+		if(verificarCpfExistente($cadAfiliado->cpf, $_GET['id'])){
+			$cadAfiliado->editarAfiliado($_GET['id'], $_POST['alta']);
+		}else {
+			echo '<script>
+						alert("CPF JÁ CADASTRADO NA BASE DE DADOS");
+						history.go(-1);
+				  </script>';
+		}
 	}
 	
 	if (isset($_POST['btn-cancelar-editar'])) {
@@ -352,7 +350,7 @@ function removeCaracter ($string = "") {
 	return $string;
 }
 
-function verificarCpfExistente ($cpf = "") {
+function verificarCpfExistente ($cpf = "", $id = 0) {
 
 	$crud = new CRUD();
 
@@ -362,9 +360,15 @@ function verificarCpfExistente ($cpf = "") {
 
 	$cpfAfiliado = $crud->obterRegistros($selectCpf, $condicaoSelect);
 
-	if(!empty($cpfAfiliado)){
-		return true;
-	}else {
+	if($id != 0){
+		if($id == $cpfAfiliado[0]["cd_afiliado"]){
+			return true;
+		} else {
+			return false;
+		}
+	} else if ($cpfAfiliado[0]["cd_afiliado"] != 0){
 		return false;
+	} else {
+		return true;
 	}
 }
