@@ -65,10 +65,15 @@ class Rota
             }
             
             if(isset($_SESSION['usuario'])){
+                
                 if($url == "/afiliado/sair"){
-                 $url = "/afiliado/sair";
-                }else if($_SESSION['usuario']== 0){
-                 $url == "/chamada/listar-chamada";
+                 
+                    $url = "/afiliado/sair";
+                
+                } else if($_SESSION['usuario']== 0){
+                
+                    $url = "/chamada/listar-chamada";
+                
                 }
             } 
 
