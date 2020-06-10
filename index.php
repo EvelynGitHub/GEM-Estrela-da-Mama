@@ -63,6 +63,14 @@ class Rota
                 // echo "Não tem SESSION ".session_status();
                 header("Location: /");
             }
+            
+            if(isset($_SESSION['usuario'])){
+                if($url == "/afiliado/sair"){
+                 $url = "/afiliado/sair";
+                }else if($_SESSION['usuario']== 0){
+                 $url == "/chamada/listar-chamada";
+                }
+            } 
 
             if (isset($_SESSION['usuario']) && $url == "/") {
                 if ($_SESSION['usuario'] == 1) {
@@ -76,13 +84,7 @@ class Rota
                 }
             }
 
-               if(isset($_SESSION['usuario'])){
-                   if($url == "/afiliado/sair"){
-                    $url = "/afiliado/sair";
-                   }else if($_SESSION['usuario']==0){
-                    $url == "/chamada/listar-chamada";
-                   }
-               } 
+               
             
             if (array_key_exists($url, $this->rotas)) {
 
