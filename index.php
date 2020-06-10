@@ -76,7 +76,7 @@ class Rota
                 }
             }
 
-            if (isset($_SESSION['usuario']) == 0 ) {
+            if ($_SESSION['usuario'] == 0 ) {
                 if ($url == "/") {
                     header('Location: /');
                 } else {
