@@ -34,7 +34,7 @@ class Rota
         $this->rotas['/chamada/listar-chamada'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'listar-chamada.html'));
         $this->rotas['/chamada/editar-afiliado'] = array('classe' => 'Chamada', 'metodo' => "renderizarHTML", 'parametro' => array('chamada', 'editar-chamada.html'));
         $this->rotas['/afiliado/sair'] = array('classe' => 'Login', 'metodo' => "Lougout", 'parametro' => array());
-        $this->rotas['/administrador/cadastrar-administrador'] = array('classe' => 'Administrador', 'metodo' =>"renderizarHTML",'parametro' => array('administrador', 'cadastrar-administrador.html'));
+        $this->rotas['/administrador/cadastrar-administrador'] = array('classe' => 'Administrador', 'metodo' => "renderizarHTML", 'parametro' => array('administrador', 'cadastrar-administrador.html'));
         $this->rotas['/frequencia/vizualizar-frequencia'] = array('classe' => 'Frequencia', 'metodo' => "renderizarHTML", 'parametro' => array('Frequencia', 'vizualizar-frequencia.html'));
         $this->rotas['/usuario/cadastrar-usuario'] = array('classe' => 'Usuario', 'metodo' => "renderizarHTML", 'parametro' => array('usuario', 'cadastrar-usuario.html'));
 
@@ -63,19 +63,28 @@ class Rota
                 // echo "Não tem SESSION ".session_status();
                 header("Location: /");
             }
-            
-            if(isset($_SESSION['usuario']) && $url == "/"){
-                if($_SESSION['usuario'] == 1){
+
+            if (isset($_SESSION['usuario']) && $url == "/") {
+                if ($_SESSION['usuario'] == 1) {
                     $url = "/lista-geral";
                 }
             }
-            if(isset($_SESSION['usuario']) && $url == "/"){
-                if($_SESSION['usuario'] == 0){
+            if (isset($_SESSION['usuario']) && $url == "/") {
+                if ($_SESSION['usuario'] == 0) {
                     $url = "/chamada/listar-chamada";
                     //echo $url;
                 }
             }
-    
+
+            if (isset($_SESSION['usuario']) == 0 && $url != "/chamada/listar-chamada") {
+                if ($url == "/") {
+                    header('Location: /');
+                } else {
+                    header("/chamada/listar-chamada");
+                } //echo $url;
+
+            }
+
             if (array_key_exists($url, $this->rotas)) {
 
                 $classe = "\\website\\classe\\" . $this->rotas[$url]['classe'];
