@@ -75,6 +75,15 @@ class Rota
                     $url = "/chamada/listar-chamada";
                 
                 }
+            }
+
+            if(isset($_SESSION['usuario'])){
+                if($_SESSION['usuario'] == 1){
+                    if($url == "/chamada/listar-chamada"){
+                        
+                    $url = "/lista-geral";
+                    }
+                }
             } 
 
             if (isset($_SESSION['usuario']) && $url == "/") {
