@@ -58,10 +58,7 @@ hr {
     border: 1px solid #FF1493;
     border-radius: 10px;
 }
-.navbar-toggler{
-    position: absolute;
-    right: 20px;
-}
+
 @media (min-width: 992px) {
     .form-signin {
         max-width: 330px;
@@ -70,6 +67,11 @@ hr {
         margin-top: 15%;
     }
 }
+.navbar-toggler{
+    position: absolute;
+    right: 20px;
+}
+
 
 @media (min-width: 768px) and (max-width: 991.98px) { 
    .container .row .col{
@@ -81,6 +83,10 @@ hr {
 
     .form-signin {
         width: 75%;
+    }
+    .navbar-toggler{
+        position: absolute;
+        right: 20px;
     }
 }
 
@@ -96,5 +102,9 @@ hr {
     }
     .form-signin {
         width: 75%;
+    }
+    .navbar-toggler{
+        position: absolute;
+        right: 20px;
     }
 }
