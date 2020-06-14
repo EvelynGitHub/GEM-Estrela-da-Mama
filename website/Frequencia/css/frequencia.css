@@ -18,7 +18,7 @@ body{
 }
 
 .tabela{
-    padding: 100px;
+    padding: 30px 80px;
     text-align: center;       
 }
 
@@ -70,24 +70,26 @@ header .nav a{
 
 }
 
-.barraPesquisa{
+/*.barraPesquisa{
     width: 40%;
     padding: 1rem 0 ;
     right: 6.25rem;
     position: absolute;  
 
 }
+*/
 .navbar-toggler{
     position: absolute;
     right: 20px;
 }
 
 @media (max-width: 676px){
-   .barraPesquisa{
+  /* .barraPesquisa{
     width: 85%;
     right: 2rem;
     }
-    
+    */
+
     .tabela{   
     margin: 0 20px;
     padding: 5px;
