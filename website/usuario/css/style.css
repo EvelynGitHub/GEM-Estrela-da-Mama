@@ -58,7 +58,10 @@ hr {
     border: 1px solid #FF1493;
     border-radius: 10px;
 }
-
+.navbar-toggler{
+    position: absolute;
+    right: 20px;
+}
 @media (min-width: 992px) {
     .form-signin {
         max-width: 330px;
