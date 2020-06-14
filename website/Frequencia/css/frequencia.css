@@ -77,7 +77,10 @@ header .nav a{
     position: absolute;  
 
 }
-
+.navbar-toggler{
+    position: absolute;
+    right: 20px;
+}
 
 @media (max-width: 676px){
    .barraPesquisa{
