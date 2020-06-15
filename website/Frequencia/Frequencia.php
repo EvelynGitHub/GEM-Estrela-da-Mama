@@ -64,17 +64,17 @@ class Frequencia
                 }
             }
 
-            $matriz = $banco->obterRegistros($sql, $preparaSQL);
+            $matriz = $banco->obterRegistros($sql);
             //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
             $htmlPresente = [];
             $htmlPresente['#'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
             echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
 
-            $matriz = $banco->obterRegistros($sql, $preparaSQL);
-            //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
-            $htmlPresente = [];
-            $htmlPresente['#'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
-            echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
+            // $matriz = $banco->obterRegistros($sql, $preparaSQL);
+            // //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
+            // $htmlPresente = [];
+            // $htmlPresente['#'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
+            // echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
         } catch (Exception $e) {
             echo "Erro ao listar a presença dos afiliados:" . $e;
         }
