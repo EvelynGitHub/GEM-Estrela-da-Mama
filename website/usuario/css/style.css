@@ -59,6 +59,12 @@ hr {
     border-radius: 10px;
 }
 
+.form-signin{
+    width: 330px;
+    margin: auto;
+}
+
+/*
 @media (min-width: 992px) {
     .form-signin {
         max-width: 330px;
@@ -95,3 +101,4 @@ hr {
         width: 75%;
     }
 }
+*/
