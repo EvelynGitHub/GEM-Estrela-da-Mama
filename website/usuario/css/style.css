@@ -62,8 +62,13 @@ hr {
 .form-signin{
     width: 330px;
     margin: auto;
+    padding: 40px 0;
 }
-
+@media (max-width: 768px){
+    .col .text-rem-2 {
+    margin-right: 0px;
+    }   
+}
 /*
 @media (min-width: 992px) {
     .form-signin {
