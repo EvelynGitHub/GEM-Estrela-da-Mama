@@ -58,7 +58,7 @@ label {
 }
 
 .table-striped>tbody>tr:nth-child(even)>td, .table-striped>tbody>tr:nth-child(even)>th {
-    background-color: #FF5F98;
+    background-color: #F8C0CD;
     color: black;
 }
 
