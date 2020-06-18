@@ -69,6 +69,10 @@ header .nav a{
    font-size: 20px;
 
 }
+.chk {
+    height: 20px;
+    width: 20px;
+}
 
 /*.barraPesquisa{
     width: 40%;
