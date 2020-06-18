@@ -1,18 +1,16 @@
-
- body{
+body {
     background-color: #fff;
 }
 
-.nav a{
+.nav a {
     cursor: pointer;
- 
 }
 
-.float-left h3{
+.float-left h3 {
     margin: 30px 110PX;
 }
 
-.nav a:hover ,i:hover {
+.nav a:hover, i:hover {
     color: #FF5F98;
 }
 
@@ -20,60 +18,59 @@
     cursor: pointer;
 }
 
-.tabela{
+.tabela {
     padding: 100px;
-    text-align: center;       
+    text-align: center;
 }
 
-.tabela .table{
+.tabela .table {
     border: solid 1px #cccc;
     margin-bottom: 2.5rem;
 }
 
-.tabela thead{
+.tabela thead {
     background-color: #FF5F98;
 }
 
-.tabela tbody tr:nth-child(odd){
+.tabela tbody tr:nth-child(odd) {
     background-color: #fff;
 }
 
-.tabela tbody tr:nth-child(even){
+.tabela tbody tr:nth-child(even) {
     background-color: #F8C0CD;
 }
 
-header{
+header {
     width: 100%;
     margin-bottom: 3%;
     border-bottom: solid 1px #CCC;
-   }
+}
 
-.logo{
+.logo {
     width: 63px;
 }
 
-header .nav{
+header .nav {
     display: flex;
     justify-content: space-between;
-    padding:.8rem 2rem;
+    padding: .8rem 2rem;
     align-items: center;
 }
-header .nav a{
-   color: black;
-   text-decoration: none;
-   font-size: 20px;
 
+header .nav a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
 }
 
-.barraPesquisa{
+.barraPesquisa {
     width: 40%;
-    padding: 1rem 0 ;
+    padding: 1rem 0;
     right: 6.25rem;
-    position: absolute;  
-
+    position: absolute;
 }
 
-.btn{
+.btn {
     position: absolute;
     right: 8rem;
     background-color: #FF5F98;
@@ -81,22 +78,20 @@ header .nav a{
     border: none;
     padding: 12px;
 }
-   
-.chk{
-    height: 20px; 
+
+.chk {
+    height: 20px;
     width: 20px;
 }
 
-@media (max-width: 676px){
-   .barraPesquisa{
+@media (max-width: 676px) {
+    /*.barraPesquisa{
     width: 85%;
     right: 2rem;
-}
-    
-.tabela{   
-    margin: 0 30px;
-    padding: 80px 0px;
-    overflow:auto; 
-}
-
+    */
+    .tabela {
+        margin: 0 20px;
+        padding: 5px;
+        overflow: auto;
+    }
 }
