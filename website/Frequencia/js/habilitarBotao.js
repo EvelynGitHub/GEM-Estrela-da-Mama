@@ -7,7 +7,7 @@ function habilitaBotao() {
 
     var hora = new Date().getHours();
 
-    if (hora >= 16 && hora < 18) {
+    if (hora >= 16 && hora < 23) {
 
         btnEncerrarChamada.disabled = false;
         btnEncerrarChamada.style.cursor = 'pointer';
@@ -21,6 +21,6 @@ function habilitaBotao() {
 
 }
 
-setInterval(habilitaBotao, 60000);
+setInterval(habilitaBotao, 1000);
 
 
