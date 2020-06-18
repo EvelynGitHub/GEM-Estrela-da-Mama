@@ -66,7 +66,7 @@ class Frequencia
             $matriz = $banco->obterRegistros($sql);
             //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
             $htmlPresente = [];
-            $htmlPresente['#'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
+            $htmlPresente['cd'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
             echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
 
             // $matriz = $banco->obterRegistros($sql, $preparaSQL);
