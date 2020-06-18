@@ -94,5 +94,10 @@ if (isset($_GET['finalizaChamada'])) {
     }
     $chamada->adicionarPresenca($codigos);
 
+    echo "<script>
+    alert('Chamada realizada sucesso');
+    self.location.href='/lista-geral';					
+    </script>";
+
     //header('Refresh:0');
 }
