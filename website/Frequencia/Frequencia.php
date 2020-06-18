@@ -37,7 +37,7 @@ class Frequencia
     {
 
         try {
-            $sql = "SELECT a.cd_afiliado 'cd', a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', c.qt_presencas 'Presença',
+            $sql = "SELECT a.cd_afiliado '#', a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', c.qt_presencas 'Presença',
                     CONCAT(FORMAT((((c.qt_presencas)/(DATEDIFF(MAKEDATE(YEAR(CURDATE()), 365),MAKEDATE(YEAR(CURDATE()), 1) + 1)))*100), 2), '%') AS 'Frequência', null 'Marcar'
                     FROM afiliado a
                     JOIN chamada c ON (a.cd_afiliado = c.id_afiliado) ";
@@ -66,7 +66,7 @@ class Frequencia
             $matriz = $banco->obterRegistros($sql);
             //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
             $htmlPresente = [];
-            $htmlPresente['cd'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
+            $htmlPresente['#'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
             echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
 
             // $matriz = $banco->obterRegistros($sql, $preparaSQL);
