@@ -72,7 +72,7 @@ class Chamada
     {
         try {
 
-            $sql = "SELECT a.cd_afiliado '#', a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', null 'Presença' 
+            $sql = "SELECT a.cd_afiliado 'cd', a.nm_afiliado 'Nome', a.nm_tipo_afiliado 'Tipo', null 'Presença' 
                     FROM afiliado a
                     JOIN chamada c ON (a.cd_afiliado = c.id_afiliado)";
 
@@ -98,7 +98,7 @@ class Chamada
 
             $matriz = $banco->obterRegistros($sql, $preparaSQL);
 
-            $htmlPresente['#'] = array('Presença' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
+            $htmlPresente['cd'] = array('Presença' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
 
             echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
         } catch (Exception $e) {
