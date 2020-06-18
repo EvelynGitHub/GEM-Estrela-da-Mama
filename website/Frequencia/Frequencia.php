@@ -8,7 +8,6 @@ require_once __DIR__ . '/../chamada/Chamada.php';
 
 use Exception;
 use CRUD;
-use Chamada;
 
 class Frequencia
 {
@@ -81,7 +80,7 @@ class Frequencia
     }
 }
 if (isset($_GET['finalizaChamada'])) {
-
+    
     $chamada = new Chamada;
 
     $listaCodigos = $_GET['afiliado'];
@@ -92,7 +91,7 @@ if (isset($_GET['finalizaChamada'])) {
 
         $codigos[] = intval($codigo);
     }
+    
     $chamada->adicionarPresenca($codigos);
 
-    header('Refresh:0');
 }
