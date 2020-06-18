@@ -65,7 +65,7 @@ label {
 th {
     background-color: #FF5F98;
     border: 1px solid white;
-    color: #FFF;
+    color: black;
 }
 
 tr {
@@ -117,11 +117,11 @@ td {
 }
 
 .fa-id-card {
-    color: #FF1493;
+    color: #FF5F98;
 }
 
 .fa-edit {
-    color: #FF1493;
+    color: #FF5F98;
 }
 
 .nav-link {
