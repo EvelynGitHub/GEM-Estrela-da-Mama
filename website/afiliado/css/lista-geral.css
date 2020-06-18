@@ -65,12 +65,12 @@ table .table{
 }
 
 .table-striped>tbody>tr:nth-child(even)>td, .table-striped>tbody>tr:nth-child(even)>th {
-    background-color: #FF9FD3;
+    background-color: #F8C0CD;
     color: black;
 }
 
 th {
-    background-color: #FF1493;
+    background-color: #FF5F98;
     color: #FFF;
 }
 
