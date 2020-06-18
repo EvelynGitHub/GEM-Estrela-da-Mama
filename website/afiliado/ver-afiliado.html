@@ -1,8 +1,21 @@
+<style>
+  .modal-header{
+    background:#FF1493;
+    color:#fff;
+    font-weight: bold;
+  }
+  .modal-header span,
+  i{
+    color:#fff;
+  }
+
+</style>
+
 <div class="modal fade" id="visualiaza-afiliado" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Dados do Afiliado</h5>
+        <h5 class="modal-title" id="exampleModalScrollableTitle"><i class="far fa-address-card"></i>Dados do Afiliado</h5>
 
         <a class="nav-link close" onClick="history.go(-1)">
           <span aria-hidden="true">&times;</span>
@@ -14,7 +27,7 @@
               $a = $this->retornarAfiliado($_GET['id']);
               unset($a['cd_afiliado']);              
               foreach ($a as $k=>$v) {
-                echo "<p><b>$k </b> $v </p>";
+                echo "<p><strong>$k </strong> $v </p>";
               }
             
             ?>
