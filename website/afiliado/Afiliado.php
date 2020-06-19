@@ -264,8 +264,8 @@ if (isset($_POST['formulario-afiliado'])) {
 		} else {
 			$cadAfiliado->endereco = isset($_POST['endereco']) ? $_POST['endereco'] : "";
 		}
-		$cadAfiliado->telefone = removeCaracter($_POST['telefone']);
-		$cadAfiliado->celular = removeCaracter($_POST['celular']);
+		$cadAfiliado->telefone = $_POST['telefone'];
+		$cadAfiliado->celular = $_POST['celular'];
 		$cadAfiliado->email = $_POST['email'];
 		$cadAfiliado->escolaridade = $_POST['escolaridade'];
 		$cadAfiliado->situacaoProfissional = $_POST['sitProfissional'];
