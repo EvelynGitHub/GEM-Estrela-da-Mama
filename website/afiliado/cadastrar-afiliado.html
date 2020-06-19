@@ -279,8 +279,6 @@
     <script src="/website/afiliado/js/afiliado.js"></script>
     <!-- ====================== -->
     <script>        
-    
-    $("#rg").mask("99.999.999-9");
 
         function cancelar() {
             let cancelaOuConfirma = confirm("Deseja realmente Cancelar? Todas as alterações serão descartadas.")
@@ -289,6 +287,9 @@
             }
 
         }
+
+        $("#cpf").mask("999.999.999-99");
+        $("#rg").mask("99.999.999-9");
     </script>
       
       <!-- Footer -->
