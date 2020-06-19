@@ -210,20 +210,26 @@
 
         <div class="table-responsive overflow">
             <table class="table table-bordered table-striped">
-                <?php $this->listarAfiliado();?>
-            </table>
-        </div>
+                <?php $this->listarAfiliado(); ?>
+            <!--</table> -->
+
+            
+            <!-- INICIO: função que verifica se existe id na URL para Visualizar Afiliado -->
+                <?php 
+                
+                if(!empty($_GET)){
+                    if(isset($_GET['id'])){ 
+                        $this->renderizarHTML('afiliado','ver-afiliado.html');
+                    }
+                    /*else{
+                        $this->paginacao($_GET['pagina']);
+                    }*/
+                }
+                
+                ?>
+            <!-- FIM: função que verifica se existe id na URL para Visualizar Afiliado -->
 
 
-        <!-- INICIO: função que verifica se existe id na URL para Visualizar Afiliado -->
-        <?php 
-        
-        if(!empty($_GET)){
-            $this->renderizarHTML('afiliado','ver-afiliado.html');
-        }
-        
-        ?>
-        <!-- FIM: função que verifica se existe id na URL para Visualizar Afiliado -->
     </div>
 
     <!-- Footer -->

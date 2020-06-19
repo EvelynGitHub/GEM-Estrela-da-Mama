@@ -141,10 +141,16 @@ class Afiliado
 	public function listarAfiliado()
 	{
 		try {
+			
+
 			$sql = " SELECT * FROM vw_afiliado ";
-			$preparaSQL = "";
+			$sql2 = " SELECT COUNT(*) FROM vw_afiliado ";
+
+			$preparaSQL = array();
+			$inteiro = array();
 
 			$banco = new CRUD();
+
 
 			if (isset($_POST["btnAfiliado"])) { // Se o botão foi clicado
 
@@ -153,6 +159,8 @@ class Afiliado
 				if ($filtroAfiliado != "todos") { // E se o valor do radio for diferente de "todos"
 					$sql .= "WHERE Tipo=LOWER(:filtro) "; // coloque este WHERE
 					$preparaSQL = array(':filtro' => $filtroAfiliado); // prepare este sql
+
+					$sql2 .= "WHERE Tipo=LOWER(:filtro) ";
 				}
 			} else if (isset($_POST["btnAssistida"])) { // Se o botão foi clicado
 
@@ -169,20 +177,56 @@ class Afiliado
 				if ($afiliadoVoluntario != "") {
 
 					$sql .= "WHERE LOWER(Status) = LOWER(:status)";
+					$sql2 .= "WHERE LOWER(Status) = LOWER(:status)";
 					$preparaSQL = array(':status' => $afiliadoVoluntario);
 
 					if ($afiliadoCargo != "") {
 						$sql .= "AND Função LIKE :cargo ";
 						$preparaSQL[":cargo"] = "%$afiliadoCargo%";
+						$sql2 .= "AND Função LIKE :cargo ";
 					}
 				} else {
 
 					$sql .= "WHERE Função LIKE :cargo "; // coloque este WHERE
+					$sql2 .= "WHERE Função LIKE :cargo "; // coloque este WHERE
 					$preparaSQL = array(':cargo' => "%$afiliadoCargo%");
 				}
 			}
 
-			$matriz = $banco->obterRegistros($sql, $preparaSQL);
+			$total_reg = 6;
+			$pagina = ($_GET['pagina']);
+
+			if (!$pagina) {
+				//$_SESSION['pagina'] = $pagina;
+				$pc = '1';
+			} else {
+				$pc = $pagina;
+			}
+
+			
+			if($_SESSION['pagina'] == $pagina){
+				$_SESSION['prepara'] = $preparaSQL;
+				$_SESSION['select'] = $sql2;
+				$_SESSION['sql'] = $sql;
+				$pc = 1;
+			}
+			if($_SESSION['pagina'] != $pagina){
+				$_SESSION['pagina'] = $pagina;
+				$sql = $_SESSION['sql'];
+				$preparaSQL = $_SESSION['prepara'];
+			}
+
+			$comeca = $pc - 1;
+			$comeca = $comeca * $total_reg;
+
+			$sql .= ' LIMIT :comeca , :total';
+			$preparaSQL[":comeca"] = $comeca;
+			$preparaSQL[":total"] = $total_reg;
+			$inteiro[":comeca"] = '';
+			$inteiro[":total"] = '';
+			
+
+			$matriz = $banco->obterRegistros($sql, $preparaSQL, $inteiro);
 
 			$array['cd'] = array('Opção' => "<a href='?id=@codigo@' class=''>
 												<i class='far fa-id-card' style='font-size: 1.5rem;'></i>
@@ -191,11 +235,40 @@ class Afiliado
 												<i class='far fa-edit' style='font-size: 1.5rem;'></i>
 											</a>");
 
-			echo "<p id='qtdRetornados' hidden> N°: " . count($matriz) . "</p>";
+			
+
 			echo $this->rederizarTabela($matriz, $array, "@codigo@");
+			echo '</table>';
+
+			$resultTotal = $this->paginacao($pc, $total_reg);
+			
+			echo "<p id='qtdRetornados' hidden> N°: " . $resultTotal . "</p>";
+
 		} catch (Exception $e) {
 			echo "Erro ao listar Afiliados: $e";
 		}
+	}
+
+	private function paginacao($pc, $total_reg)
+	{
+
+		$banco = new CRUD();
+
+		$tr = $banco->obterRegistros($_SESSION['select'], $_SESSION['prepara']);
+
+		$tp = $tr[0]['COUNT(*)'] / $total_reg;
+		$anterior = $pc - 1;
+		$proximo = $pc + 1;
+
+		if ($pc > 1) {
+			echo " <a href='?pagina=$anterior'><- Anterior</a> ";
+		}
+		echo "|";
+		if ($pc < $tp) {
+			echo " <a href='?pagina=$proximo'>Próxima -></a>";
+		}
+
+		return $tr[0]['COUNT(*)'];
 	}
 
 	private function verificarAfiliadoExiste($afiliado)

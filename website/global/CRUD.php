@@ -17,7 +17,7 @@ class CRUD extends Conexao
         }
     }
 
-    public function obterRegistros($select, $preparaSelect = array())
+    public function obterRegistros($select, $preparaSelect = array(), $inteiro=array())
     {
         try {
 
@@ -43,7 +43,12 @@ class CRUD extends Conexao
                 foreach ($preparaSelect as $key => $value) {
                     // echo "<br>Chave:> $key <br> Valor:> $value";
                     // Troque de bindParan Para bindValue, aparentemente bindParan estava sobrescrevendo valores
-                    $instrucao->bindValue($key, $value);
+                    // $instrucao->bindValue($key, (int)$value, PDO::PARAM_INT);
+                    if(array_key_exists($key, $inteiro)){
+                        $instrucao->bindValue($key, (int)$value, PDO::PARAM_INT);
+                    }else{
+                        $instrucao->bindValue($key, $value);
+                    }                    
                 }
 
                 $sucesso = $instrucao->execute();
@@ -61,7 +66,7 @@ class CRUD extends Conexao
                 }
             }
         } catch (PDOException $e) {
-            return "O seguinte erro foi encontrado ao executar esse select: <br> $e ";
+            return "O seguinte erro foi encontrado ao executar esse select: <br>". $e->getMessage() ;
         }
     }
 
