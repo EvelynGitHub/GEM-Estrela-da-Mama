@@ -271,11 +271,16 @@
         </div>
     </form>
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+
     <script src="/website/afiliado/js/cadastrar-afiliado.js"></script>
     <!-- Usado para as mascaras -->
     <script src="/website/afiliado/js/afiliado.js"></script>
     <!-- ====================== -->
     <script>        
+    
+    $("#rg").mask("99.999.999-9");
 
         function cancelar() {
             let cancelaOuConfirma = confirm("Deseja realmente Cancelar? Todas as alterações serão descartadas.")
