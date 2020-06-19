@@ -98,7 +98,7 @@ class Chamada
 
             $matriz = $banco->obterRegistros($sql, $preparaSQL);
 
-            $htmlPresente['#'] = array('Presença' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
+            $htmlPresente['cd'] = array('Presença' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
 
             echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
         } catch (Exception $e) {
@@ -120,7 +120,7 @@ class Chamada
 
             // unset($matriz['cd']);    
 
-            $htmlPresente['cd'] = array('Opção' => "<input class='option-input radio' type='radio' name='adicionar' id='' value='@codigoafiliado@'>");
+            $htmlPresente['#'] = array('Opção' => "<input class='option-input radio' type='radio' name='adicionar' id='' value='@codigoafiliado@'>");
 
             echo $this->rederizarTabela($matriz, $htmlPresente, '@codigoafiliado@');
         } catch (Exception $e) {
