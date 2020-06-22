@@ -228,7 +228,7 @@ class Afiliado
 
 			$matriz = $banco->obterRegistros($sql, $preparaSQL, $inteiro);
 
-			$array['cd'] = array('Opção' => "<a href='?id=@codigo@' class=''>
+			$array['#'] = array('Opção' => "<a href='?id=@codigo@' class=''>
 												<i class='far fa-id-card' style='font-size: 1.5rem;'></i>
 											</a>
 											<a href='/afiliado/editar?id=@codigo@' class=''>
