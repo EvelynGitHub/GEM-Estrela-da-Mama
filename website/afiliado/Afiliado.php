@@ -143,7 +143,7 @@ class Afiliado
 		try {
 			
 
-			$sql = " SELECT * FROM vw_afiliado ";
+			$sql = " SELECT cd '#', Nome,Tipo,Função, `Data de Nascimento`, Telefone, Status, Opção FROM vw_afiliado ";
 			$sql2 = " SELECT COUNT(*) FROM vw_afiliado ";
 
 			$preparaSQL = array();
@@ -228,7 +228,7 @@ class Afiliado
 
 			$matriz = $banco->obterRegistros($sql, $preparaSQL, $inteiro);
 
-			$array['cd'] = array('Opção' => "<a href='?id=@codigo@' class=''>
+			$array['#'] = array('Opção' => "<a href='?id=@codigo@' class=''>
 												<i class='far fa-id-card' style='font-size: 1.5rem;'></i>
 											</a>
 											<a href='/afiliado/editar?id=@codigo@' class=''>
@@ -297,7 +297,7 @@ class Afiliado
 
 		$preparaSql = array(':nome' => "%$nome%");
 
-		$array['cd'] = array('Opção' => "<a href='?id=@codigo@' class=''>
+		$array['#'] = array('Opção' => "<a href='?id=@codigo@' class=''>
 												<i class='far fa-id-card' style='font-size: 1.5rem;'></i>
 											</a>
 											<a href='/afiliado/editar?id=@codigo@' class=''>
