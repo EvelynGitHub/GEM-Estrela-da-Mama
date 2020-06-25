@@ -1,19 +1,5 @@
-// window.onload = () => {
-
-//     let form = document.querySelector("#frequencia");
-
-//     if (form) {
-
-//         form.reset();
-
-//     }
-
-// }
-
-
 $(document).ready(function () {
 
-    //var id = sessionStorage.getItem("listaAfiliados").split(",");
     let listaAfiliados = sessionStorage.getItem("listaAfiliados").split(",");
 
     for (let x = 0; x < listaAfiliados.length; x++) {
@@ -31,6 +17,19 @@ $(document).ready(function () {
         sessionStorage.setItem("listaAfiliados", listaAfiliados);
 
     });
+
+    $("#finalizaChamada").click(function () {
+
+        sessionStorage.setItem("listaAfiliados", "");
+
+        let form = document.querySelector("#frequencia");
+
+        if (form) {
+
+            form.reset();
+
+        }
+    })
 
 
 

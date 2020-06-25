@@ -43,7 +43,7 @@ class Frequencia
                     JOIN chamada c ON (a.cd_afiliado = c.id_afiliado) ";
             //var_dump("<h6>Verficando o select antes do if</h6> ",$sql, "<br><br>");
 
-            $preparaSQL = "";
+            $preparaSQL = array();
             //var_dump("<h6>Verficando o preparaSQL antes do if</h6> ",$preparaSQL, "<br><br>");
 
             $banco = new CRUD();
@@ -63,7 +63,7 @@ class Frequencia
                 }
             }
 
-            $matriz = $banco->obterRegistros($sql);
+            $matriz = $banco->obterRegistros($sql, $preparaSQL);
             //var_dump("<h6>Verficando o que a matriz esta passando</h6> ",$matriz, "<br>");
             $htmlPresente = [];
             $htmlPresente['#'] = array('Marcar' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
@@ -80,7 +80,7 @@ class Frequencia
     }
 }
 if (isset($_GET['finalizaChamada'])) {
-    
+
     $chamada = new Chamada;
 
     $listaCodigos = $_GET['afiliado'];
@@ -91,7 +91,6 @@ if (isset($_GET['finalizaChamada'])) {
 
         $codigos[] = intval($codigo);
     }
-    
-    $chamada->adicionarPresenca($codigos);
 
+    $chamada->adicionarPresenca($codigos);
 }
