@@ -51,12 +51,10 @@ class Chamada
 
         $coluna = array('qt_presencas' => 1);
 
-        foreach($codigos as $codigo){
+        foreach ($codigos as $codigo) {
 
             echo $banco->updateGenerico('chamada', $coluna, array('id_afiliado' => $codigo), '= qt_presencas +', 'Lista de Chamada Atualizada');
-
         }
-
     }
     public function removerPresenca(Afiliado $afiliado, Atividade $atividade)
     {
@@ -98,7 +96,7 @@ class Chamada
 
             $matriz = $banco->obterRegistros($sql, $preparaSQL);
 
-            $htmlPresente['cd'] = array('Presença' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
+            $htmlPresente['#'] = array('Presença' => "<input class='chk' type='checkbox' name='afiliado[]' value='@codigo@'>");
 
             echo $this->rederizarTabela($matriz, $htmlPresente, "@codigo@");
         } catch (Exception $e) {
@@ -127,23 +125,20 @@ class Chamada
             echo "$e";
         }
     }
-    
 }
 
-if(isset($_GET['chamada'])){
+if (isset($_GET['chamada'])) {
 
     $chamada = new Chamada;
-    
+
     $listaCodigos = $_GET['afiliado'];
 
     $codigos = [];
 
-    foreach($listaCodigos as $codigo){
+    foreach ($listaCodigos as $codigo) {
 
         $codigos[] = intval($codigo);
-
     }
 
     $chamada->adicionarPresenca($codigos);
-
 }
