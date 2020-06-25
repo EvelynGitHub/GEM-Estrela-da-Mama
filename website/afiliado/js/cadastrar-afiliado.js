@@ -26,11 +26,6 @@ radioButtonTipoVoluntario.addEventListener('click', () => {
 
 });
 
-// btnCancelar.addEventListener('click', () => {
-
-//     window.location.pathname = '/lista-geral';
-
-// });
 
 
 
