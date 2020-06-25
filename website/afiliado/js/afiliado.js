@@ -127,8 +127,53 @@ function validarCPF(input) {
 }
 
 function inicializarEditar() {
-    console.log("Valor CPF: " + cpf.value)
     cpf.value = mascaraInput(cpf.value, "000.000.000-00")
     telefone.value= mascaraInput(telefone.value, "(00)0000-0000")
     celular.value = mascaraInput(celular.value, "(00)00000-0000")
 }
+
+
+// function viewFilter(data) {
+
+//     let divTodos = document.querySelector("#filter-todos");
+//     let divAssistida = document.querySelector("#filter-assistida");
+//     let divVoluntario = document.querySelector("#filter-voluntario");
+        
+//     if(data == "filter-todos"){        
+//         $("#filter-assistida").fadeOut();
+//         $("#filter-voluntario").fadeOut();
+//         $("#filter-todos").fadeIn();        
+        
+//         console.log("Entrou no if Todos");
+
+//     }else if (data == "assistida") {
+
+//         $("#filter-todos").fadeOut();
+//         $("#filter-voluntario").fadeOut();
+//         $("#filter-assistida").fadeIn();
+        
+//         console.log("Entrou no if Assistida");  
+//     }
+//     else if (data == "filter-voluntario") {
+
+//         $("#filter-todos").fadeOut();
+//         $("#filter-assistida").fadeOut();
+//         $("#filter-voluntario").fadeIn();
+        
+//         console.log("Entrou no if Voluntario"); 
+
+//     }
+// }
+
+// $(document).ready(function () {
+//     $("#filter-todos").fadeOut();
+//     $("#filter-assistida").fadeOut();
+//     $("#filter-voluntario").fadeOut();
+
+//     $("legend .filter-todos").click(function (){
+//         $("#filter-todos").toggle();
+//         console.log("Clicou no todos");
+//     });
+
+//     console.log("Carregou a pagina");
+// });

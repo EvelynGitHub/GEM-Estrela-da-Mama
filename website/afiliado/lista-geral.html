@@ -14,15 +14,19 @@
     <link rel="stylesheet" href="/website/global/css/styles.css">
     <link rel="stylesheet" href="/website/global/font-awesome/css/all.css">
 
+    <script src="/website/global/jquery.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-        </script>
+    </script>
+
+    <script src="/website/afiliado/js/afiliado.js"></script>
 
     <style>
         p {
@@ -99,13 +103,13 @@
 
                     <fieldset>
 
-                        <legend class="w-auto">Afiliados:</legend>
-
-                        <div class="input-group center incolumn">
+                        <legend align="center" class="w-auto filter-todos">Afiliados:</legend>
+                        
+                        <div id="filter-todos" class="input-group mb-3 center incolumn">
 
                             <label class="" for="todos">
                                 <input type="radio" class="option-input radio" name="afiliado" id="todos"
-                                    value="todos">Todos
+                                    value="todos" checked>Todos
                             </label>
 
                             <label class="" for="voluntario">
@@ -132,9 +136,9 @@
 
                     <fieldset>
 
-                        <legend class="w-auto">Assistida:</legend>
+                        <legend align="center" class="w-auto filter-assistida">Assistida:</legend>
 
-                        <div class="input-group center incolumn">
+                        <div id="filter-assistida" class="input-group mb-3 center incolumn">
 
 
                             <label for="asstratamento">
@@ -170,9 +174,9 @@
 
                     <fieldset>
 
-                        <legend class="w-auto">Voluntário:</legend>
+                        <legend align="center" class="w-auto filter-voluntario">Voluntário:</legend>
 
-                        <div class="input-group mb-3 center incolumn">
+                        <div id="filter-voluntario" class="input-group mb-3 center incolumn">
 
                             <label for="voluntario-ativo">
                                 <input type="radio" class="option-input radio" name="voluntario" id="voluntario-ativo"
@@ -199,7 +203,6 @@
                 </div>
             </div>
         </form>
-
         <div class="row">
             <button class="btn btn-primary no-imprimir mb-3" onclick="imprimir()">Imprimir <i class="fa fa-print"
                     aria-hidden="true"></i></button>
@@ -211,10 +214,10 @@
         <div class="table-responsive overflow">
             <table class="table table-bordered table-striped">
                 <?php $this->listarAfiliado(); ?>
-            <!--</table> -->
+                <!--</table> -->
 
-            
-            <!-- INICIO: função que verifica se existe id na URL para Visualizar Afiliado -->
+
+                <!-- INICIO: função que verifica se existe id na URL para Visualizar Afiliado -->
                 <?php 
                 
                 if(!empty($_GET)){
@@ -227,24 +230,52 @@
                 }
                 
                 ?>
-            <!-- FIM: função que verifica se existe id na URL para Visualizar Afiliado -->
+                <!-- FIM: função que verifica se existe id na URL para Visualizar Afiliado -->
 
 
-    </div>
+        </div>
 
-    <!-- Footer -->
-    <?php $this->renderizarHTML('global', 'footer.html');?>
-    <!-- Footer -->
+        <!-- Footer -->
+        <?php $this->renderizarHTML('global', 'footer.html');?>
+        <!-- Footer -->
 
-    <script>
-        function imprimir() {
-            window.print();
-        }
+        <script>
+            function imprimir() {
+                window.print();
+            }
 
-        let qtdRetornados = document.getElementById('qtdRetornados');
-        let retornoQtdAfiliadosFiltro = document.getElementById('retornoQtdAfiliadosFiltro');
-        retornoQtdAfiliadosFiltro.innerText = qtdRetornados.innerText;
-    </script>
+            let qtdRetornados = document.getElementById('qtdRetornados');
+            let retornoQtdAfiliadosFiltro = document.getElementById('retornoQtdAfiliadosFiltro');
+            retornoQtdAfiliadosFiltro.innerText = qtdRetornados.innerText;
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#filter-todos").hide();
+                $("#filter-assistida").hide();
+                $("#filter-voluntario").hide();
+
+                $(".filter-todos").click(function () {
+                    $("#filter-todos").toggle();
+                    $("#filter-assistida").hide();
+                    $("#filter-voluntario").hide();
+                });
+
+                $(".filter-assistida").click(function () {
+                    $("#filter-assistida").toggle();
+                    $("#filter-todos").hide();
+                    $("#filter-voluntario").hide();
+                    console.log("Click assistida");
+                });
+
+                $(".filter-voluntario").click(function () {
+                    $("#filter-voluntario").toggle();
+                    $("#filter-assistida").hide();
+                    $("#filter-todos").hide();
+                });
+
+                console.log("Carregou a pagina");
+            });
+        </script>
 </body>
 
 </html>

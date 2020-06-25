@@ -231,3 +231,17 @@ a:link{
     font-size: 1rem; 
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.filter-todos, .filter-assistida, .filter-voluntario {
+    cursor: pointer;
+}
+
+legend:hover {
+    color: #FF1493;
+}
+
+fieldset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
