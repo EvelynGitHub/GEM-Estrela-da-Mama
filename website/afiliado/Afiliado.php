@@ -21,14 +21,14 @@ class Afiliado
 	private $nacionalidade;
 	private $sexo;
 	private $dataNascimento;
-	// private $estado;
-	// private $cidade;
-	// private $bairro;
-	// private $rua;
-	// private $numeroResidencial;
-	// private $complemento;
+	private $estado;
+	private $cidade;
+	private $bairro;
+	private $rua;
+	private $numeroResidencial;
+	private $complemento;
 	private $endereco;
-	// private $cep;
+	private $cep;
 	private $telefone;
 	private $celular;
 	private $email;
@@ -44,8 +44,8 @@ class Afiliado
 	private $anoCirurgiaEsquerda;
 	private $convenioMedico;
 	private $itens;
-	// private $assistida;
-	// private $voluntaria;
+	private $assistida;
+	private $voluntaria;
 
 	public function __get($atributo)
 	{
@@ -141,7 +141,6 @@ class Afiliado
 	public function listarAfiliado()
 	{
 		try {
-			
 
 			$sql = " SELECT cd '#', Nome,Tipo,Função, `Data de Nascimento`, Telefone, Status, Opção FROM vw_afiliado ";
 			$sql2 = " SELECT COUNT(*) FROM vw_afiliado ";
@@ -197,7 +196,6 @@ class Afiliado
 			$pagina = ($_GET['pagina']);
 
 			if (!$pagina) {
-				//$_SESSION['pagina'] = $pagina;
 				$pc = '1';
 			} else {
 				$pc = $pagina;
@@ -271,14 +269,6 @@ class Afiliado
 		return $tr[0]['COUNT(*)'];
 	}
 
-	private function verificarAfiliadoExiste($afiliado)
-	{
-	}
-
-	private function verificarCamposNulos()
-	{
-	}
-
 	private function retornarAfiliado($afiliado, $tabela = 'vw_dados_afiliado')
 	{
 		$sql = "SELECT * FROM $tabela WHERE cd_afiliado = :cd";
@@ -321,7 +311,6 @@ if(isset($_GET['buscarAfiliadoNome'])){
 
 }
 
-// if (isset($_POST['btn-enviar'])) {
 if (isset($_POST['formulario-afiliado'])) {
 	$cadAfiliado = new Afiliado();
 
