@@ -57,7 +57,7 @@ if (window.location.pathname == "/afiliado/cadastrar") {
 
 
 function mascaraInput(valorAny, mascaraAny) {
-    // let valor = valorAny.value.split('')
+
     let valor = valorAny.split('')
     let mascara = mascaraAny.split('')
     let auxiliar = Array();
@@ -76,25 +76,23 @@ function mascaraInput(valorAny, mascaraAny) {
         return auxiliar.join('')
     }
 
-    // valorAny.value = auxiliar.join('')
     return valorAny
 }
 
 function removePontuacao(input) {
-    // const texto = input.value;
+
     const texto = input;
     const textoSemHifem = texto.replace(/\-/g, '');
     const textoSemHifemPonto = textoSemHifem.replace(/\./g, '');
     let textoSemParenteses = textoSemHifemPonto.replace(/\(/g, '')
     textoSemParenteses = textoSemParenteses.replace(/\)/g, '')
 
-    // input.value = textoSemParenteses;
     return textoSemParenteses;
 }
 
 function removeLetras(input) {
     let texto = input.value
-    // input.value = texto.replace(/[^\d]+/g, '')
+
     return texto.replace(/[^\d]+/g, '')
 }
 
@@ -131,49 +129,3 @@ function inicializarEditar() {
     telefone.value= mascaraInput(telefone.value, "(00)0000-0000")
     celular.value = mascaraInput(celular.value, "(00)00000-0000")
 }
-
-
-// function viewFilter(data) {
-
-//     let divTodos = document.querySelector("#filter-todos");
-//     let divAssistida = document.querySelector("#filter-assistida");
-//     let divVoluntario = document.querySelector("#filter-voluntario");
-        
-//     if(data == "filter-todos"){        
-//         $("#filter-assistida").fadeOut();
-//         $("#filter-voluntario").fadeOut();
-//         $("#filter-todos").fadeIn();        
-        
-//         console.log("Entrou no if Todos");
-
-//     }else if (data == "assistida") {
-
-//         $("#filter-todos").fadeOut();
-//         $("#filter-voluntario").fadeOut();
-//         $("#filter-assistida").fadeIn();
-        
-//         console.log("Entrou no if Assistida");  
-//     }
-//     else if (data == "filter-voluntario") {
-
-//         $("#filter-todos").fadeOut();
-//         $("#filter-assistida").fadeOut();
-//         $("#filter-voluntario").fadeIn();
-        
-//         console.log("Entrou no if Voluntario"); 
-
-//     }
-// }
-
-// $(document).ready(function () {
-//     $("#filter-todos").fadeOut();
-//     $("#filter-assistida").fadeOut();
-//     $("#filter-voluntario").fadeOut();
-
-//     $("legend .filter-todos").click(function (){
-//         $("#filter-todos").toggle();
-//         console.log("Clicou no todos");
-//     });
-
-//     console.log("Carregou a pagina");
-// });
