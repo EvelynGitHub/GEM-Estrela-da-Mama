@@ -70,7 +70,7 @@ class Rota
                  
                     $url = "/afiliado/sair";
                 
-                } else if($_SESSION['usuario']== 0){
+                } else if($_SESSION['usuario']== "0"){
                 
                     $url = "/chamada/listar-chamada";
                 
@@ -78,7 +78,7 @@ class Rota
             }
 
             if(isset($_SESSION['usuario'])){
-                if($_SESSION['usuario'] == 1){
+                if($_SESSION['usuario'] == "1"){
                     if($url == "/chamada/listar-chamada"){
                         
                     $url = "/lista-geral";
@@ -87,12 +87,12 @@ class Rota
             } 
 
             if (isset($_SESSION['usuario']) && $url == "/") {
-                if ($_SESSION['usuario'] == 1) {
+                if ($_SESSION['usuario'] == "1") {
                     $url = "/lista-geral";
                 }
             }
             if (isset($_SESSION['usuario']) && $url == "/") {
-                if ($_SESSION['usuario'] == 0) {
+                if ($_SESSION['usuario'] == "0") {
                     $url = "/chamada/listar-chamada";
                     //echo $url;
                 }
