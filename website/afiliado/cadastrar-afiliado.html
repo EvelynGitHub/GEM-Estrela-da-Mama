@@ -38,8 +38,8 @@
                     <input type="text" class="form-control mb-3" name="nome" id="nome" placeholder="Nome Completo"
                         title="Nome Completo" required>
                     <input type="text" class="form-control mb-3" name="rg" id="rg" placeholder="RG" title="RG" required>
-                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" placeholder="CPF" title="CPF" maxlength="14"
-                        required>
+                    <input type="text" class="form-control mb-3" name="cpf" id="cpf" placeholder="CPF" title="CPF"
+                        maxlength="14" required>
                     <input type="text" class="form-control mb-3" name="nacionalidade" id="nacionalidade"
                         title="Nacionalidade" required placeholder="Nacionalidade">
                     <input type="date" class="form-control mb-3" name="data" id="data" title="Data de Nascimento">
@@ -272,14 +272,13 @@
     </form>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script> -->
 
     <script src="/website/afiliado/js/cadastrar-afiliado.js"></script>
     <!-- Usado para as mascaras -->
     <script src="/website/afiliado/js/afiliado.js"></script>
     <!-- ====================== -->
-    <script>        
-
+    <script>
         function cancelar() {
             let cancelaOuConfirma = confirm("Deseja realmente Cancelar? Todas as alterações serão descartadas.")
             if (cancelaOuConfirma) {
@@ -288,16 +287,16 @@
 
         }
 
-        $("#cpf").mask("999.999.999-99");
-        $("#rg").mask("99.999.999-9");
-        $("#cep").mask("99999-999");
-        $("#telefone").mask("(99) 9999-9999");
-        $("#celular").mask("(99) 99999-9999");
+        // $("#cpf").mask("999.999.999-99");
+        // $("#rg").mask("99.999.999-9");
+        // $("#cep").mask("99999-999");
+        // $("#telefone").mask("(99) 9999-9999");
+        // $("#celular").mask("(99) 99999-9999");
     </script>
-      
-      <!-- Footer -->
-      <?php $this->renderizarHTML('global', 'footer.html');?>
-      <!-- Footer -->
+
+    <!-- Footer -->
+    <?php $this->renderizarHTML('global', 'footer.html');?>
+    <!-- Footer -->
 </body>
 
 </html>
